@@ -22,7 +22,7 @@ int main(){
         int x, pos;
         cout<<"Element to enter & position: "<<endl;
         cin >> x >> pos;
-        
+
         insert(arr, cap, x, usage ,pos);
 
         for(int i=0; i<cap; i++){
@@ -31,3 +31,7 @@ int main(){
     }
 }
 
+
+//TIME COMPLEXITY - O(n)
+//BEST CASE - Insert at the end -  O(1)
+//INSERT AT THE BEGINING - Θ(n)
