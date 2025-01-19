@@ -10,7 +10,6 @@ int largestElement(int arr[], int n, int &lar ,int &indexoflar){
     }
 }
 
-
 int secondLargestElement(int arr[], int n, int &lar, int &indexoflar){
     int indexofsec=-1;
     for(int i=0; i<n; i++){
@@ -30,7 +29,7 @@ int secondLargestElement(int arr[], int n, int &lar, int &indexoflar){
 int main()
 {
     int n = 8;
-    int arr[8] = {7, 8, 19, 20, 99, 199, 56, 11};
+    int arr[8] = {7, 8, 19, 99, 99, 199, 56, 11};
     int lar = arr[0];
     int indexoflar = 0;
     largestElement(arr, n, lar, indexoflar);
@@ -41,5 +40,4 @@ int main()
 
     return 0;
 }
-
 // TIME COMPLEXITY : O(n)
