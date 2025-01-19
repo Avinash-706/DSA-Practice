@@ -16,10 +16,13 @@ int main(){
     // }
     // else cout<<"ODD";
     
-    //type3
-    int half=num/2;
-    if(half+half==num) cout<<"EVEN";
+
+    // //type3
+    // int half=num/2;
+    // if(half+half==num) cout<<"EVEN";
+    // else cout<<"ODD";
+
+    //type4
+    if(num/2==num/2.0) cout<<"EVEN";
     else cout<<"ODD";
-
-
 }

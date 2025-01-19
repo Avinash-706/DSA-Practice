@@ -18,3 +18,8 @@ int main(){
     cin>>x;
     cout<<search(arr, n, x)<<endl;
 }
+
+//TIME COMPLEXITY
+//Best Case - Ω(1)
+//Worst Case - O(n)
+//Average Case - O(n)
