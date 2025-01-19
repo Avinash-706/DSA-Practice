@@ -16,4 +16,6 @@ int main(){
     bool check=issorted(arr, n);
     cout << check;
 }
-//
+
+
+//TIME COMPLEXITY - O(n)
