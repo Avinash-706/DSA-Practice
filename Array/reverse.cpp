@@ -17,3 +17,6 @@ int main(){
     }
 }
 
+
+// TIME COMPLEXITY - O(n)
+// SPACE COMPLEXITY- O(1)
