@@ -26,3 +26,6 @@ int main(){
         cout<< "EFFECTIVE UNIT: " << bill/n <<endl;
     }
 }
+
+//TIME COMPLEXITY - O(1)
+//SPACE COMPLEXITY - O(1)

@@ -29,7 +29,7 @@ int main() {
             amount += x * 0.30; // 30% tax
         }
         cout << "Tax Amount: " << amount << endl;
-        cout << "Effective Tax Rate : " << fixed << setprecision(2) << (float(n) / amount) << "%" << endl;
+        cout << "Effective Tax Rate : " << fixed << setprecision(2) << (float(amount) / n) * 100 << "%" << endl;
     }
     
     
