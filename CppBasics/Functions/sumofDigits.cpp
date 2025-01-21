@@ -3,7 +3,7 @@
 #include <algorithm>
 using namespace std;
 
-int sumofDigits(int &n){
+int sumofDigits(int n){
     int sum=0;
     while(n>0){
         int rem=n%10;
