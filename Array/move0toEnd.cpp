@@ -1,6 +1,7 @@
 #include <iostream>
 #include <iomanip>
 #include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
 
 int moveZero(int arr[], int n){
