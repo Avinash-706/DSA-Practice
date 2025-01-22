@@ -4,8 +4,7 @@
 #include <algorithm>
 using namespace std;
 
-
-void primeCheck(int i){
+bool primeCheck(int i){
     bool check=true;
     for(int y=2; y<=sqrt(i); y++ ){
         if(i%y == 0){
@@ -14,15 +13,19 @@ void primeCheck(int i){
         }
     }
     if(check){
-        cout<<i<<" X ";
+        return check;
     }
 }
 
 void factors(int n){
-    for(int i=2; i <= n; i++){
-        if(n%i==0){
-            primeCheck(i);
+    int temp=n;
+    int i=2;
+    while(temp>1){
+        while(temp%i==0 && primeCheck(i)){
+            cout<< i << " X ";
+            temp=temp/i;
         }
+        i++;
     }
 }
 
