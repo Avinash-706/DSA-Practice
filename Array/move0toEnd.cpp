@@ -11,7 +11,7 @@ int moveZero(int arr[], int n){
                 if(arr[j] != 0){
                     swap(arr[i], arr[j]);
                     j++;
-                }
+                } 
             }
         }
     }

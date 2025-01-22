@@ -12,7 +12,8 @@ using namespace std;
 class Solution {
 public:
     int removeDuplicates(vector<int>& nums) {
-        return 3;
+        int n;
+        
     }
 };
 // @lc code=end
