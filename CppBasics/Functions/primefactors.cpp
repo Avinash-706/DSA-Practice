@@ -15,7 +15,7 @@ bool primeCheck(int i){
     if(check){
         return check;
     }
-}
+};
 
 void factors(int n){
     int temp=n;
