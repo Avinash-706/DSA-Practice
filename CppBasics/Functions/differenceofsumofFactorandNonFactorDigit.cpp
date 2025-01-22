@@ -13,12 +13,14 @@ void factorCheck(int n){
         temp=temp/10;
         if(n%rem==0) sumFactor+=rem;
         else sumNonFactor+=rem;
-        cout<<"Difference :"<<sumFactor-sumNonFactor;
+        
     }
+    cout<<"Difference :"<<sumFactor-sumNonFactor;
 }
 
 int main() {
     int n;
+    cout<<"Enter a number: ";
     cin>>n;
     factorCheck(n);
     return 0;
