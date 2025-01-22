@@ -10,8 +10,9 @@ void factorCheck(int n){
     int sumNonFactor=0;
     while(temp>0){
         int rem=temp%10;
+        
         temp=temp/10;
-        if(n%rem==0) sumFactor+=rem;
+        if(rem!=0 && n%rem==0) sumFactor+=rem;
         else sumNonFactor+=rem;
         
     }
