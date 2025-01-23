@@ -2,4 +2,27 @@
 1. Name of the function.
 2. Argument List (i.e., Number of Argument and Types of Argument)
 
+-------
 
+EXACT MACTH - is called when you have same matching of Signature.
+
+-------
+
+When you have Multiple Functions with Same NAME and during a function 
+call EXACT MATCH is not found, the complier tries IMPLICIT ATYPE CASTING
+of the values to resolve the Function Call, then CONFLICT Situation can 
+arrive.
+Example - You are calling a function "Print" with an Argument INTEGER and 
+INTEGER Argument is not present in function call. Then, INTEGER can either be 
+typecasted to CHAR or DOUBLE, or if both are present then it can lead to 
+the Situation of CONFLICT.
+
+-------
+
+NORMAL ORDER OF TYPECASTING - CHAR, INTEGER, DOUBLE
+
+-------
+
+METHOD FOR CONFLICT RESOLUTION---
+1. Always give Exact Match.
+2. Don't Give same TypeCasted Functions.
