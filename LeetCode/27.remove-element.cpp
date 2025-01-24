@@ -14,17 +14,26 @@ using namespace std;
 class Solution {
 public:
     int removeElement(vector<int>& nums, int val) {
-        vector<int> temp;
-        for(int i=0; i<temp.size(); i++){
+
+        //approach 1 - NON-OPTIMIZED
+        // vector<int> temp;
+        // for (int i = 0; i < nums.size(); i++) {
+        //     if (nums[i] != val) {
+        //         temp.push_back(nums[i]); 
+        //     }
+        // }
+        // nums = temp; 
+        // return temp.size(); 
+
+        //approach 2 - OPTIMIZED
+        int k=0;
+        for(int i = 0; i < nums.size(); i++){
             if(nums[i]!=val){
-                // temp.push_back(nums[i]);
-                temp[i]=nums[i];
+                nums[k]=nums[i];
+                k++;
             }
         }
-        nums=temp;
-        int k=temp.size();
         return k;
-
     }
 };
 // @lc code=end
