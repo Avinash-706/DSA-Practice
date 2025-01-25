@@ -1,0 +1,6 @@
+ARRAY - Contiguous memory allocation of same type of DATATYPE.
+It is basically a collection of multiple varaibles of same type & have
+continuous memory allocation & shared a commonname, governed byy index.
+
+Index oof array is always sorted from 0 & ends at n-1.
+Index_min = 0 &  Index_max=n-1, where is the Size of Array.
