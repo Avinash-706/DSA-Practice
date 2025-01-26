@@ -5,6 +5,7 @@ continuous memory allocation & shared a commonname, governed byy index.
 Index oof array is always sorted from 0 & ends at n-1.
 Index_min = 0 &  Index_max=n-1, where is the Size of Array.
 
+
 ----------
 
 CALL BY VALUE / CALL BY REFERENCE
@@ -16,5 +17,6 @@ But in CALL By REFERENCE - All the changes made in function will be reflected
 in the original argument;
 
 ----------
+
 
 Array is passed always in CALL BY REFERENCE : How ?
