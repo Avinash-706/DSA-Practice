@@ -41,3 +41,6 @@ int main() {
 
     return 0;
 }
+
+// TIME COMPLEXITY: O(size * n)  where, size -> size of array , n -> number of left rotations to perform.  
+// SPACE COMPLEXITY: O(1)
