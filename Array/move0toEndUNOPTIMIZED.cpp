@@ -4,6 +4,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+//UNOPTIMIZED APPROACH
 int moveZero(int arr[], int n){
     for(int i=0; i<n; i++){
         if(arr[i]==0){
@@ -18,15 +19,13 @@ int moveZero(int arr[], int n){
 }
 
 int main() {
-    int n=6;
-    int arr[6]={10, 0, 20, 0, 0, 50};
-    // int n;
+    int n;
+    cout<<"Enter the size of the array: ";
     cin>>n;
-    // int arr[n];
-    // cout<<"Enter the size of the array: ";
-    // for(int i=0; i<n; i++){
-    //     cin>>arr[i];
-    // }
+    int arr[n];
+    for(int i=0; i<n; i++){
+        cin>>arr[i];
+    }
 
     moveZero(arr, n);
 
@@ -35,3 +34,4 @@ int main() {
     }
     return 0;
 }
+

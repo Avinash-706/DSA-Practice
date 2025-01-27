@@ -18,5 +18,29 @@ in the original argument;
 
 ----------
 
-
 Array is passed always in CALL BY REFERENCE : How ?
+
+----------
+
+ARRAY INITIALISATION
+SLA -> Static Length Array -> It is the standard and original Implementation in ISO C++; In this we create 
+VLA -> varaible Length Array -> It is not a standard Implementation and is UnOfficial Implementation.
+
+----------
+
+Flushing of Input Problem :
+
+Char Array treated in C, adopted as it is in C++.
+It is the original String Implementation in C++.
+Char Array size is fixed.
+String size is Dynamic.
+We can use C style function in Char Array, but cannot in Strings.
+
+
+Similarity --
+ended by null character.
+index-wise working is possibe in both array and strings.
+ 
+functionCall
+array is bydefault call by REFERENCE.
+String is same like varaible.
