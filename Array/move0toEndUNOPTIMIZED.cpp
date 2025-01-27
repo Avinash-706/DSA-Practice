@@ -35,3 +35,5 @@ int main() {
     return 0;
 }
 
+// TIME COMPLEXITY: O(n)  where, n -> size of the array.  
+// SPACE COMPLEXITY: O(1)
