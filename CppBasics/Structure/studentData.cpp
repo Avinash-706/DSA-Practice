@@ -41,16 +41,4 @@ int main(){
     display(s);
 }
 
-
-
-// void calculate(float marks[], float 
-
-// void display(string &name, float marks[], float perc, float ){
-//     cout<<name<<endl<< roll<<endl<<total<<endl<<perc;
-// }
-
-// int main() {
-//     int n;
-
-//     return 0;
-// }
+//WAP that will give details of the topper of the class.
