@@ -25,3 +25,6 @@ int main() {
     // Your code here
     return 0;
 }
+
+// write a problem that will take following details for each students: name(string), marks of 5 sub(float), registrationno(int),
+// Need to calculate , total marks and percentage and display all the data together.
