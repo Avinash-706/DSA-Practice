@@ -38,17 +38,17 @@ void str_operations(string &str1, string &str2) {
     temp.insert(6, "beautiful ");
     cout << "After insertion in str1: " << temp << endl;
 
-    // Erase
+    // Erase -->  erase(position, character to remove from that particular position) 
     cout<<endl<<"--- ERASE ---"<<endl;
-    temp.erase(6, 9); // Remove "beautiful"
+    temp.erase(6, 9); // Remove "beautiful" 
     cout << "After erasing: " << temp << endl;
 
-    // Replace
+    // Replace --> replace(position, characters to replace from that particular position) 
     cout<<endl<<"--- REPLACE A PART OF STRING ---"<<endl;
     temp.replace(0, 5, "Hi");
     cout << "After replacing: " << temp << endl;
 
-    // Append
+    // Append 
     cout<<endl<<"--- APPEND IN STRING ---"<<endl;
     temp = str1;
     temp.append("! Welcome!");
@@ -76,9 +76,13 @@ void str_operations(string &str1, string &str2) {
     // Count Occurrences
     cout<<endl<<"--- COUNT OCCURENCE OF A CHARACTER IN STRING ---"<<endl;
     int countO = count(str1.begin(), str1.end(), 'o');
-    cout << "Count of 'o' in str1: " << countO << endl;
+    cout << "Count of 'o' in " <<str1<<" : "<< countO << endl;
 
     // Capacity and Reserve
+    // CAPACITY - Returns the total number of characters the string can store in memory without needing to reallocate more space.
+    // The capacity() of a string is typically greater than or equal to its size() 
+    // (the number of characters currently stored in the string). It helps in managing the memory allocation for the string.
+    // REVERSE - #include <algorithm> Reserves memory for the string to hold at least the specified number of characters.
     cout<<endl<<"--- REVERSE OF STRING AND ITS CAPACITY ---"<<endl;
     cout << "Capacity of str1: " << str1.capacity() << endl;
     str1.reserve(50);
@@ -98,7 +102,7 @@ void str_operations(string &str1, string &str2) {
     transform(str1.begin(), str1.end(), str1.begin(), ::tolower);
     cout << "Lowercase str1: " << str1 << endl;
 
-    // Reverse
+    // Reverse_STR
     cout<<endl<<"--- REVERSE A STRING ---"<<endl;
     string reversed_str = str1;
     reverse(reversed_str.begin(), reversed_str.end());
@@ -130,7 +134,3 @@ int main() {
 
     return 0;
 }
-
-
-// write a problem that will take following details for each students: name(string), marks of 5 sub(float), registrationno(int),
-// Need to calculate , total marks and percentage and display all the data together.
