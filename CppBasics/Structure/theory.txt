@@ -1,0 +1,10 @@
+Stucture is a user defined datatype to group Multiple Datatype into Single Entity..
+It is used fir grouping.
+
+---------
+
+//FUNDAMENTAL OPERATION OF STRUCTURE
+1. Creation
+2. Insertion of Value
+3. Modification of Value
+4. Diplay of Value
