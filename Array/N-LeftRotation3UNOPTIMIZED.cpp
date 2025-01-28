@@ -8,11 +8,11 @@
 #include <algorithm>
 using namespace std;
 
-void leftRotation(int size, int rotation, int arr[], int temp[]){
-    for(int i=0; i < size ; i++){
-        if (i + rotation > size - 1) temp[i]=arr[i + rotation - size];
-        else temp[i]=arr[i + rotation];
-    }
+void leftRotation(int size, int rotation, int arr[]){
+    int temp[rotation];
+    for(int i=0; i < rotation; i++)     temp[i] = arr[i];
+    for(int i=0; i < size - rotation; i++)  arr[i] = arr[i+rotation];
+    for(int i=0; i < rotation; i++)     arr[size - rotation + i] = temp[i];
 }
 
 int main() {
@@ -28,18 +28,17 @@ int main() {
         cin >> input;
         arr[i] = input;
     }
-    cout << "Enter the number of Left Rotation of this array: ";
+    cout << "Enter the number of Left Rotation of this array ( must be <= "<< size << " ) : ";
     cin >> rotation;
-    int temp[size];
 
-    leftRotation(size, rotation, arr, temp);
+    leftRotation(size, rotation, arr);
 
     cout<<"Left Rotated Array : ";
     for(int i=0; i < size; i++){
-        cout << temp[i] << " ";
+        cout << arr[i] << " ";
     }
     return 0;
 }
 
 // TIME COMPLEXITY: O(n), where 'n' is the size of the array.  
-// SPACE COMPLEXITY: O(n), where 'n' is the size of the array.
+// SPACE COMPLEXITY: O(d), where 'd' is the number of left rotations.
