@@ -1,0 +1,16 @@
+ACCESS MODIFIER -> 
+1.Protected -> It is specifically created for inheritance. It works like private, 
+               meaning the member is not accessible outside the class directly,
+               but it can be accessed by derived (child) classes.
+
+2. Private -> Members marked as private cannot be inherited by the derived class.
+              They are only accessible within the class itself.
+
+3. Public -> Members marked as public can be accessed anywhere, both inside and
+             outside the class. In terms of inheritance, these members can be inherited
+             by the derived (child) class and accessed from outside the class as well.
+
+
+SCOPE RESOLUTION OPERATOR (SRO) 
+It is used to identify the functions of class. It can be used to give the defination of function outside the class.
+It can be used for CONFLICT RESOLUTION.
