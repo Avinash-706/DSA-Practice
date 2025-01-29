@@ -1,26 +1,92 @@
-Fundamentally if the class is in public mode it is equivalent to structure.
-Example in our code we just changed 'STRUCT' to 'CLASS' and added public. 
+Understanding Classes in C++
 
-If the data member is private it cannot be accessed outside the class by the object directly.
+Fundamentals of Classes and Structures
 
-BY DEFAULT EVERYTHING INSIDE A CLASS IS "PRIVATE"
+In C++, a class is essentially an extension of a structure (struct)
+with additional features such as data hiding and encapsulation. If
+ a class is declared in public mode, it behaves similarly to a structure.
 
-In classes data member  & methods are binded internally, so methods will update in the 
-value of those data member, whose object is calling the method.
+For example, in our code, we simply replaced 'struct' with 'class'
+ and added the public access specifier. This small change allows us
+  to implement data hiding by defining private data members.
 
-Method Functions inside the class
-DATA MEMBER / MEMBER Functions
-Suppose I have to do some initialisations of data members, then there is  a special Functions call CONSTRUCTOR.
-CONSTRUCTOR is always PUBLIC.
-The JOB of CONSTRUCTOR is initialisations of a data member.
+Access Control in Classes
 
-for deletion = destructor()
+By default, all members inside a class are private. This means that:
 
-CONSTRUCTOR is called automatically when the OBJECT IS CREATED.
+- Private data members cannot be accessed directly by an object outside the class.
+- They can only be accessed through public methods within the class.
 
+Binding of Data Members and Member Functions
 
---------
-ORDER OF CONSTRUCTOR and DESTRUCTOR calling 
+In a class, data members (variables) and member functions (methods) are internally linked.
 
-CONSTRUCTOR is called in the order of object creation.
-DESTRUCTOR in order of D
+- When a method is called using an object, it operates on the specific instance's data members.
+- This encapsulation ensures data integrity and prevents unintended modifications from outside the class.
+
+Constructor: Special Member Function
+
+A constructor is a special function that is used for initializing an object's data 
+members when the object is created.
+
+- The constructor is always public.
+- It has the same name as the class.
+- It is called automatically when an object is instantiated.
+
+Example:
+class Student {
+    public:
+        Student() { // Constructor
+            cout << "Constructor Called!" << endl;
+        }
+};
+
+Destructor: Releasing Resources
+
+A destructor is a special function used to release resources allocated by the object
+before it goes out of scope.
+
+- The destructor name is prefixed with a tilde (~).
+- It does not take parameters or return values.
+- It is called automatically when an object is destroyed.
+
+Example:
+class Student {
+    public:
+        ~Student() { // Destructor
+            cout << "Destructor Called!" << endl;
+        }
+};
+
+Order of Constructor and Destructor Calls
+
+- Constructors are called in the order of object creation.
+- Destructors are called in the reverse order of object creation 
+  (i.e., last created, first destroyed).
+
+Example:
+class A {
+    public:
+        A() { cout << "Constructor of A\n"; }
+        ~A() { cout << "Destructor of A\n"; }
+};
+
+int main() {
+    A obj1, obj2; // obj1 is created first, then obj2
+}
+
+Output:
+Constructor of A
+Constructor of A
+Destructor of A
+Destructor of A
+
+Conclusion
+
+Classes provide data encapsulation, abstraction, and security by restricting 
+direct access to data members.
+
+- Constructors ensure proper initialization of objects.
+- Destructors help in resource management.
+- Encapsulation ensures that data can only be modified through controlled 
+  functions, making programs more secure and manageable.
