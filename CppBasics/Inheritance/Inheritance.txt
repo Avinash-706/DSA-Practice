@@ -1,4 +1,6 @@
+
 ACCESS MODIFIER -> 
+
 1.Protected -> It is specifically created for inheritance. It works like private, 
                meaning the member is not accessible outside the class directly,
                but it can be accessed by derived (child) classes.
@@ -11,6 +13,12 @@ ACCESS MODIFIER ->
              by the derived (child) class and accessed from outside the class as well.
 
 
+----------
+
+
 SCOPE RESOLUTION OPERATOR (SRO) 
+
 It is used to identify the functions of class. It can be used to give the defination of function outside the class.
 It can be used for CONFLICT RESOLUTION.
+
+EXAMPLE:   void even_odd::display(){}
