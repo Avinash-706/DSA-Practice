@@ -22,3 +22,73 @@ It is used to identify the functions of class. It can be used to give the defina
 It can be used for CONFLICT RESOLUTION.
 
 EXAMPLE:   void even_odd::display(){}
+
+
+----------
+
+
+STORAGE CLASS
+1. SCOPE 
+2. LIFETIME -> variable
+   1. auto: discarded from C++11 
+   2. global: External class -> scope
+   3. static
+   4. register - for fast accessibility
+
+----------------------
+
+Types of Storage Classes:
+
+1. **auto** (Discarded in C++11):
+   - By default, variables inside a function are `auto`. These are local variables that are created and discarded when the function is entered and exited.
+
+   Example:
+     ```cpp
+     void func() {
+         auto int x = 10;  // auto is implied in this case
+     }
+     ```
+
+2. **global** (External class -> scope):
+   - Variables declared outside any function (global variables) can be accessed throughout the entire program. They are available from the point of declaration until the end of the program.
+
+   Example:
+     ```cpp
+     int globalVar = 20; // Global variable
+
+     void func() {
+         cout << globalVar; // Can access globalVar
+     }
+     ```
+
+3. **static**:
+   - **Local Static Variables**: Retain their value between function calls. They are initialized only once and exist for the lifetime of the program.
+   - **Global Static Variables**: Limit their scope to the file in which they are declared, preventing access from other files.
+
+   Example:
+     ```cpp
+     void func() {
+         static int counter = 0;  // Retains value between calls
+         counter++;
+         cout << counter << endl;
+     }
+     ```
+
+4. **register**:
+   - Tells the compiler to store the variable in a CPU register (if possible) for faster access. It is typically used for loop counters and variables that need frequent access.
+   - Note: **register** variables cannot be accessed by the address operator (`&`), as they may not have a memory address.
+
+   Example:
+     ```cpp
+     void func() {
+         register int i;  // Variable stored in CPU register for fast access
+     }
+     ```
+
+----------------------
+
+### Summary:
+- **auto**: Local variable, discarded in C++11.
+- **global**: External variables, accessible throughout the program.
+- **static**: Retains value between function calls or limits scope to the file.
+- **register**: Stored in CPU register for faster access (though rarely used today).
