@@ -2,15 +2,35 @@
 #include <limits>
 using namespace std;
 
-struct student_details
+class student_class
 {
+    public:
     string name;
     float marks[5], total=0, perc=0, fine=0;
     int roll;
     char grade;
+    void input()
+    {   
+        cin.ignore(numeric_limits<streamsize>::max(),'\n');
+        cout<<"\nEnter Name - ";
+        getline(cin, name);
+        cout<<"\nEnter Roll - ";
+        cin >> roll;
+        cout<<"\nEnter Marks of all 5 subjects - ";
+        for(int i = 0; i < 5; i++) cin >> marks[i];
+    }
 };
 
-void input(student_details &s)
+// class student_class
+// {
+//     public:
+//     string name;
+//     float marks[5], total=0, perc=0, fine=0;
+//     int roll;
+//     char grade;
+// };
+
+void input(student_class &s)
 {   
     cin.ignore(numeric_limits<streamsize>::max(),'\n');
     cout<<"\nEnter Name - ";
@@ -21,7 +41,7 @@ void input(student_details &s)
     for(int i = 0; i < 5; i++) cin >> s.marks[i];
 }
 
-void display(student_details &s)
+void display(student_class &s)
 {   
     cout << "\n----- Student Details -----\n";
     cout << "Name: " << s.name << endl;
@@ -32,7 +52,7 @@ void display(student_details &s)
     cout << "Fine: " << s.fine << " Rs\n";
 }
 
-int fineCalculator(student_details &s)
+int fineCalculator(student_class &s)
 {
     int totalFine = 0;
     if (s.grade == 'F') totalFine += 5000;
@@ -44,7 +64,7 @@ int fineCalculator(student_details &s)
     return totalFine;
 }
 
-void calculate(student_details &s)
+void calculate(student_class &s)
 {
     s.total = 0;
     for(int i = 0; i < 5; i++) 
@@ -56,7 +76,7 @@ void calculate(student_details &s)
     s.fine = fineCalculator(s);
 }
 
-int topper(student_details s[], int n)
+int topper(student_class s[], int n)
 {
     float max = s[0].perc;
     int index = 0;
@@ -73,10 +93,11 @@ int topper(student_details s[], int n)
 
 int main()
 {   
-    student_details s[5];
+    cout<<"SIZE OF CLASS : "<<sizeof(student_class)<<endl;
     int n;
     cout << "Enter number of students (max 5): ";
     cin >> n;
+    student_class s[n];
     
     for (int i = 0; i < n; i++)
     {

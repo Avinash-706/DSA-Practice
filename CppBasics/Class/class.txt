@@ -1,0 +1,26 @@
+Fundamentally if the class is in public mode it is equivalent to structure.
+Example in our code we just changed 'STRUCT' to 'CLASS' and added public. 
+
+If the data member is private it cannot be accessed outside the class by the object directly.
+
+BY DEFAULT EVERYTHING INSIDE A CLASS IS "PRIVATE"
+
+In classes data member  & methods are binded internally, so methods will update in the 
+value of those data member, whose object is calling the method.
+
+Method Functions inside the class
+DATA MEMBER / MEMBER Functions
+Suppose I have to do some initialisations of data members, then there is  a special Functions call CONSTRUCTOR.
+CONSTRUCTOR is always PUBLIC.
+The JOB of CONSTRUCTOR is initialisations of a data member.
+
+for deletion = destructor()
+
+CONSTRUCTOR is called automatically when the OBJECT IS CREATED.
+
+
+--------
+ORDER OF CONSTRUCTOR and DESTRUCTOR calling 
+
+CONSTRUCTOR is called in the order of object creation.
+DESTRUCTOR in order of D
