@@ -7,20 +7,28 @@
 #include <limits>
 using namespace std;
 
+//OPTIMIZED APPROACH
 int stockBuySell(int n, int arr[])
 {
     int profit = 0;
-    for (int i = 0; i < n; i++){
+    int left = 0;
+    for (int i = 1; i < n; i++){
         if(arr[i] > arr[i-1]){
             profit += arr[i]-arr[i-1];
+            if(i == n - 1)  cout << left + 1 << " -> " << i + 1  << endl;
+        }
+        else {
+            if(left != i-1)   cout << left + 1 << " -> " << i  << endl;
+            
+            left=i;
         }
     }
     return profit;
 }
 
 int main(){
-    int n = 7;
-    int arr[7] = {100, 180, 260, 310, 40, 535, 695};
+    int n = 6;
+    int arr[6] = {7, 1, 5, 3, 6, 4};
 
     // int n;
     // cout << "Enter the size of the array: ";
@@ -35,3 +43,6 @@ int main(){
     cout<<stockBuySell(n, arr);
     return 0;
 }
+
+//TIME COMPLEXITY - O(n), where 'n' is the size of the array
+//SPACE COMPLEXITY - O(1)
