@@ -19,7 +19,6 @@ int stockBuySell(int n, int arr[])
         }
         else {
             if(left != i-1)   cout << left + 1 << " -> " << i  << endl;
-            
             left=i;
         }
     }
