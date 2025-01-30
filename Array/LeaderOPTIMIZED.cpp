@@ -7,17 +7,15 @@
 #include <limits>
 using namespace std;
 
-//UNOPTIMIZED APPROACH
+//OPTIMIZED APPROACH
 void leader(int n, int arr[]){
-    for(int i = 0; i < n; i++){
-        bool flag = false;
-        for(int j = i+1; j < n; j++){
-            if(arr[i] <= arr[j]){
-                flag = true;
-                break;
-            }
+    int current = arr[n-1];
+    cout << current << "  ";
+    for(int i = n-2; i >= 0; i--){
+        if(arr[i] > current){
+            current = arr[i];
+            cout << current << "  ";
         }
-        if(flag == false) cout << arr[i] << " ";
     }
 }
 
@@ -39,5 +37,5 @@ int main() {
     return 0;
 }
 
-//TIME COMPLEXITY - O(n²), where n is the size of the array.
-//SPACE COMPLEXITY - O(1)
+// TIME COMPLEXITY: O(n)
+// SPACE COMPLEXITY: O(1)
