@@ -1,74 +1,60 @@
 #include <iostream>
-#include <bits/stdc++.h>
-#include <iomanip>
-#include <algorithm>
-#include <string>
-#include <string.h>
-#include <limits>
 using namespace std;
 
-
-class student{
-
+class student {
     string name;
     int roll;
     float total, perc;
 
-    public: 
-
-    student(student &obj){
-        cout<<endl<<"COPY CONS CALLED"<<endl;
-        name=obj.name;
-        roll=obj.roll;
-        total=obj.total;
+public:
+    // Copy Constructor
+    student(const student &obj) {
+        cout << endl << "COPY CONSTRUCTOR CALLED" << endl;
+        name = obj.name;
+        roll = obj.roll;
+        total = obj.total;
+        perc = obj.perc; // Ensure percentage is also copied
         display();
     }
 
-    student(){
-        cout<<endl<<"Constructor called"<<endl;
+    // Default Constructor
+    student() {
+        cout << endl << "DEFAULT CONSTRUCTOR CALLED" << endl;
     }
 
-    student(string name1, int roll1, float total1){
-        cout<<"PC CONSTRUCTOR CALLED"<<endl;
-        name=name1;
-        roll= roll1;
-        total=total1;
+    // Parameterized Constructor
+    student(string name1, int roll1, float total1) {
+        cout << "PARAMETERIZED CONSTRUCTOR CALLED" << endl;
+        name = name1;
+        roll = roll1;
+        total = total1;
         calculate();
     }
 
-    ~student(){
-        cout<<endl<<"Destructor called"<<endl;
+    // Destructor
+    ~student() {
+        cout << endl << "Destructor called" << endl;
     }
 
-    // void input(){
-    //     cout<<"Name: ";
-    //     cin>>name;
-    //     cout<<"Enter roll :";
-    //     cin>>roll;
-    //     cout<<"Enter marks: ";
-    //     cin>>total;
-    // }
-
-    void calculate(){
-        perc=total/5;
+    void calculate() {
+        perc = total / 5;
         display();
     }
 
-    void display(){
-        cout<<"\n Details: "<<endl;
-        cout<<name<<endl<<roll<<endl<<total<<endl<<perc<<endl;
+    void display() {
+        cout << "\nDetails:" << endl;
+        cout << "Name: " << name << endl;
+        cout << "Roll Number: " << roll << endl;
+        cout << "Total Marks: " << total << endl;
+        cout << "Percentage: " << perc << "%" << endl;
     }
 };
 
-
 int main() {
-    student s("Avinash", 45, 400), s1;
-    cout<<"Welcome to OOPS"<<endl;
-    s1=s;
-    s1.display();
-    // s.input();
-    // s.calculate();
-    // s.display();
+    student s("Avinash", 45, 400); // Calls parameterized constructor
+    cout << "\nWelcome to OOPS\n" << endl;
+    
+    student s1 = s; // Calls the COPY CONSTRUCTOR (Correct way)
+    
     return 0;
-
 }

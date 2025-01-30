@@ -9,3 +9,5 @@ TYPES OF CONSTRUCTOR:
 • default value
 • Normal 
 
+
+COPY CONSTRUCTOR Is a type of constructor that execcutes an object using another object of same class.
