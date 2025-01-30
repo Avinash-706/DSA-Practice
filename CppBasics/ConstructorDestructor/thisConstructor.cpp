@@ -20,10 +20,10 @@ class student{
         cout<<endl<<"Constructor called"<<endl;
     }
 
-    student(string name1, int roll1, float total1){
-        name=name1;
-        roll= roll1;
-        total=total1;
+    student(string name, int roll, float total){
+        this->name=name;
+        this->roll= roll;
+        this->total=total;
     }
 
     ~student(){
