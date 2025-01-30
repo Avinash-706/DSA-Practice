@@ -28,8 +28,7 @@ EXAMPLE:   void even_odd::display(){}
 
 
 STORAGE CLASS
-1. SCOPE 
-2. LIFETIME -> variable
+1. SCOPE & LIFETIME of a variable
    1. auto: discarded from C++11 
    2. global: External class -> scope
    3. static
