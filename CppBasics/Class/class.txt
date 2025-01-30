@@ -90,3 +90,64 @@ direct access to data members.
 - Destructors help in resource management.
 - Encapsulation ensures that data can only be modified through controlled 
   functions, making programs more secure and manageable.
+
+
+PADDING SIZE OF A CLASS / STRUCTURE:
+
+Padding in a class or structure refers to the extra memory added by the compiler
+to ensure proper alignment of data members for efficient access.
+
+Key Points:
+1. Padding occurs due to memory alignment – The compiler aligns data members
+   based on their data type to prevent performance issues.
+2. Different data types have different alignment requirements – For example, 'int'
+   (4 bytes) may be aligned at a 4-byte boundary, whereas 'char' (1 byte) may cause
+   padding if placed before an 'int'.
+3. Padding increases the size of a structure/class – The actual memory occupied by
+   a structure may be greater than the sum of individual data members due to 
+   alignment constraints.
+
+
+Example:
+#include <iostream>
+using namespace std;
+struct Example {
+    char a;   // 1 byte
+    int b;    // 4 bytes
+    char c;   // 1 byte
+};
+int main() {
+    cout << "Size of struct: " << sizeof(Example) << " bytes\n";
+    return 0;
+}
+
+
+Explanation:
+• 'char a' takes 1 byte.
+• 'int b' requires 4 bytes but must be aligned to a 4-byte boundary, so 3 bytes of
+   padding are added after 'char a'.
+• 'char c' takes 1 byte, but since structures align to the size of the largest member ('int' = 4 bytes), 3 more bytes of padding are added at the end.
+• Total size = 4 (a + padding) + 4 (b) + 4 (c + padding) = 12 bytes.
+
+
+Avoiding Padding (Packing Structures):
+We can use '#pragma pack(1)' to disable padding and tightly pack members:
+
+
+#pragma pack(1)
+struct Packed {
+    char a;
+    int b;
+    char c;
+};
+#pragma pack()
+
+
+This reduces unnecessary padding, making the structure smaller but possibly slower due to misalignment.
+
+
+Summary:
+Padding ensures memory alignment for better performance.
+Structures/classes can have extra padding bytes between members and at the end.
+Packing structures removes padding but may lead to performance penalties.
+

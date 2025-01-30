@@ -1,0 +1,11 @@
+TYPES OF CONSTRUCTOR:
+
+1. default
+2. parameterized
+3. copy
+
+1.Parameterized
+• this pointer
+• default value
+• Normal 
+

@@ -16,15 +16,24 @@ class student{
 
     public: 
 
+    student(student &obj){
+        cout<<endl<<"COPY CONS CALLED"<<endl;
+        name=obj.name;
+        roll=obj.roll;
+        total=obj.total;
+        display();
+    }
+
     student(){
         cout<<endl<<"Constructor called"<<endl;
     }
 
-    //THIS OPERATOR
-    student(string name, int roll, float total){
-        this->name=name;
-        this->roll= roll;
-        this->total=total;
+    student(string name1, int roll1, float total1){
+        cout<<"PC CONSTRUCTOR CALLED"<<endl;
+        name=name1;
+        roll= roll1;
+        total=total1;
+        calculate();
     }
 
     ~student(){
@@ -42,6 +51,7 @@ class student{
 
     void calculate(){
         perc=total/5;
+        display();
     }
 
     void display(){
@@ -52,11 +62,13 @@ class student{
 
 
 int main() {
-    student s("Avinash", 45, 400), s1("kuldeep", 45, 500);
+    student s("Avinash", 45, 400), s1;
     cout<<"Welcome to OOPS"<<endl;
+    s1=s;
+    s1.display();
     // s.input();
-    s.calculate();
-    s.display();
+    // s.calculate();
+    // s.display();
     return 0;
 
 }
