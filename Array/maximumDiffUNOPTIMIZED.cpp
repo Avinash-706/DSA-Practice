@@ -20,7 +20,6 @@ void maxDifference(int n, int arr[]){
     cout<<"MAX DIFFERNCE: "<<max<<endl;
 }
 
-
 int main() {
     // int n=6;
     // int arr[6]={7, 9, 5, 6, 3, 2};
