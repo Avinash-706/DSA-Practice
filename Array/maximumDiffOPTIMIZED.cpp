@@ -9,15 +9,17 @@ using namespace std;
 
 //IN - {2, 3, 10, 6 ,4, 8, 1}
 //OUT - 8
-//UNOPTIMIZED APPROACH
-void maxDifference(int n, int arr[]){
-    int max=0;
-    for(int i = 0; i < n; i++){
-        for(int j = i + 1; j < n ; j++){
-            if(arr[j]-arr[i] > max ) max=arr[j]-arr[i];
-        }
+
+//OPTIMIZED APPROACH
+
+int maxDifference(int n, int arr[]){
+    int maxDiff = arr[1] - arr[0];
+    int minVal = arr[0];
+    for(int i = 1; i < n ; i++){
+        maxDiff = max(maxDiff, arr[i] - minVal);
+        minVal = min(minVal, arr[i]);
     }
-    cout<<"MAX DIFFERNCE: "<<max<<endl;
+    return maxDiff;
 }
 
 
@@ -35,10 +37,9 @@ int main() {
         arr[i] = input;
     }
 
-    maxDifference(n, arr);
+    cout << "MAX DIFFERENCE: " << maxDifference(n, arr);
     return 0;
 }
 
-
-//TIME COMPLEXITY - O(n²), where n is the size of the array.
+//TIME COMPLEXITY - O(n), where n is the size of the array.
 //SPACE COMPLEXITY - O(1)
