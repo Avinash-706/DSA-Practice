@@ -8,14 +8,31 @@
 using namespace std;
 
 
-void compute(int n, int arr[]){
-   
+int maximumConsecutive1s(int n, int arr[]){
+    int max_count=0;
+    int count = 0;
+    //1, 1, 0, 0, 1, 0, 1, 0, 1, 1, 1, 1
+    for(int i = 0 ; i < n ; i++){
+        if(arr[i] == 1 && arr[i+1] == 1){
+            // if (max_count < count)  max_count=count;
+            // count=0;
+            // cout<<arr[i]<<"   ";
+            count++;
+        }
+        else{
+            if (max_count < count)  max_count=count;
+            count=0;
+        }
+    }
+    if (max_count < count)  max_count=count;
+    return max_count+1;
+
 }
 
 
 int main() {
-    int n=6;
-    int arr[6]={7, 9, 5, 6, 3, 2};
+    int n=12;
+    int arr[12]={1, 1, 0, 0, 1, 0, 1, 0, 1, 1, 1, 1};
 
     // int n;
     // cout << "Enter the size of the array: ";
@@ -27,6 +44,6 @@ int main() {
     //     arr[i] = input;
     // }
 
-    compute(n, arr);
+    cout << maximumConsecutive1s(n, arr);
     return 0;
 }
