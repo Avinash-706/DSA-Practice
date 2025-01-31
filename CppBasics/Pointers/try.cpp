@@ -18,11 +18,11 @@ int main() {
     cout<<"DATA TYPE OF X: "<<typeid(x).name()<<endl;
     cout<<"SIZE OF  OF X: "<<sizeof(x)<<" bytes"<<endl;
 
-    double *iptr;
+    int *iptr;
     iptr=&x;
-    cout<<"X: "<<iptr<<endl;
+    cout<<"iptr: "<<iptr<<endl;
     cout<<"ADDRESS: "<<&iptr<<endl;
-    cout<<"DATA TYPE OF X: "<<typeid(iptr).name()<<endl;
-    cout<<"SIZE OF  OF X: "<<sizeof(iptr)<<" bytes"<<endl;
+    cout<<"DATA TYPE OF iptr: "<<typeid(iptr).name()<<endl;
+    cout<<"SIZE OF  OF iptr: "<<sizeof(iptr)<<" bytes"<<endl;
     return 0;
 }
