@@ -15,11 +15,17 @@ int maximumSubarraySum(int n, int arr[]){
     int maxSum = arr[0];
     int curr = arr[0];
     for(int i = 1 ; i < n ; i++){
+        
+        //APPROACH 1
         curr += arr[i];
         if(arr[i] > curr){
             curr = arr[i];
         } 
         maxSum=max(maxSum, curr);
+
+        // //APPROACH 2
+        // curr = max(curr + arr[i], arr[i]);
+        // maxSum = max(curr, maxSum);
         
     }
     return maxSum;
