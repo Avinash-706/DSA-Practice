@@ -10,6 +10,7 @@ using namespace std;
 //2, 3, -8, 7, -1, 2, 3
 //11
 
+//UNOPTIMIZED APPROACH
 int maximumSubarraySum(int n, int arr[]){
     int maxSum=0;
     for(int i = 0 ; i < n ; i++){
@@ -24,18 +25,18 @@ int maximumSubarraySum(int n, int arr[]){
 
 
 int main() {
-    int n=7;
-    int arr[7]={2, 3, -8, 7, -1, 2, 3};
+    // int n=7;
+    // int arr[7]={2, 3, -8, 7, -1, 2, 3};
 
-    // int n;
-    // cout << "Enter the size of the array: ";
-    // cin >> n;
-    // int arr[n];
-    // for(int i=0; i < n; i++){
-    //     int input;
-    //     cin >> input;
-    //     arr[i] = input;
-    // }
+    int n;
+    cout << "Enter the size of the array: ";
+    cin >> n;
+    int arr[n];
+    for(int i=0; i < n; i++){
+        int input;
+        cin >> input;
+        arr[i] = input;
+    }
 
     cout<<"SUM OF MAXIMUM SUB ARRAY: "<<maximumSubarraySum(n, arr);
     return 0;
