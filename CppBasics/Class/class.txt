@@ -4,11 +4,11 @@ Fundamentals of Classes and Structures
 
 In C++, a class is essentially an extension of a structure (struct)
 with additional features such as data hiding and encapsulation. If
- a class is declared in public mode, it behaves similarly to a structure.
+a class is declared in public mode, it behaves similarly to a structure.
 
 For example, in our code, we simply replaced 'struct' with 'class'
- and added the public access specifier. This small change allows us
-  to implement data hiding by defining private data members.
+and added the public access specifier. This small change allows us
+to implement data hiding by defining private data members.
 
 Access Control in Classes
 
