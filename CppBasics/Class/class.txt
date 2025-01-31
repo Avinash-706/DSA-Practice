@@ -1,6 +1,8 @@
-Understanding Classes in C++
+UNDERSTANDING CLASSES IN C++
 
-Fundamentals of Classes and Structures
+FUNDAMENTALS OF CLASSES AND STRUCTURES
+
+CLASS -> is a User Defined DataType and is a Logical Binding & Methods of Properties.
 
 In C++, a class is essentially an extension of a structure (struct)
 with additional features such as data hiding and encapsulation. If
@@ -10,7 +12,7 @@ For example, in our code, we simply replaced 'struct' with 'class'
 and added the public access specifier. This small change allows us
 to implement data hiding by defining private data members.
 
-Access Control in Classes
+ACCESS CONTROL IN CLASSES
 
 By default, all members inside a class are private. This means that:
 
@@ -24,7 +26,11 @@ In a class, data members (variables) and member functions (methods) are internal
 - When a method is called using an object, it operates on the specific instance's data members.
 - This encapsulation ensures data integrity and prevents unintended modifications from outside the class.
 
-Constructor: Special Member Function
+
+-------------
+
+
+CONSTRUCTOR: Special Member Function
 
 A constructor is a special function that is used for initializing an object's data 
 members when the object is created.
@@ -41,7 +47,11 @@ class Student {
         }
 };
 
-Destructor: Releasing Resources
+
+----------
+
+
+DESTRUCTOR: Releasing Resources
 
 A destructor is a special function used to release resources allocated by the object
 before it goes out of scope.
@@ -58,7 +68,11 @@ class Student {
         }
 };
 
-Order of Constructor and Destructor Calls
+
+----------
+
+
+ORDER OF CONSTRUCTOR AND DESTRUCTOR CALLS
 
 - Constructors are called in the order of object creation.
 - Destructors are called in the reverse order of object creation 
@@ -90,6 +104,9 @@ direct access to data members.
 - Destructors help in resource management.
 - Encapsulation ensures that data can only be modified through controlled 
   functions, making programs more secure and manageable.
+
+
+----------
 
 
 PADDING SIZE OF A CLASS / STRUCTURE:
@@ -129,10 +146,8 @@ Explanation:
 • 'char c' takes 1 byte, but since structures align to the size of the largest member ('int' = 4 bytes), 3 more bytes of padding are added at the end.
 • Total size = 4 (a + padding) + 4 (b) + 4 (c + padding) = 12 bytes.
 
-
 Avoiding Padding (Packing Structures):
 We can use '#pragma pack(1)' to disable padding and tightly pack members:
-
 
 #pragma pack(1)
 struct Packed {
@@ -142,9 +157,8 @@ struct Packed {
 };
 #pragma pack()
 
-
-This reduces unnecessary padding, making the structure smaller but possibly slower due to misalignment.
-
+This reduces unnecessary padding, making the structure smaller but possibly 
+slower due to misalignment.
 
 Summary:
 Padding ensures memory alignment for better performance.
