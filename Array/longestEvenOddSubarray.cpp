@@ -75,3 +75,6 @@ int main() {
     cout << compute(n, arr);
     return 0;
 }
+
+//TIME COMPLEXITY - O(n), where n is the size of the array.
+//SPACE COMPLEXITY - O(1)
