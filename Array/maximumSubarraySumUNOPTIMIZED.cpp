@@ -37,6 +37,7 @@ int main() {
     //     arr[i] = input;
     // }
 
-    cout<<maximumSubarraySum(n, arr);
+    cout<<"SUM OF MAXIMUM SUB ARRAY: "<<maximumSubarraySum(n, arr);
     return 0;
 }
+
