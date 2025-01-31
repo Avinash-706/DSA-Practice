@@ -1,0 +1,9 @@
+9. C-Structure / CPP Structure
+10. DO structure can have func? -> YES
+11. DO structure can have cons./desc? -> YES
+12. DO structure can have access modifier ? -> YES
+13. Memory Padding ?
+14. M / P in structure / Class?
+15. Classs default - ACCESS =  private
+    Structure default - ACCESS = public
+16. Difference between Array of Object vs Array of data member?
