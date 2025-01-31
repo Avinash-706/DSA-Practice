@@ -4,6 +4,41 @@
 12. DO structure can have access modifier ? -> YES
 13. Memory Padding ?
 14. M / P in structure / Class?
-15. Classs default - ACCESS =  private
-    Structure default - ACCESS = public
+15. Classs default - ACCESS MODIFIER -> private
+    Structure default - ACCESS MODIFIER -> public
 16. Difference between Array of Object vs Array of data member?
+17. How can access the private data member of class through object?
+    -> it is not possible directly but can be done by getter / setter 
+    -> or by friend function or by copy constructor by calling the obj of the class as the parameters.
+18. Difference between Constructor & Destructor?    
+19. Mandatory or Optional to use Constructor & Destructor?
+    -> Mandatory for class but Optional for programmer to use.
+20. Do Constructor/Destructor have any return type? -> NO
+21. Can I have multiple Cons?
+    -> constructor overloading
+22. How a object is copied ? -> Copy Constructor
+23. Is it compulsory to have copy constructor?
+    -> Mandatory for class but Optional for programmer to use.
+24. Give me ways
+25. Difference between class variable?
+26. Difference between Object variable vs class variable?
+27. How many copies of class variable per 10 objects & how?
+28. Is it Mandatory to have defination of function inside class? -> NO
+29. How? 
+30. What is SRO? -> It is the varaible/operator used to resolve the scope of program entities.
+31. Use of SRO?
+32. What is Static Function?
+    -> can only use static member or static varaible.
+33. Diff between Static vs Normal Function?
+    -> Normal func can use static member but static function cannot use normal member.
+36. Can I use static in Constructors? -> YES
+37. What is inheritance?
+38. Access specifier in inheritance? 
+40. Default Mode of Inheritance?
+41. Default Access  specifier of class? -> Private
+42. What is func over loading? -> EXAMPLE IN CLASS is CONSTRUCTOR overloading
+43. Can I have 1 defination of class contructor behave as contructor for difference implementation
+    -> parameterized contructor with difference values
+44. Can I have same func in base and derived class? -> YES 
+45. function overriding?
+46. difference between overloading vs overriding?

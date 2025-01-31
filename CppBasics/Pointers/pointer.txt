@@ -1,0 +1,5 @@
+POINTERS
+
+VARAIBLE -> named memory location that stores a value.
+
+Pointer is a special type of varaible that will hold the address of another varaible.
