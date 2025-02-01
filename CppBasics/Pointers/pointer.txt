@@ -3,3 +3,30 @@ POINTERS
 VARAIBLE -> named memory location that stores a value.
 
 Pointer is a special type of varaible that will hold the address of another varaible.
+
+POINTERS OF CLASS OBJECT -> like normal variables class can also have Pointers. 
+Instead of dot operator, arrow operator is also used in pointers.
+
+PROBLEM ASSOCIATED WITH MULTI-VARAIBLES.
+100 OBJECT -> 100 NAMES -> DIFFICULTY LEVEL ULTRA PRO MAX
+
+
+student *s = new student;
+where,
+first student -> datatype of pointers
+second student -> datatype of memory 
+
+
+two ways:
+1. *s->display()
+2. *s.display()
+
+
+POLYMORPHISM : multiple forms
+
+Examples of POLYMORPHISM:
+functional overloading
+in class-> constructor overloading.
+
+operator overloading
+c

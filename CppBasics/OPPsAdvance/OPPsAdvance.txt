@@ -1,0 +1,9 @@
+
+POLYMORPHISM : multiple forms
+
+Examples of POLYMORPHISM:
+functional overloading
+in class-> constructor overloading.
+
+operator overloading
+c

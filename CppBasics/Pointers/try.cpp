@@ -1,28 +1,52 @@
 #include <iostream>
-#include <bits/stdc++.h>
-#include <iomanip>
-#include <algorithm>
-#include <typeinfo>
 using namespace std;
 
 
-void compute(int n, int arr[]){
-   
-}
+class Complex
+    {
+    private:
+        double real, imag;
+    public:
+        Complex(double real=0, double imag=0)
+        {
+            this->real=real;
+            this->imag=imag;
+            cout << endl << "Constructor INvoked "<< endl;
+            cout << "Number -> " << real << " + " << imag << "i" <<endl;
+
+        }
+        void display()
+        {
+            cout<<endl<<"Your Number is"<<endl;
+            cout << "Number -> " << real << " + " << imag << "i" <<endl;
+
+        }
+        Complex operator+(Complex &obj)
+        {
+            Complex sum;
+            sum.real=this->real+obj.real;
+            sum.imag=this->imag+obj.imag;
+            return sum;
+        }
+        Complex operator-(Complex &obj)
+        {
+            Complex subtract;
+            subtract.real=this->real-obj.real;
+            subtract.imag=this->imag-obj.imag;
+            return subtract;
+        }
+};
+
+int main()
+{   
+    Complex n1(15,15),n2(50,85),sum, subtract;
+    // n1.display();
+    // n2.display();
+    sum=n1 + n2;
+    sum.display();
+    subtract=n2-n1;
+    subtract.display();
 
 
-int main() {
-    int x=2;
-    cout<<"X: "<<x<<endl;
-    cout<<"ADDRESS: "<<&x<<endl;
-    cout<<"DATA TYPE OF X: "<<typeid(x).name()<<endl;
-    cout<<"SIZE OF  OF X: "<<sizeof(x)<<" bytes"<<endl;
-
-    int *iptr;
-    iptr=&x;
-    cout<<"iptr: "<<iptr<<endl;
-    cout<<"ADDRESS: "<<&iptr<<endl;
-    cout<<"DATA TYPE OF iptr: "<<typeid(iptr).name()<<endl;
-    cout<<"SIZE OF  OF iptr: "<<sizeof(iptr)<<" bytes"<<endl;
     return 0;
 }
