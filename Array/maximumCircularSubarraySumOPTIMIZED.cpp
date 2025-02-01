@@ -27,19 +27,19 @@ int maximumCircularSubarraySum(int n, int arr[]){
 }
 
 int main() {
-    // int n=4;
-    // int arr[4]={5, -2, 3, 4};
+    int n=4;
+    int arr[4]={5, -2, 3, 4};
     
     
-    int n;
-    cout << "Enter the size of the array: ";
-    cin >> n;
-    int arr[n];
-    for(int i=0; i < n; i++){
-        int input;
-        cin >> input;
-        arr[i] = input;
-    }
+    // int n;
+    // cout << "Enter the size of the array: ";
+    // cin >> n;
+    // int arr[n];
+    // for(int i=0; i < n; i++){
+    //     int input;
+    //     cin >> input;
+    //     arr[i] = input;
+    // }
 
     cout<<maximumCircularSubarraySum(n, arr);
     return 0;
