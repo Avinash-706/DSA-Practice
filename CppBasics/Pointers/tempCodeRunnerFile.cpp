@@ -13,7 +13,7 @@ class LPU{
         cout<<"WELCPME TO LPU BY CONS ---"<<endl;
     }
     display(){
-        cout<<endl<<"DISPLAY() WELCOME TO LPU"<<endl;
+        cout<<endl<<"DISPLAWELCOME TO LPU"<<endl;
     }
 };
 
@@ -29,9 +29,8 @@ class BLOCK : public LPU{
 };
 int main(){
     LPU l;
-    BLOCK c;
+    CSE c;
     l.display();
-    c.display();//function overiding
-    c.LPU::display();//manual invoking of base class, over
+    c.display():
     return 0;
 }
