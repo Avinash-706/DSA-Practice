@@ -10,20 +10,30 @@ using namespace std;
 // 5, -2, 3, 4
 // 12
 
-//UNOPTIMIZED
-int maximumCircularSubarraySum(int n, int arr[]){
-    int result=arr[0];
-    for(int i = 0 ; i < n ; i++){
-        int curr_max = arr[i];
-        int curr_sum = arr[i];
-        for(int j = 1 ; j < n ; j++){
-            int index = (i + j) % n;
-            curr_sum += arr[index];
-            curr_max = max(curr_max, curr_sum);
-        }
-        result = max(curr_max, result);
+//OPTIMIZED
+int normalMaxSum(int n, int arr[]){
+    int res=arr[0], maxEnding=arr[0];
+    for(int i=1; i < n ; i++){
+        maxEnding=max(arr[i], maxEnding+arr[i]);
+        res=max(maxEnding, res);
     }
-    return result;
+    return res;
+}
+
+int overalMaxSum(int n, int arr[]){
+    int max_normal = normalMaxSum(n, arr);
+
+    if(max_normal < 0) return max_normal; //for case like input : {-5, -3}, 
+    //the actual output is '-3' but the if we don't write this line the complier will return the output as '0'; 
+
+    int sum = 0;
+    for(int i = 0 ; i < n ; i++){
+        sum += arr[i];
+        arr[i] = -arr[i];
+    }
+    int max_circular = sum + normalMaxSum(n , arr);
+    max_normal = max(max_normal, max_circular);
+    return max_normal;
 }
 
 int main() {
@@ -41,9 +51,9 @@ int main() {
     //     arr[i] = input;
     // }
 
-    cout<<maximumCircularSubarraySum(n, arr);
+    cout<<overalMaxSum(n, arr);
     return 0;
 }
 
-//TIME COMPLEXITY - O(n²), where n is the size of the array.
+//TIME COMPLEXITY - O(n), where n is the size of the array.
 //SPACE COMPLEXITY - O(1)
