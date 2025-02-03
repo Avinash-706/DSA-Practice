@@ -8,18 +8,19 @@
 using namespace std;
 
 // IN -  1, 8, 30, -5, 20, 7
+// IN -  3
 // OUT - 45
 
-// UNOPTIMIZED APPROACH
+// SLIDING WINDOW  -  OPTIMIZED APPROACH
 int maxSumofKconsecutivesElements(int n, int k, int arr[]){
     int maxSum=0;
-    for(int i = 0 ; i <= n - k  ; i++){
-        int checkSum = 0;
-        for(int j = i ; j < k + i ; j++ ){
-            checkSum += arr[j];
-        }
+    for(int i=0; i < k ; i++){
+        maxSum += arr[i];
+    }
+    int checkSum = maxSum;
+    for(int i = k ; i < n  ; i++){
+        checkSum = checkSum + arr[i] - arr[i - k];
         maxSum = max( maxSum, checkSum);
-        // cout<< endl;
     }
     return maxSum;
 }
@@ -28,7 +29,7 @@ int maxSumofKconsecutivesElements(int n, int k, int arr[]){
 int main() {
     // int n=5;
     // int k=2;
-    // int arr[5]={5, -10, 6, 90, 3};
+    // int arr[5]={5 , -10, 6, 90, 3};
 
     int n, k;
     cout << "Enter the size of the array: ";
@@ -47,5 +48,5 @@ int main() {
 }
 
 
-// TIME COMPLEXITY: O(n²), where 'n' is size of the array.  
+// TIME COMPLEXITY: O(n), where 'n' is size of the array.  
 // SPACE COMPLEXITY: O(1)
