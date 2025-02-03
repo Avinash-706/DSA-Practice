@@ -10,6 +10,7 @@ using namespace std;
 // IN -  1, 8, 30, -5, 20, 7
 // OUT - 45
 
+// UNOPTIMIZED APPROACH
 int maxSumofKconsecutivesElements(int n, int k, int arr[]){
     int maxSum=0;
     for(int i = 0 ; i <= n - k  ; i++){
@@ -44,3 +45,7 @@ int main() {
     cout << maxSumofKconsecutivesElements(n, k, arr);
     return 0;
 }
+
+
+// TIME COMPLEXITY: O(n²), where 'n' is size of the array.  
+// SPACE COMPLEXITY: O(1)
