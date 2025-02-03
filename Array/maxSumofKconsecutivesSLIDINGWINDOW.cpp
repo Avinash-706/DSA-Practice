@@ -47,5 +47,5 @@ int main() {
 }
 
 
-// TIME COMPLEXITY: O(n * k), where 'n' is size of the array & 'k' is the sum of consecutive elements. 
+// TIME COMPLEXITY: O(n²), where 'n' is size of the array.  
 // SPACE COMPLEXITY: O(1)
