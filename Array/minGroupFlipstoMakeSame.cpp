@@ -9,7 +9,6 @@ using namespace std;
 
 // in - 1 1 0 0 0 1
 // out - 2 -> 4
-
 void minGroupFlips(int n, bool arr[]){
     for(int i = 1 ; i < n ; i++){
         if( arr[i] != arr[i-1]){
@@ -27,7 +26,7 @@ void minGroupFlips(int n, bool arr[]){
 
 int main() {
     int n=6;
-    bool arr[6]={1, 1, 0, 0, 1, 0};
+    bool arr[6]={1, 1, 1, 1, 1, 0};
 
     // int n;
     // cout << "Enter the size of the array: ";
@@ -45,3 +44,6 @@ int main() {
     // }
     return 0;
 }
+
+// TIME COMPLEXITY: O(n), where 'n' is size of the array.  
+// SPACE COMPLEXITY: O(1)
