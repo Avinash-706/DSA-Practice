@@ -74,8 +74,3 @@ int main() {
 //OVERALL TIME COMPLEXITY - O(n + inputs)
 //SPACE COMPLEXITY - O(n)
 
-//WAP max value of two numbers
-//Swapping of two numbers
-// array sum
-// overloading using template
-//concatenation of two strings using template.
