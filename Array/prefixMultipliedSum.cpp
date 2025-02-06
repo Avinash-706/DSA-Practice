@@ -43,30 +43,30 @@ void preCalulate(int n, int arr[], int inputs){
 
 
 int main() {
-    int n=6;
-    int arr[6]={2, 3, 5, 4, 6, 1};
-    int inputs=3;
+    // int n=6;
+    // int arr[6]={2, 3, 5, 4, 6, 1};
+    // int inputs=3;
 
-    // int n;
-    // cout << "Enter the size of the array: ";
-    // cin >> n;
-    // int arr[n];
-    // for(int i=0; i < n; i++){
-    //     int value;
-    //     cin >> value;
-    //     arr[i] = value;
-    // }
+    int n;
+    cout << "Enter the size of the array: ";
+    cin >> n;
+    int arr[n];
+    for(int i=0; i < n; i++){
+        int value;
+        cin >> value;
+        arr[i] = value;
+    }
 
-    // cout << "\n Enter the Total Number of Input of Ranges: ";
-    // int inputs;
-    // cin >> inputs;
+    cout << "\n Enter the Total Number of Input of Ranges: ";
+    int inputs;
+    cin >> inputs;
 
     preCalulate(n, arr, inputs);
     return 0;
 }
 
-PRE-COMPUTATION TIME COMPLEXITY - O(n)
-ACTUAL COMPLEXITY TO RESPOND TO THE QUERIES AFTER COMPUTATION - BEST CASE: O(1), WORST CASE:
-OVERALL TIME COMPLEXITY - O(n + inputs)
-SPACE COMPLEXITY - O(n)
+// PRE-COMPUTATION TIME COMPLEXITY - O(n²), where 'n' is the size of the array
+// ACTUAL COMPLEXITY TO RESPOND TO THE QUERIES AFTER COMPUTATION - BEST CASE: O(1), WORST CASE: O(n), where 'n' is the size of the array
+// OVERALL TIME COMPLEXITY - O(n²), where 'n' is the size of the array
+// SPACE COMPLEXITY - O(n), where 'n' is the size of the array
 
