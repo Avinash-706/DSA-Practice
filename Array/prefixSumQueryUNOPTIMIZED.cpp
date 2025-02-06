@@ -13,6 +13,7 @@ using namespace std;
 //OUPUTS - 13
 //OUPUTS - 20
 
+//UNOPTIMIZED APPROACH
 void print(int start, int end, int sum){
     cout << "Sum of Elements from position " << start << " to " << end << " : " << sum << endl;
 }
@@ -27,32 +28,36 @@ void prefixSumQuery(int n, int arr[], int start, int end){
 
 void input(int n, int arr[], int inputs){
 
-    // for(int i = 0 ; i < inputs ; i++){
-        // int start, end;
-        // cout<<"Enter the starting and ending position : ";
-        // cin >> start >> end ;
-        // prefixSumQuery(n, arr, start, end);
-    // }
+    for(int i = 0 ; i < inputs ; i++){
+        int start, end;
+        cout<<"Enter the starting and ending position : ";
+        cin >> start >> end ;
+        prefixSumQuery(n, arr, start, end);
+    }
 
-    prefixSumQuery(n, arr, 0, 2);
-    prefixSumQuery(n, arr, 1, 3);
+    // prefixSumQuery(n, arr, 0, 2);
+    // prefixSumQuery(n, arr, 1, 3);
 }
 
 
 int main() {
-    int n=7;
-    int arr[7]={2, 8, 3, 9, 6, 5, 4};
-    int inputs=3;
+    // int n=7;
+    // int arr[7]={2, 8, 3, 9, 6, 5, 4};
+    // int inputs=3;
 
-    // int n;
-    // cout << "Enter the size of the array: ";
-    // cin >> n;
-    // int arr[n];
-    // for(int i=0; i < n; i++){
-    //     int input;
-    //     cin >> input;
-    //     arr[i] = input;
-    // }
+    int n;
+    cout << "Enter the size of the array: ";
+    cin >> n;
+    int arr[n];
+    for(int i=0; i < n; i++){
+        int value;
+        cin >> value;
+        arr[i] = value;
+    }
+
+    cout << "\n Enter the Total Number of Input of Ranges: ";
+    int inputs;
+    cin >> inputs;
 
     input(n, arr, inputs);
     return 0;
