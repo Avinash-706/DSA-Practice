@@ -7,45 +7,38 @@
 #include <limits>
 using namespace std;
 
-//INPUTS - 2, 8, 3, 9, 6, 5, 4
+//INPUTS - 2, 3, 5, 4, 6, 1
 //INPUTS - 0 to 2
-//INPUTS - 1 to 3
+//INPUTS - 2 to 3
+//OUPUTS - 23
 //OUPUTS - 13
-//OUPUTS - 20
 
 
 //OPTIMIZED APPROACH
-void print(int n, int arr[], int start, int end, int store[]){
-    int sum = (start == 0) ? store[end] : store[end] - store[start - 1];
-    cout << "Sum of elements from position " << start + 1 << " to " << end + 1 << " : " << sum << endl;
-}
-
-
-void input(int n, int inputs, int arr[], int store[]){
-
-    for(int i = 0 ; i < inputs ; i++){
-        int start, end;
-        cout<<"Enter the starting and ending position : ";
-        cin >> start >> end ;
-        print(n, arr, start, end, store);
-    }
-
-    // print(n, arr, 0, 2, store);
-    // print(n, arr, 1, 3, store);
-}
-
-
 void preCalulate(int n, int arr[], int inputs){
     int count = 0;
     int store[n];
     for(int i = 0; i < n; i++){
-        int count = 1;
+        store[i] = 0;
         for(int j = i ; j < n ; j++){
-            store[i] = store[i] + arr[j] * (count);
+            store[i] = store[i] + arr[j] * (j  - i + 1);
         }
     }
-  
-    input(n, inputs, arr, store);
+
+    for(int i = 0 ; i < inputs ; i++){
+        int start, end;
+        cout<<"Enter the starting and ending position : ";
+        cin >> start >> end;
+
+        int sum = store[start];
+        int count = n - start;
+        for(int j = n-1; j > end; j--){
+            sum = sum - (arr[j] * ( count ));
+            count--;
+        }
+        
+        cout << "Sum of elements from position " << start  << " to " << end  << " : " << sum << endl;
+    }
 }
 
 
@@ -72,8 +65,8 @@ int main() {
     return 0;
 }
 
-//ACTUAL COMPLEXITY - O(1)
-//PRE-COMPUTATION TIME COMPLEXITY - O(n)
-//OVERALL TIME COMPLEXITY - O(n + inputs)
-//SPACE COMPLEXITY - O(n)
+PRE-COMPUTATION TIME COMPLEXITY - O(n)
+ACTUAL COMPLEXITY TO RESPOND TO THE QUERIES AFTER COMPUTATION - BEST CASE: O(1), WORST CASE:
+OVERALL TIME COMPLEXITY - O(n + inputs)
+SPACE COMPLEXITY - O(n)
 
