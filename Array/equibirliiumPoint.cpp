@@ -7,7 +7,16 @@
 #include <limits>
 using namespace std;
 
-//UPOPTIMIZED APPROACH
+
+// IN - 3, 4, 8, -9, 20, 6
+// OUT- TRUE, 20
+
+
+// NO CORNER CASE INCLUDED -> 
+// IN : 4, 2, -2
+// OUT: TRUE
+// UPOPTIMIZED APPROACH
+
 int equilibriumPoint(int n, int arr[]){
 
     int left[n], right[n];
@@ -24,12 +33,10 @@ int equilibriumPoint(int n, int arr[]){
 
     for(int i = 0 ; i < n-2 ; i++){
         if(left[i] == right[i+2]){
-            cout << "TRUE" << ": " << i+1 <<"value:" << arr[i+1]<<endl;
-        }
-        else{
-            cout<<"False"<<endl;
+           return i+1;
         }
     }
+    return -1;
     
 }
 
@@ -49,11 +56,12 @@ int main() {
     }
     int point = equilibriumPoint(n, arr);
     if(point == -1){
-        cout<<" No Equilibrium Point ";
+        cout << "No Equilibrium Point ";
     }
     else{
-        cout<<""
+        cout << "The Equilibrium Point is : " << point << " , the value is : " << arr[point];
     }
+    return 0;
 }
 
 // TIME COMPLEXITY: O(n), where 'n' is the size of the array
