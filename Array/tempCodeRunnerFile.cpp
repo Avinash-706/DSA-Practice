@@ -1,2 +1,9 @@
-    int n=8;
-    int arr[8]={8, 7, 6, 8, 6, 6, 6, 6};
+    // int n;
+    // cout << "Enter the size of the array: ";
+    // cin >> n;
+    // int arr[n];
+    // for(int i=0; i < n; i++){
+    //     int input;
+    //     cin >> input;
+    //     arr[i] = input;
+    // }
