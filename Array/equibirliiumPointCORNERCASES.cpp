@@ -38,18 +38,18 @@ int equilibriumPoint(int n, int arr[]){
 
 
 int main() {
-    int n=6;
-    int arr[6]={3, 4, 8, -9, 20, 6};
+    // int n=6;
+    // int arr[6]={3, 4, 8, -9, 20, 6};
 
-    // int n;
-    // cout << "Enter the size of the array: ";
-    // cin >> n;
-    // int arr[n];
-    // for(int i=0; i < n; i++){
-    //     int input;
-    //     cin >> input;
-    //     arr[i] = input;
-    // }
+    int n;
+    cout << "Enter the size of the array: ";
+    cin >> n;
+    int arr[n];
+    for(int i=0; i < n; i++){
+        int input;
+        cin >> input;
+        arr[i] = input;
+    }
 
     int point = equilibriumPoint(n, arr);
     if(point == -1){
