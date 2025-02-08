@@ -1,55 +1,49 @@
 #include <iostream>
-#include <bits/stdc++.h>
-#include <iomanip>
-#include <algorithm>
-#include <string>
-#include <string.h>
-#include <limits>
-#include <unordered_map>
+#include <map>
 using namespace std;
 
-//IN -> left[]  : 1, 2, 5, 15
-//IN -> right[] :  5, 8, 7, 18
-//OP -> 5 : 3 times
+//OPTIMIZED APPROACH
+void compute(int n, int left[], int right[]) {
+    int count[101]={0};
 
-//UNOPTIMIZED APPROACH
-void maximumAppearingElement(int n, int left[], int right[]){
-    unordered_map<int, int> count;
-    for(int i = 0 ; i < n ; i++){
-        count[left[i]]++;
-        count[right[i + 1]]--;
+    for (int i = 0; i < n; i++) {
+        count[left[i]]++;    
+        count[right[i] + 1]--; 
     }
 
-    int maxFreq = 0, maxValue = 0, currentFreq = 0;
-    for (auto it = count.begin(); it != count.end(); it++) {
-        currentFreq += it->second;
-        if (currentFreq > maxFreq) {
-            maxFreq = currentFreq;
-            maxValue = it->first;
+    int result = 0, maxValue = 0;
+
+    for (int i=1; i < 100; i++) { 
+        count[i] = count[i] + count[i - 1]; 
+        if (count[i] > count[result]) {
+            result = i;
+            maxValue = i;
         }
     }
-    cout << maxValue << " : " << maxFreq << endl;
+
+    cout << "The Element with Maximum Frequency: " << maxValue <<" | Frequecy : "<< count[result];
 }
 
-
 int main() {
-    int n=4;
-    int left[4]  = {1, 2, 5, 15};
-    int right[4] = {5, 8, 7, 18};
+    // int n = 4;
+    // int left[]  = {1, 2, 5, 15};
+    // int right[] = {5, 8, 7, 18};
 
-    // int n;
-    // cout << "Enter the size of the array: ";
-    // cin >> n;
-    // int arr[n];
-    // for(int i=0; i < n; i++){
-    //     int input;
-    //     cin >> input;
-    //     arr[i] = input;
-    // }
+    int n;
+    cout << "\nEnter the size of the array: ";
+    cin >> n;
+    int left[n], right[n];
+    for(int i=0; i < n; i++){
+        int l_input, r_input;
+        cout << "  Enter The Left and Right Range ( Note : Range Must be in Increasing Order ): ";
+        cin >> l_input >> r_input;
+        left[i] = l_input;
+        right[i] = r_input;
+    }
 
-    maximumAppearingElement(n, left, right);
+    compute(n, left, right);
     return 0;
 }
 
-// TIME COMPLEXITY: O(n * MAX), 'n' is the number of ranges, 'MAX' is the maximum number of elements in any range
-// SPACE COMPLEXITY: O(MAX), 'MAX' is the maximum number of elements in any range
+// TIME COMPLEXITY: O(n + MAX), 'n' is the number of ranges, 'MAX' is the maximum number of elements in any range 
+// AUXILIARY SPACE: O(MAX), 'MAX' is the maximum number of elements in any range.
