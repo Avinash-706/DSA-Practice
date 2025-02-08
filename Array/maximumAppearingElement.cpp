@@ -10,9 +10,10 @@ using namespace std;
 
 //IN -> left[]  : 1, 2, 5, 15
 //IN -> right[] :  5, 8, 7, 18
-//OP -> 5
+//OP -> 5 : 3 times
 
-void compute(int n, int left[], int right[]){
+
+void maximumAppearingElement(int n, int left[], int right[]){
     unordered_map <int , int> count;
     
     for(int i = 0 ; i < n ; i++){
@@ -20,7 +21,7 @@ void compute(int n, int left[], int right[]){
             count[j]++;
         }
     }
-    
+
     auto maxElement = std::max_element(count.begin(), count.end(), [](auto &a, auto &b) { return a.second < b.second; });
     cout << maxElement -> first  <<" : "<<maxElement -> second;
 }
@@ -41,6 +42,9 @@ int main() {
     //     arr[i] = input;
     // }
 
-    compute(n, left, right);
+    maximumAppearingElement(n, left, right);
     return 0;
 }
+
+// TIME COMPLEXITY: O(n * MAX), 'n' is the number of ranges, 'MAX' is the maximum number of elements in any range
+// SPACE COMPLEXITY: O(MAX), 'MAX' is the maximum number of elements in any range
