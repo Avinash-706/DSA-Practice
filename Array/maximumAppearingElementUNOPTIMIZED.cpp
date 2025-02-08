@@ -23,24 +23,27 @@ void maximumAppearingElement(int n, int left[], int right[]){
     }
 
     auto maxElement = std::max_element(count.begin(), count.end(), [](auto &a, auto &b) { return a.second < b.second; });
-    cout << maxElement -> first  <<" : "<<maxElement -> second;
+    cout << "The Element with Maximum Frequency: " << maxElement -> first  <<" | Frequecy : "<<maxElement -> second;
 }
 
 
 int main() {
-    int n=4;
-    int left[4]  = {1, 2, 5, 15};
-    int right[4] = {5, 8, 7, 18};
+    // int n=4;
+    // int left[4]  = {1, 2, 5, 15};
+    // int right[4] = {5, 8, 7, 18};
 
-    // int n;
-    // cout << "Enter the size of the array: ";
-    // cin >> n;
-    // int arr[n];
-    // for(int i=0; i < n; i++){
-    //     int input;
-    //     cin >> input;
-    //     arr[i] = input;
-    // }
+    int n;
+    cout << "\nEnter the size of the array: ";
+    cin >> n;
+    int left[n], right[n];
+    for(int i=0; i < n; i++){
+        int l_input, r_input;
+        cout << "  Enter The Left and Right Range ( Note : Range Must be in Increasing Order ): ";
+        cin >> l_input >> r_input;
+        left[i] = l_input;
+        right[i] = r_input;
+
+    }
 
     maximumAppearingElement(n, left, right);
     return 0;
