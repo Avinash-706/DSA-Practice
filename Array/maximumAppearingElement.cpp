@@ -12,7 +12,7 @@ using namespace std;
 //IN -> right[] :  5, 8, 7, 18
 //OP -> 5 : 3 times
 
-
+//UNOPTIMIZED APPROACH
 void maximumAppearingElement(int n, int left[], int right[]){
     unordered_map <int , int> count;
     
