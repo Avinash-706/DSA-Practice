@@ -41,3 +41,6 @@ int main() {
     cout << "The Position of this Number is: " << binarySearch(n, arr, number,0, n-1);
     return 0;
 }
+
+// TIME COMPLEXITY: O(log n), where 'n' is the size of the array
+// SPACE COMPLEXITY: O(log n), where 'n' is the size of the array & each recursive call adds a new function call to the stack
