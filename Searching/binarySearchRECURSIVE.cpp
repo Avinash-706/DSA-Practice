@@ -10,12 +10,12 @@ using namespace std;
 
 int binarySearch(int n, int arr[], int number, int low, int high) {
 
-    if (low > high) return -1;  // Base case: Element not found
+    if (low > high)    return -1;
     int mid = (low + high) / 2;
     
-    if (arr[mid] == number) return mid;
-    else if (arr[mid] > number) return binarySearch(n, arr, number, low, mid - 1);
-    else return binarySearch(n, arr, number, mid + 1, high);
+    if (arr[mid] == number)    return mid;
+    else if (arr[mid] > number)    return binarySearch(n, arr, number, low, mid - 1);
+    else    return binarySearch(n, arr, number, mid + 1, high);
 
 }
 
