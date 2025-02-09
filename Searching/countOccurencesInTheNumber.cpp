@@ -67,4 +67,5 @@ int main() {
     return 0;
 }
 
-//
+// TIME COMPLEXITY: O(log n), where 'n' is the size of the array
+// SPACE COMPLEXITY: O(1)
