@@ -51,7 +51,7 @@ int main() {
     cout<<"\nEnter the Number to search from the Given Number: ";
     cin >> number;
 
-    cout << search(n, arr, number);
+    cout << "The Position of this Number is: " << search(n, arr, number);
     return 0;
 }
 
