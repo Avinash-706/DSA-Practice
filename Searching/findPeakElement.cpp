@@ -26,19 +26,19 @@ int peakElement(int n, int arr[]){
 
 
 int main() {
-    int n = 5;
-    int arr[5] = {5, 10, 20, 10, 7};
+    // int n = 5;
+    // int arr[5] = {5, 10, 20, 10, 7};
 
-    // int n, number;
-    // cout << "Enter the size of the array: ";
-    // cin >> n;
-    // int arr[n];
-    // cout << "Enter the elements in the increasing order ( Note: sorted order): ";
-    // for(int i=0; i < n; i++){
-    //     int input;
-    //     cin >> input;
-    //     arr[i] = input;
-    // }
+    int n;
+    cout << "Enter the size of the array: ";
+    cin >> n;
+    int arr[n];
+    cout << "Enter the elements: ";
+    for(int i=0; i < n; i++){
+        int input;
+        cin >> input;
+        arr[i] = input;
+    }
 
     cout <<"The of the Peak Element : " << arr[peakElement(n, arr)];
     return 0;
