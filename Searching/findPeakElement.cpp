@@ -40,7 +40,7 @@ int main() {
     //     arr[i] = input;
     // }
 
-    cout <<"The of the Peak Element is " << arr[peakElement(n, arr)];
+    cout <<"The of the Peak Element : " << arr[peakElement(n, arr)];
     return 0;
 }
 
