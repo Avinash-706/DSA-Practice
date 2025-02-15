@@ -7,7 +7,11 @@
 #include <limits>
 using namespace std;
 
+//IN  - 2, 3, 4, 8, 9, 20, 40
+//IN  - 32
+//OUT - true
 
+//UNOPTIMIZED APPROACH
 bool compute(int n, int arr[], int tripletSum){
     for(int i = 0 ; i < n-2 ; i++)
         for(int j = i+1 ; j < n-1 ; j++)
@@ -19,8 +23,8 @@ bool compute(int n, int arr[], int tripletSum){
 
 int main() {
     int n = 6;
-    int arr[6] = {10, 20, 30, 40, 50, 60};
-    int tripletSum = 60;
+    int arr[6] = {10, 30, 50, 70, 90, 110};
+    int tripletSum = 210;
 
     // int n, tripletSum;
     // cout << "Enter the size of the array: ";
@@ -38,3 +42,6 @@ int main() {
     cout << (compute(n, arr, tripletSum) ? "true" : "false");
     return 0;
 }
+
+//TIME COMPLEXITY  - O(n³), where 'n' is the size of the array
+//SPACE COMPLEXITY - O(1)
