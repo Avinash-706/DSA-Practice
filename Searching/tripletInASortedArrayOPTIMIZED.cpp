@@ -11,7 +11,7 @@ using namespace std;
 //IN  - 32
 //OUT - true
 
-//UNOPTIMIZED APPROACH
+//OPTIMIZED APPROACH
 bool compute(int n, int arr[], int tripletSum){
     for(int i = 0 ; i < n-2 ; i++)
         for(int j = i+1 ; j < n-1 ; j++)
@@ -23,22 +23,22 @@ bool compute(int n, int arr[], int tripletSum){
 
 
 int main() {
-    // int n = 6;
-    // int arr[6] = {10, 30, 50, 70, 90, 110};
-    // int tripletSum = 210;
+    int n = 6;
+    int arr[6] = {10, 30, 50, 70, 90, 110};
+    int tripletSum = 210;
 
-    int n, tripletSum;
-    cout << "Enter the size of the array: ";
-    cin >> n;
-    int arr[n];
-    cout << "Enter the elements in the increasing order ( Note: sorted order): ";
-    for(int i=0; i < n; i++){
-        int input;
-        cin >> input;
-        arr[i] = input;
-    }
-    cout << "\nEnter the Sum of any 3 number search from the Given Number: ";
-    cin >> tripletSum;
+    // int n, tripletSum;
+    // cout << "Enter the size of the array: ";
+    // cin >> n;
+    // int arr[n];
+    // cout << "Enter the elements in the increasing order ( Note: sorted order): ";
+    // for(int i=0; i < n; i++){
+    //     int input;
+    //     cin >> input;
+    //     arr[i] = input;
+    // }
+    // cout << "\nEnter the Sum of any 3 number search from the Given Number: ";
+    // cin >> tripletSum;
 
     cout << (compute(n, arr, tripletSum) ? "true" : "false");
     return 0;
