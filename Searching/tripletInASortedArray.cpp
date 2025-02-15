@@ -8,17 +8,19 @@
 using namespace std;
 
 
-void compute(int n, int arr[], int tripletSum){
-    int sum=0;
-    for(int)
-
+bool compute(int n, int arr[], int tripletSum){
+    for(int i = 0 ; i < n-2 ; i++)
+        for(int j = i+1 ; j < n-1 ; j++)
+            for(int k = j+1 ; k < n ; k++)
+                if(arr[i]+arr[j]+arr[k] == tripletSum)   return true;
+    return false;
 }
 
 
 int main() {
     int n = 6;
     int arr[6] = {10, 20, 30, 40, 50, 60};
-    int tripletSum = 20;
+    int tripletSum = 60;
 
     // int n, tripletSum;
     // cout << "Enter the size of the array: ";
@@ -33,6 +35,6 @@ int main() {
     // cout << "\nEnter the Sum of any 3 number search from the Given Number: ";
     // cin >> tripletSum;
 
-    compute(n, arr, tripletSum);
+    cout << (compute(n, arr, tripletSum) ? "true" : "false");
     return 0;
 }
