@@ -13,10 +13,15 @@ using namespace std;
 
 //OPTIMIZED APPROACH
 bool compute(int n, int arr[], int tripletSum){
-    for(int i = 0 ; i < n-2 ; i++)
-        for(int j = i+1 ; j < n-1 ; j++)
-            for(int k = j+1 ; k < n ; k++)
-                if(arr[i]+arr[j]+arr[k] == tripletSum)   return true;
+    for(int i = 0 ; i < n-2 ; i++){
+        int low = i+1, high = n-1;
+        while(low < high){
+            int sum = arr[low] + arr[high];
+            if      ( sum + arr[i] == tripletSum)    return true;
+            else if ( sum + arr[i]  < tripletSum)    low ++;
+            else    high--;
+        }   
+    }
     return false;
 }
 
@@ -44,5 +49,5 @@ int main() {
     return 0;
 }
 
-//TIME COMPLEXITY  - O(n³), where 'n' is the size of the array
+//TIME COMPLEXITY  - O(n²), where 'n' is the size of the array
 //SPACE COMPLEXITY - O(1)
