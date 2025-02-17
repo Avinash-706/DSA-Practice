@@ -8,7 +8,7 @@
 using namespace std;
 
 
-void medianOf2UnequalSortedArrayUNOPTIMIZED(int n1, int  int arr[], int number){
+void medianOf2UnequalSortedArrayUNOPTIMIZED(int n1, int n2, int arr1[], int arr2[]){
    
 }
 
