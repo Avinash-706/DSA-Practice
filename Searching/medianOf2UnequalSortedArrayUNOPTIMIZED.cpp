@@ -9,7 +9,17 @@ using namespace std;
 
 
 void medianOf2UnequalSortedArrayUNOPTIMIZED(int n1, int n2, int arr1[], int arr2[]){
-   
+    int n = n1+n2;
+    int final[n];
+    for(int i=0 ; i < n ; i++){
+        if(i < n1)   final[i] = arr1[i];
+        else if(i >= n1) final[i] = arr2[i - n1]; 
+    }
+    sort(final, final + n);
+    if(n % 2 == 0)    cout << final[n / 2] << " , " << final[(n / 2) + 1];
+    else    cout << final[n/2];  
+
+
 }
 
 void input(int n, int arr[]){
