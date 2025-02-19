@@ -16,7 +16,7 @@ double medianOf2UnequalSortedArrayUNOPTIMIZED(int n1, int n2, int arr1[], int ar
     int n = n1+n2;
     int final[n];
 
-    for(int i=0 ; i < n ; i++){
+    for(int i=0 ; i < n ; i++){  
         if(i < n1)   final[i] = arr1[i];
         else if(i >= n1) final[i] = arr2[i - n1]; 
     }
@@ -56,5 +56,5 @@ int main() {
     return 0;
 }
 
-//TIME COMPLEXITY  - O(n log n), where 'n' = 'n1' + 'n2', where 'n1' -> size of array1, 'n2' -> size of the array2
-//SPACE COMPLEXITY - O(n), where 'n' = 'n1' + 'n2', where 'n1' -> size of array1, 'n2' -> size of the array2
+//TIME COMPLEXITY  - O((n1+n2)log(n1+n2)), where 'n' = 'n1' + 'n2', where 'n1' -> size of array1, 'n2' -> size of the array2
+//SPACE COMPLEXITY - O(n1+n2), where 'n' = 'n1' + 'n2', where 'n1' -> size of array1, 'n2' -> size of the array2
