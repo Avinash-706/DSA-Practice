@@ -26,3 +26,6 @@ int main() {
     cout << compute(s) << endl;  
     return 0;
 }
+
+//TIME COMPLEXITY - O(n), where 'n' is the length of the string.
+//SPACE COMPLEXITY - O(1)
