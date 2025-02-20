@@ -13,7 +13,6 @@ using namespace std;
 // "1. only one element repeat any number of times"
 // "2. All Elements from 0 to max(arr) must be present
 
-
 //IN  - 0, 2, 1, 3, 2, 2
 //OUT - 2
 
