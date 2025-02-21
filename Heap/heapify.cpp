@@ -35,3 +35,6 @@ int main() {
 
     return 0;
 }
+
+//TIME COMPLEXITY - O(n)
+//SPACE COMPELEXITY - O(1);

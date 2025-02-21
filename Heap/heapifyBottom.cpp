@@ -33,7 +33,7 @@ void heapify(int arr[], int n, int i) {
 
 int main() {
     // Initialize an array with 9 integers
-    int arr[9] = {12, 7, 9, 23, 5, 19, 23, 47, 97}; 
+    int arr[9] = {12, 7, 9, 23, 5, 19, 27, 47, 97}; 
     int n = 9;  // Size of the array
 
     // Build a max heap from the array. 
