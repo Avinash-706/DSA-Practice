@@ -82,7 +82,6 @@ int main() {
     insertHeap(arr, 101);
 
 
-
     pop(arr);
 
     for(int i=0 ; i < 14 ;  i++){
