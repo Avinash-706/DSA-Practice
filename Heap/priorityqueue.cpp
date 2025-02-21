@@ -8,6 +8,9 @@
 using namespace std;
 
 
+//INSERTION
+//DELETION
+
 void insertHeap(vector<int> &arr, int x)
 {
     if(arr.size() == 0){
@@ -59,8 +62,6 @@ void pop(vector<int> &arr){
     arr.pop_back();
 
     heapify(arr, 0);
-
-
 
 }
 
