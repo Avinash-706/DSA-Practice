@@ -7,7 +7,7 @@
 #include <limits>
 using namespace std;
 
-//TYPE1:
+//TYPE2:
 //CONDITIONS:
 // "Enter the elements such that :"
 // "1. only one element repeat any number of times"
