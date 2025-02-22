@@ -73,5 +73,6 @@ int main() {
     return 0;
 }
 
-// TIME COMPLEXITY - O(n^(k+1)), where 'n' is the size of the array, 'k' is the number of students
-//SPACE COMPLEXITY - O(k)  -> The recursion stack depth is k.
+// TIME COMPLEXITY - O(n log(sum - mx))), where 'n' is the size of the array, 'sum' is the sum of all the elements, 
+//                                      , 'max' is the maximum element of the array.
+//SPACE COMPLEXITY - O(1)
