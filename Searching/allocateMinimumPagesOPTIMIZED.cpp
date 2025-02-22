@@ -14,25 +14,39 @@ using namespace std;
 // 3. Minimize the maximum pages allocated.
 
 //OPTIMIZED APPROACH
-int sumPages(int arr[], int a, int b){
-    int sum=0;
-    for(int i = a ; i <= b ; i++){
-        sum += arr[i];
-    }
-    return sum;
+bool isFeasible(int arr[], int n, int k, int mid){
 
+    int sum = 0, req=1;
+
+    for(int i = 0 ; i < n ; i++){
+        if(sum + arr[i] > mid){
+            sum = arr[i];
+            req++;
+        }
+        else    sum += arr[i];
+    }
+    return (req <= k);
 }
 
 
 int allocateMinimumPages(int arr[], int n, int k){
-    if(k==1)    return sumPages(arr, 0, n-1);
-    if(n==1)    return arr[0];
-    int res= INT_MAX;
-    for(int i = 0 ; i < n ; i++){
-        res = min(res, max(allocateMinimumPages(arr, i, k-1), sumPages(arr, i, n-1 )));
+
+    int mx = 0, sum = 0;
+    for(int i=0; i<n ; i++){
+        mx   = max(arr[i], mx);
+        sum += arr[0];
+    }
+
+    int low = mx, high = sum, res = 0;
+    while(low <= high){
+        int mid = (high + low)/2;
+        if(isFeasible(arr, n, k, mid)){
+            res = mid;
+            high = mid - 1;
+        }
+        else    low = mid + 1;
     }
     return res;
-
 }
 
 
