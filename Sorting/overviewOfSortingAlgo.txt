@@ -1,0 +1,9 @@
+1. Binary Array - Partition of QuickSort
+2. Array with three values -  Partition of QuickSort
+3. Array of size n and small ranged values(100 - 200) - Counting Sort | T.C. - O(n + k) | S.C. - O(k) Extra Space
+4. Array of size n and range is of size n² and n³ or closer - Radix Sort | T.C. - O(n) | S.C. - O(n)  Extra Space
+5. Array of uniformly distributed data over a range - Bucket Sort
+6. When memory writes are costly - Selection Sort | Cycle Sort
+7. When adjacent swaps are allowed - 
+8. When array size is small
+9. When avaible extra memory is less
