@@ -11,8 +11,13 @@
 
 General Purpose Sorting Algorithms
 1. Merge Sort - Stable Sort Algorithm | Works Greatly For LinkedList | work great for tape drives | Follows Divide and Conquer | Parallel Sorting
-2. Heap Sort  -
-3. Quick Sort - Fastest Among Above | Follows Divide and Conquer | Parallel Sorting
+2. Heap Sort  - In-Place Sorting | Not Stable | Good For Priority Queues | Suitable When Constant Space is Required
+3. Quick Sort - Fastest Among Above | Follows Divide and Conquer | Parallel Sorting | In-Place But Not Stable | Performs Well On Average Cases
 
-Hybrid Algorithms (Us) 
-1. Time 
+Hybrid Algorithms (Used in Libraries) 
+1. Tim Sort   - Mix of Insertion & Merge Sort | Uses Merge Sort for General Input | Uses Insertion Sort when - Inputs is Small OR Get Small in Recursive Calls   
+2. Intro Sort - Mix of Quick, Heap & Insertion Sort | Uses Quick Sort for General Input | When Number of Recursive Calls Crosses (log n) -> Heap Sort | When Array Size is Small Insertion Sort
+
+Stable Sort in C++ -> Merge Sort ✔ | Tim Sort |
+                      std::stable_sort (Uses IntroSort and ensures stability by switching to Merge Sort when needed) 
+                      Useful when order of equal elements needs to be preserved
