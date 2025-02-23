@@ -4,8 +4,8 @@
 4. Array of size n and range is of size n² and n³ or closer  - Radix Sort | T.C. - O(n) | S.C. - O(n)  Extra Space
 5. Array of uniformly distributed data over a range          - Bucket Sort
 6. When memory writes are costly      - Selection Sort | Cycle Sort
-7. When adjacent swaps are allowed    - Bubble Sort | CockTail Sort ✔ (traverse from both the sides)
-8. When array size is small           - Selection Sort | Insertion Sort ✔
+7. When adjacent swaps are allowed    - Bubble Sort | CockTail Sort ✅ (traverse from both the sides)
+8. When array size is small           - Selection Sort | Insertion Sort ✅
 9. When avaible extra memory is less  - Shell Sort - O(n (log n)²)
 
 
@@ -21,11 +21,11 @@ Hybrid Algorithms (Used in Libraries)
 
 Sort in C++        -> Intro Sort
 Worst Case &          Generally Uses QuickSort 
-Average Case          If QuickSort is doing unfair partitioning(if more than n log n time) - switches to HeapSort 
+Average Case          If QuickSort is doing unfair partitioning(if more than n log n time) - switches to Heap Sort 
 (n log n)             When Size of the Array is very small - switches to Insertion Sort         
 
 
-Stable Sort in C++ -> Merge Sort ✔ | Tim Sort |
+Stable Sort in C++ -> Merge Sort ✅ | Tim Sort |
                       std::stable_sort (Uses IntroSort and ensures stability by switching to Merge Sort when needed) 
                       Useful when order of equal elements needs to be preserved
 
@@ -37,3 +37,9 @@ Stable Sort in C++ -> Merge Sort ✔ | Tim Sort |
 UNSTABLE SORT EXAMPLE   -> Selection,     Quick, Heap  Sort
 
 SELECTION SORT     -> Comparision based algorithm | All Case - O(n²)
+                   -> Does Less Memory Write Compare to Other Algorithms ✅
+                   -> Exception: CYCLE SORT - more optimal than Selection Sort in terms of Memory Write
+                   -> Heap Sort idea is Based on Selection Sort only ✅
+                   -> Not Stable Algorithm ❌
+                   -> In-Place Algorithm - DON'T REQUIRE any Extra Space for Sorting ✅
+                   
