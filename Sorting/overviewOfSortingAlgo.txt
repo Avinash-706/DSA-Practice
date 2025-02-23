@@ -18,6 +18,14 @@ Hybrid Algorithms (Used in Libraries)
 1. Tim Sort   - Mix of Insertion & Merge Sort | Uses Merge Sort for General Input | Uses Insertion Sort when - Inputs is Small OR Get Small in Recursive Calls   
 2. Intro Sort - Mix of Quick, Heap & Insertion Sort | Uses Quick Sort for General Input | When Number of Recursive Calls Crosses (log n) -> Heap Sort | When Array Size is Small Insertion Sort
 
+
+Sort in C++        -> Intro Sort
+Worst Case &          Generally Uses QuickSort 
+Average Case          If QuickSort is doing unfair partitioning(if more than n log n time) - switches to HeapSort 
+(n log n)             When Size of the Array is very small - switches to Insertion Sort         
+
+
 Stable Sort in C++ -> Merge Sort ✔ | Tim Sort |
                       std::stable_sort (Uses IntroSort and ensures stability by switching to Merge Sort when needed) 
                       Useful when order of equal elements needs to be preserved
+
