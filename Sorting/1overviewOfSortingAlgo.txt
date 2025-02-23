@@ -55,3 +55,9 @@ INSERTION SORT     -> Best Case - O(n), when array is already sorted | Worst Cas
                    -> Used in pratice for Small Array (Tim Sort and Intro Sort)
                    -> Stable Algorithm
                    -> In-Place Algorithm
+
+
+MERGE SORT         -> Comparison-based algorithm | All Cases - O(n log n) | 
+                   -> Preferred for Sorting Linked Lists and External Sorting ✅
+                   -> Stable Algorithm ✅
+                   -> Not In-Place Algorithm - REQUIRES Extra Space for Sorting ❌

@@ -8,14 +8,21 @@
 using namespace std;
 
 
-void compute(int n, int arr[]){
-   
+void insertionSort(int n, int arr[]){
+    for(int i = 1 ; i < n ; i++){
+        int key = arr[i]; 
+        int j;
+        for (j = i - 1; j >= 0 && arr[j] > key; j--) {
+            arr[j + 1] = arr[j];
+        }
+        arr[j + 1] = key;
+    } 
 }
 
 
 int main() {
-    int n = 4;
-    int arr[4] = {2, 10, 8, 7};
+    int n = 6;
+    int arr[6] = {20, 5, 40, 60, 10, 30};
 
     // int n;
     // cout << "Enter the size of the array: ";
@@ -28,6 +35,7 @@ int main() {
     //     arr[i] = input;
     // }
 
-    compute(n, arr);
+    insertionSort(n, arr);
+    for(int i : arr)    cout << i << " ";
     return 0;
 }
