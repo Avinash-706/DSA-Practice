@@ -29,3 +29,9 @@ Stable Sort in C++ -> Merge Sort ✔ | Tim Sort |
                       std::stable_sort (Uses IntroSort and ensures stability by switching to Merge Sort when needed) 
                       Useful when order of equal elements needs to be preserved
 
+     DEFINATION    -> A sorting algorithm is considered stable if it maintains the relative order of records with equal keys. 
+                      In simpler terms, if two elements have the same value, their original order in the input array will be preserved in the output array.
+
+
+ STABLE  SORT EXAMPLE   -> Bubble   , Insertion, Merge Sort
+UNSTABLE SORT EXAMPLE   -> Selection,     Quick, Heap  Sort
