@@ -36,10 +36,16 @@ Stable Sort in C++ -> Merge Sort ✅ | Tim Sort |
  STABLE  SORT EXAMPLE   -> Bubble   , Insertion, Merge Sort
 UNSTABLE SORT EXAMPLE   -> Selection,     Quick, Heap  Sort
 
+
+BUBBLE SORT        -> Comparison-based algorithm | Best Case - O(n), Average & Worst Case - O(n²)
+                   -> Optimized Version Breaks Early if Array is Already Sorted ✅
+                   -> Stable Algorithm ✅
+                   -> In-Place Algorithm - DOESN'T REQUIRE any Extra Space for Sorting ✅
+
+
 SELECTION SORT     -> Comparision based algorithm | All Case - O(n²)
                    -> Does Less Memory Write Compare to Other Algorithms ✅
                    -> Exception: CYCLE SORT - more optimal than Selection Sort in terms of Memory Write
                    -> Heap Sort idea is Based on Selection Sort only ✅
                    -> Not Stable Algorithm ❌
                    -> In-Place Algorithm - DON'T REQUIRE any Extra Space for Sorting ✅
-                   
