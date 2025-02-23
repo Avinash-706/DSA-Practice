@@ -26,7 +26,7 @@ Average Case          If QuickSort is doing unfair partitioning(if more than n l
 
 
 Stable Sort in C++ -> Merge Sort ✅ | Tim Sort |
-                      std::stable_sort (Uses IntroSort and ensures stability by switching to Merge Sort when needed) 
+                      std::stable_sort (Uses Intro Sort and ensures stability by switching to Merge Sort when needed) 
                       Useful when order of equal elements needs to be preserved
 
      DEFINATION    -> A sorting algorithm is considered stable if it maintains the relative order of records with equal keys. 
@@ -49,3 +49,9 @@ SELECTION SORT     -> Comparision based algorithm | All Case - O(n²)
                    -> Heap Sort idea is Based on Selection Sort only ✅
                    -> Not Stable Algorithm ❌
                    -> In-Place Algorithm - DON'T REQUIRE any Extra Space for Sorting ✅
+
+
+INSERTION SORT     -> Best Case - O(n), when array is already sorted | Worst Case & Average Case - O(n²), when array is reverse sorted
+                   -> Used in pratice for Small Array (Tim Sort and Intro Sort)
+                   -> Stable Algorithm
+                   -> In-Place Algorithm
