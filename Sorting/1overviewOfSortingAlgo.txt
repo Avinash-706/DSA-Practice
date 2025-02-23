@@ -35,3 +35,5 @@ Stable Sort in C++ -> Merge Sort ✔ | Tim Sort |
 
  STABLE  SORT EXAMPLE   -> Bubble   , Insertion, Merge Sort
 UNSTABLE SORT EXAMPLE   -> Selection,     Quick, Heap  Sort
+
+SELECTION SORT     -> Comparision based algorithm | All Case - O(n²)
