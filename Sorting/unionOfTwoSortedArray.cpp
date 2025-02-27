@@ -9,7 +9,7 @@ using namespace std;
 
 // IN  - 3, 5, 8
 // IN  - 2, 8, 9, 10, 15
-// OUT - 1, 3
+// OUT - 2, 3, 5, 8, 9, 10, 15
 
 void UnionOfTwoSortedArray(int n1, int n2, int arr1[], int arr2[])
 {
