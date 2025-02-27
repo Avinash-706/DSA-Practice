@@ -11,7 +11,7 @@ using namespace std;
 //IN  - 1, 1, 1, 1, 3, 5, 7
 //OUT - 1, 3 
 
-void InsertionOfTwoSortedArray(int n1, int n2, int arr1[], int arr2[]){
+void IntersectionOfTwoSortedArray(int n1, int n2, int arr1[], int arr2[]){
     int i = 0, j = 0;
     while(i < n1 && j < n2){
         if(i > 0  &&  arr1[i] == arr1[i - 1])    i++; 
@@ -49,7 +49,7 @@ int main() {
     }
 
 
-    InsertionOfTwoSortedArray(n1, n2,  arr1, arr2);
+    IntersectionOfTwoSortedArray(n1, n2,  arr1, arr2);
     return 0;
 }
 
