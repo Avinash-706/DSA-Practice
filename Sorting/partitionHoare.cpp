@@ -12,7 +12,7 @@ using namespace std;
 // OUT  - 10  30  40  50  80  70  90
 
 
-int lomutuPartition(int n, int arr[], int l, int h){
+int HoarePartition(int n, int arr[], int l, int h){
     int pivot = arr[l];
     int i = l-1;
     int j = h+1;
@@ -46,7 +46,7 @@ int main() {
         arr[i] = input;
     }
 
-    cout << "Pivot Element is: " << arr[lomutuPartition(n, arr, 0, n-1)] << endl;
+    cout << "Pivot Element is: " << arr[HoarePartition(n, arr, 0, n-1)] << endl;
     for(int i : arr)    cout << i << " ";
     return 0;
 
