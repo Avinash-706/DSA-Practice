@@ -11,7 +11,7 @@ using namespace std;
 // IN   - 5
 // OUT  - 10  30  40  50  80  70  90
 
-
+//Here the pivot element is always the first elements in the initial array
 int HoarePartition(int n, int arr[], int l, int h){
     int pivot = arr[l];
     int i = l-1;
