@@ -11,8 +11,10 @@ using namespace std;
 // IN   - 5
 // OUT  - 10  30  40  50  80  70  90
 
+//Lomutu Partition always choose the FIRST INDEX as the PIVOT, 
+//But this case is the modified one, In which USER decides -> the PIVOT ELEMENT.
 
-void lomutuPartition(int n, int arr[], int p, int l, int h){
+int lomutuPartition(int n, int arr[], int p, int l, int h){
     swap(arr[h], arr[p]);
     int pivot = arr[h];
     int i = l-1;
@@ -23,6 +25,7 @@ void lomutuPartition(int n, int arr[], int p, int l, int h){
         }
     }
     swap(arr[i+1], arr[h]);
+    return  i+1;
 }
 
 
@@ -44,7 +47,8 @@ int main() {
     cout << "Enter the Index of Element from which we want partition: ";
     cin >> p;
 
-    lomutuPartition(n, arr, p , 0, n-1);
+    int partitionIndex  = lomutuPartition(n, arr, p , 0, n-1);
+    cout << "\nPivot is at index: " << partitionIndex  << " | Element is: " << arr[partitionIndex] << endl;
     for(int i : arr)    cout << i << " ";
     return 0;
 
