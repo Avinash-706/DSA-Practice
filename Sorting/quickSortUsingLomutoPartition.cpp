@@ -8,12 +8,10 @@
 using namespace std;
 
 // IN   - 10, 80, 30, 90, 40, 50, 70
-// IN   - 5
-// OUT  - 10  30  40  50  80  70  90
+// OUT  - 10  30  40  50  70  80  90
 
 
-void lomutuPartition(int n, int arr[], int p, int l, int h){
-    swap(arr[h], arr[p]);
+int lomutoPartition(int n, int arr[], int l, int h){
     int pivot = arr[h];
     int i = l-1;
     for(int j = l ; j <= h - 1; j++){
@@ -23,19 +21,23 @@ void lomutuPartition(int n, int arr[], int p, int l, int h){
         }
     }
     swap(arr[i+1], arr[h]);
+    return i + 1;  
 }
 
 void quickSort(int n, int arr[], int l, int h){
-
+    if(l < h){
+        int partition = lomutoPartition(n, arr, l, h);
+        quickSort(n, arr, l, partition - 1);
+        quickSort(n, arr, partition , h);
+    }
 }
 
 
 int main() {
     // int n = 7;
     // int arr[7] = {10, 80, 30, 90, 40, 50, 70};
-    // int p = 5;
 
-    int n, p;
+    int n;
     cout << "Enter the size of the array: ";
     cin >> n;
     int arr[n];
@@ -45,12 +47,12 @@ int main() {
         cin >> input;
         arr[i] = input;
     }
-    
+
     quickSort(n, arr, 0, n-1);
     for(int i : arr)    cout << i << " ";
     return 0;
 
 }
 
-// TIME  COMPLEXITY  - O(n), where 'n' is the size of the array
-// SPACE COMPLEXITY  - O(1)
+// TIME  COMPLEXITY  - BEST CASE & AVERAGE CASE : O(n log n) | WORST CASE : O(n²), where 'n' is the size of the array
+// SPACE COMPLEXITY  - O(1), since In-Place Sorting |  O(log n), recursion stack calls
