@@ -53,8 +53,8 @@ SELECTION SORT     -> Comparision based algorithm | All Case - O(n²)
 
 INSERTION SORT     -> Comparison-based algorithm | Best Case - O(n), when array is already sorted | Worst Case & Average Case - O(n²), when array is reverse sorted
                    -> Used in pratice for Small Array (Tim Sort and Intro Sort)
-                   -> Stable Algorithm
-                   -> In-Place Algorithm
+                   -> Stable Algorithm ✅
+                   -> In-Place Algorithm ✅
 
 
 MERGE SORT         -> Comparison-based algorithm | All Cases - O(n log n) | 
@@ -63,6 +63,10 @@ MERGE SORT         -> Comparison-based algorithm | All Cases - O(n log n) |
                    -> Not In-Place Algorithm - REQUIRES Extra Space for Sorting ❌
 
 
-QUICK SORT         -> Comparison-based algorithm | Best case & Average Case - O(n log n) | Worst Case - O(n²)
-                   -> Despite O(n²) it is 
-                   -> 
+QUICK SORT         -> Comparison-based algorithm | Best case & Average Case - O(n log n) ✅ | Worst Case - O(n²) ❌
+                   -> NOT a Stable Algorithm ❌
+                   -> Despite O(n²) it is considered faster as because of the following reason below:
+                   -> In-Place Algorithm ✅
+                   -> Cache Friendly Algorithm ✅
+                   -> Tail Recursive ✅
+                   -> Partition is key Function (Naive, Lomuto, Hoare) ✅
