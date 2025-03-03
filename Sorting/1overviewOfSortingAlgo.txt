@@ -66,7 +66,7 @@ MERGE SORT         -> Comparison-based algorithm | All Cases - O(n log n) |
 QUICK SORT         -> Comparison-based algorithm | Best case & Average Case - O(n log n) ✅ | Worst Case - O(n²) ❌
                    -> NOT a Stable Algorithm ❌
                    -> Despite O(n²) it is considered faster as because of the following reason below:
-                   -> In-Place Algorithm ✅
+                   -> In-Place Algorithm ✅ | But Need Recursion Call Stack ❌
                    -> Cache Friendly Algorithm ✅
                    -> Tail Recursive ✅
                    -> Partition is key Function (Naive, Lomuto, Hoare) ✅
