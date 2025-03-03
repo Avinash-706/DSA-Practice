@@ -33,8 +33,8 @@ int HoarePartition(int n, int arr[], int l, int h){
 void quickSort(int n, int arr[], int l, int h){
     if(l < h){
         int partition = HoarePartition(n, arr, l, h);
-        quickSort(n, arr, l, partition - 1);
-        quickSort(n, arr, partition , h);
+        quickSort(n, arr, l, partition);
+        quickSort(n, arr, partition + 1 , h);
     }
 }
 
@@ -60,5 +60,5 @@ int main() {
 
 }
 
-// TIME  COMPLEXITY  - BEST CASE & AVERAGE CASE : O(n log n) | WORST CASE : O(n²), where 'n' is the size of the array
-// SPACE COMPLEXITY  - O(1), since In-Place Sorting |  O(log n), recursion stack calls
+// TIME  COMPLEXITY  - BEST CASE(Balanced Pivot) & AVERAGE CASE (Random Pivot) : O(n log n) | WORST CASE (Unbalanced Pivot) : O(n²), where 'n' is the size of the array
+// SPACE COMPLEXITY  - O(1), since In-Place Sorting |  recursion stack calls -> Best Case : O(log n) | Worst Case : O(n), where 'n' is the size of the array
