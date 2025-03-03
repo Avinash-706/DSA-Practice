@@ -63,10 +63,49 @@ MERGE SORT         -> Comparison-based algorithm | All Cases - O(n log n) |
                    -> Not In-Place Algorithm - REQUIRES Extra Space for Sorting ❌
 
 
-QUICK SORT         -> Comparison-based algorithm | Best case & Average Case - O(n log n) ✅ | Worst Case - O(n²) ❌
-                   -> NOT a Stable Algorithm ❌
-                   -> Despite O(n²) it is considered faster as because of the following reason below:
-                   -> In-Place Algorithm ✅ | But Need Recursion Call Stack ❌
-                   -> Cache Friendly Algorithm ✅
-                   -> Tail Recursive ✅
-                   -> Partition is key Function (Naive, Lomuto, Hoare) ✅
+QUICK SORT         -> Comparison-based algorithm | Best case & Average Case - O(n log n) ✅ | Worst Case - O(n²) ❌  
+                   -> NOT a Stable Algorithm ❌  
+                   -> Despite O(n²), it is considered faster due to the following reasons:  
+                   -> In-Place Algorithm ✅ | But Needs Recursion Call Stack ❌  
+                   -> Cache Friendly Algorithm ✅  
+                   -> Tail Recursive ✅  
+                   -> Partition is key Function (Naive, Lomuto, Hoare) ✅  
+                   -> Space Complexity: O(1) for in-place sorting ✅ | but RECURSION STACK : O(log n)  (best/average case) ✅ | O(n) (worst case) ❌  
+
+
+LOMUTO PARTITION   -> Picks the last element as a pivot ✅  
+                   -> Always places the pivot at its correct position ✅  
+                   -> Requires a single scan for partitioning ✅  
+                   -> Performs poorly on sorted input (Worst Case: O(n²)) ❌  
+                   -> Requires more swaps compared to Hoare ❌  
+                   -> Suitable for teaching purposes due to its simplicity ✅  
+                   -> Space Complexity: O(1) for in-place partitioning ✅ | O(n) recursion stack in worst case ❌ | O(log n) in best/average case ✅  
+
+
+HOARE PARTITION    -> Picks the first element as a pivot ✅  
+                   -> Partitions the array more efficiently with fewer swaps ✅  
+                   -> Leaves the pivot at an arbitrary position ❌  
+                   -> Works well even with sorted input, reducing worst-case chances ✅  
+                   -> More efficient than Lomuto due to fewer swaps ✅  
+                   -> Requires two scans for partitioning ❌  
+                   -> **Space Complexity:** O(1) for in-place partitioning ✅ | O(log n) recursion stack in best/average case ✅ | O(n) recursion stack in worst case ❌ (less frequent than Lomuto)  
+
+
+---------------------------------------------------------------------------------------------------------------------
+| Feature                 |   Lomuto Partitioning                      |   Hoare Partitioning                       |
+---------------------------------------------------------------------------------------------------------------------
+| Pivot Selection         | Last element                               | First element                              |
+| Partitioning Process    | Elements ≤ pivot on left, > pivot on right | Elements < pivot on left, > pivot on right |
+| Number of Comparisons   | More comparisons                           | Fewer comparisons                          |
+| Swaps                   | More swaps                                 | Fewer swaps                                |
+| Best & Avg Time Comp.   | O(n log n) ✅                              | O(n log n) ✅                             |
+| Worst Time Complexity   | O(n²) ❌                                   | O(n²) ❌                                  |
+| Stability               | Not stable ❌                              | Not stable ❌                             |
+| Space Complexity        | O(n) worst case ❌                         | O(log n) avg case ✅                      |
+| Efficiency in Practice  | Less efficient ❌                          | More efficient ✅                         |
+| Recursion Depth         | O(n) worst case ❌                         | O(log n) avg case ✅                      |
+| In-Place Sorting        | Yes ✅                                     | Yes ✅                                    |
+| Tail Recursion          | Yes ✅                                     | Yes ✅                                    |
+| Cache Friendly          | No ❌                                      | Yes ✅                                    |
+| Preferred Use Case      | Simpler but less efficient                 | More efficient and preferred               |
+---------------------------------------------------------------------------------------------------------------------
