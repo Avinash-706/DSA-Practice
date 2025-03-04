@@ -8,14 +8,28 @@
 using namespace std;
 
 
-void compute(int n, int arr[]){
+void compute(int n, int arr[], int range[]){
+    int l = 0, mid = 0 , h = n - 1;
+    while(mid >= h){
+        if(arr[l] <= range[0]){
+            swap(arr[l], arr[mid]);
+            mid++;
+            l++;
+        }
+        else if(arr[mid] > range[0] && arr[mid] < range[1])    mid++;
+        else{
+            swap(arr[mid], arr[h]);
+            h--;
+        }
+   }
    
 }
 
 
 int main() {
-    int n = 4;
-    int arr[4] = {2, 10, 8, 7};
+    int n = 7;
+    int arr[7] = {10, 5, 6, 3, 20, 9, 40};
+    int range[2] = {5, 10};
 
     // int n;
     // cout << "Enter the size of the array: ";
@@ -28,6 +42,7 @@ int main() {
     //     arr[i] = input;
     // }
 
-    compute(n, arr);
+    compute(n, arr, range);
+    for(int i : arr)    cout << i << " ";
     return 0;
 }
