@@ -8,7 +8,7 @@
 using namespace std;
 
 // DUTCH NATIONAL FLAG ALGORITHM
-void threeWayPartition(int n , int arr[]){
+void dutchNationalFlagAlgorithm(int n , int arr[]){
 
     int l = 0, h = n - 1, mid = 0;
     while(mid <= h){
@@ -41,7 +41,7 @@ int main() {
         arr[i] = input;
     }
 
-    threeWayPartition(n, arr);
+    dutchNationalFlagAlgorithm(n, arr);
     for(int i : arr)    cout << i << " ";
     return 0;
 }
