@@ -8,6 +8,7 @@
 using namespace std;
 
 
+//UNOPTIMIZED APPROACH
 void mergeOverlappingIntervals(int n, int arr[][2]){
 
     for(int i = 0; i < n - 1; i++) {
@@ -66,3 +67,6 @@ int main() {
     mergeOverlappingIntervals(n, arr);
     return 0;
 }
+
+//  TIME COMPLEXITY - O(n²), where 'n' is the size of the array
+// SPACE COMPLEXITY - O(n), where 'n' is the size of the array
