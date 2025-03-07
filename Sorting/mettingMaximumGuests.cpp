@@ -54,3 +54,6 @@ int main() {
     cout << "Maximum Guest can be attended in Minimum Time Interval : " << mettingMaximumGuests(n, arrival, departure);
     return 0;
 }
+
+// TIME  COMPLEXITY  : O(n log n), where 'n' is the number of guests
+// SPACE COMPLEXITY : O(1)
