@@ -83,6 +83,41 @@ QUICK SORT         -> Comparison-based algorithm | Best case & Average Case - O(
                    -> Space Complexity: O(1) for in-place sorting ✅ | but RECURSION STACK : O(log n)  (best/average case) ✅ | O(n) (worst case) ❌  
 
 
+HEAP SORT          -> Comparison-based algorithm | Best, Average & Worst Case - O(n log n)  
+                   -> Inspired by Selection Sort – Instead of repeatedly finding the minimum/maximum element, it efficiently extracts the root from a heap ✅  
+                   -> Heapify Process is Key – Uses Binary Heap (Max-Heap or Min-Heap) to build the sorted order ✅  
+                   -> Works in Two Steps:  
+                      1️⃣ Build a Heap (Heapify Process) – Convert the array into a Max-Heap (for Ascending Sort) or Min-Heap (for Descending Sort)  
+                      2️⃣ Extract Elements One by One – Swap the root with the last element and re-heapify until sorted  
+                   -> NOT a Stable Algorithm ❌  
+                   -> In-Place Algorithm – DOESN'T REQUIRE any Extra Space for Sorting ✅  
+                   -> Preferred for large datasets & widely used in Priority Queues ✅  
+                   -> Heap Operations: Build Heap (O(n)) + Extract Elements One by One (O(n log n)) ✅  
+                   -> Heap Sort is SLOWER THAN QUICK SORT in practice due to more cache misses ❌  
+
+
+
+COUNTING SORT      -> NON-Comparison-based algorithm | Best, Average & Worst Case - O(n + k), where ‘k’ is the range of input values  
+                   -> Performs Best When Range of Numbers is Small Compared to 'n' ✅  
+                   -> NOT Suitable for Large Range of Numbers due to High Space Usage ❌  
+                   -> Stable Algorithm ✅  
+                   -> NOT an In-Place Algorithm - REQUIRES Extra Space ❌  
+
+
+RADIX SORT         -> NON-Comparison-based algorithm | Best, Average & Worst Case - O(nk), where ‘k’ is the number of digits in the max number  
+                   -> Works Best When 'k' is Small Compared to 'n' ✅  
+                   -> Uses Counting Sort as a Subroutine ✅  
+                   -> Stable Algorithm ✅  
+                   -> NOT an In-Place Algorithm - REQUIRES Extra Space ❌  
+
+
+BUCKET SORT        -> NON-Comparison-based algorithm | Best Case - O(n + k) | Worst Case - O(n²)  
+                   -> Distributes Elements into Buckets & Sorts Individually (Often using Insertion Sort) ✅  
+                   -> Performs Best When Data is Uniformly Distributed ✅  
+                   -> Stable Algorithm (Depends on Subroutine Sorting Algorithm) ✅  
+                   -> NOT an In-Place Algorithm - REQUIRES Extra Space ❌  
+        
+
 LOMUTO PARTITION   -> Picks the last element as a pivot ✅  
                    -> Always places the pivot at its correct position ✅  
                    -> Requires a single scan for partitioning ✅  
