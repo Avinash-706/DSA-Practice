@@ -33,8 +33,8 @@ void heapify(int arr[], int n, int i) {
 
 int main() {
     // Initialize an array with 9 integers
-    int arr[9] = {12, 7, 9, 23, 5, 19, 27, 47, 97}; 
-    int n = 9;  // Size of the array
+    int arr[5] = {10, 15, 50, 4, 20}; 
+    int n = 5;  // Size of the array
 
     // Build a max heap from the array. 
     // Start from the last non-leaf node and move up to the root node.
