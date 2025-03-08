@@ -63,6 +63,16 @@ MERGE SORT         -> Comparison-based algorithm | All Cases - O(n log n) |
                    -> Not In-Place Algorithm - REQUIRES Extra Space for Sorting ❌
 
 
+CYCLE SORT         -> Comparison-based algorithm | Best Case - O(n²), Average & Worst Case - O(n²)
+                   -> Does MINIMUM MEMORY WRITES so, Works Best When Memory Writes Are Costly (e.g., Flash Memory, EEPROM) ✅
+                   -> NOT a Stable Algorithm ❌
+                   -> In-Place Algorithm - DOESN'T REQUIRE any Extra Space for Sorting ✅
+                   -> Finds the correct position of every element in a single cycle ✅
+                   -> Useful for solving problems like "Find Minimum Swaps Required To Sort an Array ?" ✅
+                   -> Can be used for Distinct Elements Sorting in O(n) (Ideal Case) ✅
+                   -> Unstable Behavior: Same elements might be displaced relative to each other ❌
+
+
 QUICK SORT         -> Comparison-based algorithm | Best case & Average Case - O(n log n) ✅ | Worst Case - O(n²) ❌  
                    -> NOT a Stable Algorithm ❌  
                    -> Despite O(n²), it is considered faster due to the following reasons:  
