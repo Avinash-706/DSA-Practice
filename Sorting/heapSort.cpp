@@ -1,61 +1,70 @@
-#include <iostream>  // Header for input and output operations
-#include <algorithm> // Header for utility functions like swap()
-using namespace std; // Use the standard namespace to avoid prefixing 'std::'
+#include <iostream>
+#include <bits/stdc++.h>
+#include <iomanip>
+#include <algorithm>
+#include <string>
+#include <string.h>
+#include <limits>
+using namespace std;
 
-// Function to maintain the max heap property for the subtree rooted at index 'i'
-// Parameters:
-// arr[]: The array representing the heap
-// n: The size of the heap
-// i: The index of the root of the subtree to heapify
-void heapify(int arr[], int n, int i) {
-    int largest = i;           // Initialize largest as root (current index 'i')
-    int l = 2 * i + 1;         // Calculate left child index: left = 2*i + 1
-    int r = 2 * i + 2;         // Calculate right child index: right = 2*i + 2
+//HEAP-SORT vai BOTTOM-UP MAX-HEAP CONSTRUCTION 
+void maxHeapify(int arr[], int n, int i) {        // Restores max-heap property for subtree rooted at index i
+    int largest = i;
+    int l = 2 * i + 1;
+    int r = 2 * i + 2;
 
-    // If left child exists (l < n) and is greater than the current largest element,
-    // update 'largest' to the index of the left child
     if (l < n && arr[l] > arr[largest]) 
         largest = l;
 
-    // If right child exists (r < n) and is greater than the current largest element,
-    // update 'largest' to the index of the right child
     if (r < n && arr[r] > arr[largest]) 
         largest = r;
 
-    // If 'largest' is not the root (i), swap the root with the largest child
     if (largest != i) {
-        swap(arr[i], arr[largest]); // Swap the values to maintain the heap property
+        swap(arr[i], arr[largest]);
+        maxHeapify(arr, n, largest);
+    }
+}
 
-        // Recursively heapify the affected subtree to ensure the entire tree satisfies the max heap property
-        heapify(arr, n, largest);
+
+void buildMaxHeap(int arr[], int n) {             // Max Heap Construction
+    for (int i = n / 2 - 1; i >= 0; i--) {
+        maxHeapify(arr, n, i);
+    }
+}
+
+
+void heapSort(int arr[], int n) {                 // Sort The Array in Ascending Order
+    buildMaxHeap(arr, n);
+    for (int i = n - 1; i > 0; i--) {
+        swap(arr[0], arr[i]);
+        maxHeapify(arr, i, 0);
     }
 }
 
 int main() {
-    // Initialize an array with 9 integers
-    int arr[5] = {10, 15, 50, 4, 20}; 
-    int n = 5;  // Size of the array
+    // int n = 5;
+    // int arr[5] = {10, 15, 50, 4, 20}; 
 
-    // Build a max heap from the array. 
-    // Start from the last non-leaf node and move up to the root node.
-    // The last non-leaf node is at index (n/2 - 1).
-    for (int i = n / 2 - 1; i >= 0; i--)  {
-        heapify(arr, n, i);  // Call heapify on each non-leaf node
+    int n;
+    cout << "Enter the size of the array: ";
+    cin >> n;
+    int arr[n];
+    cout << "Enter the elements: ";
+    for(int i=0; i < n; i++){
+        int input;
+        cin >> input;
+        arr[i] = input;
     }
 
-    for(int i= n-1; i>0 ; i--){
-        swap(arr[0], arr[i]);
-        heapify(arr, i , 0);
-    }
+    heapSort(arr, n);
 
-    // Print the array after converting it into a max heap
-    cout << "Array after heapify: ";
+    cout << "Sorted array: ";
     for (int num : arr) 
-        cout << num << " ";  // Output each element of the heapified array
-    cout << endl;  // End the line after printing all elements
+        cout << num << " ";
+    cout << endl;
 
-    return 0;  // Return 0 to indicate successful program execution
+    return 0;
 }
 
-// TIME COMPLEXITY - O(n log n), where 'n' is the size of the array
-//SPACE COMPLEXITY - O(1)
+// TIME  COMPLEXITY  : O(n log n)
+// SPACE COMPLEXITY : O(1)
