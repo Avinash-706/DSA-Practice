@@ -1,6 +1,8 @@
 #include <iostream>
 using namespace std;
 
+
+//STABLE VERSION - COUNTING SORT
 void countSort(int arr[], int n, int k) {
     int count[k] = {0};
 
@@ -23,6 +25,7 @@ void countSort(int arr[], int n, int k) {
     for (int i = 0; i < n; i++)
         arr[i] = output[i];
 }
+
 
 int main() {
     int n;
@@ -47,3 +50,6 @@ int main() {
     cout << endl;
     return 0;
 }
+
+// TIME  COMPLEXITY  : O(n + k), where 'n' is the number of elements and 'k' is the range of input values  
+// SPACE COMPLEXITY : O(n + k), due to the additional count[] and output[] arrays

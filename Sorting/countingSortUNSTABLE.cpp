@@ -10,7 +10,7 @@ using namespace std;
 //IN  - 1, 4, 4, 1, 0, 1, 1, 2
 //OUT - 0 1 1 1 1 2 4 4
 
-//UNOPTIMIZED APPROACH
+//UN-STABLE VERSION - COUNTING SORT
 void countingSort(int n, int arr[], int k){
     int temp[k]={0};
 
