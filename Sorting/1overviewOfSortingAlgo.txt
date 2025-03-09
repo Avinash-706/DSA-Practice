@@ -116,7 +116,9 @@ BUCKET SORT        -> NON-Comparison-based algorithm | Best Case - O(n + k) | Wo
                    -> Distributes Elements into Buckets & Sorts Individually (Often using Insertion Sort) ✅  
                    -> Performs Best When Data is Uniformly Distributed ✅  
                    -> Stable Algorithm (Depends on Subroutine Sorting Algorithm) ✅  
-                   -> NOT an In-Place Algorithm - REQUIRES Extra Space ❌  
+                   -> NOT an In-Place Algorithm - REQUIRES Extra Space for BUCKETS ❌  
+                   -> Performance Depends on Distribution: If elements are not uniformly distributed, bucket sizes become unbalanced, leading to inefficiency ❌
+                   -> Sorting within Buckets Matters: If an inefficient sorting algorithm is used (e.g., Bubble Sort), overall performance degrades ❌
         
 
 LOMUTO PARTITION   -> Picks the last element as a pivot ✅  
