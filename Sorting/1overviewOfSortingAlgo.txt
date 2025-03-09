@@ -105,7 +105,7 @@ COUNTING SORT      -> NON-Comparison-based algorithm | Best, Average & Worst Cas
                    -> NOT an In-Place Algorithm - therefore, REQUIRES Extra Space ❌  
 
 
-RADIX SORT         -> NON-Comparison-based algorithm | Best, Average & Worst Case - O(nk), where ‘k’ is the number of digits in the max number  
+RADIX SORT         -> NON-Comparison-based algorithm | Best, Average & Worst Case - O(n * k), where ‘k’ is the number of digits in the max number  
                    -> Works Best When 'k' is Small Compared to 'n' ✅  
                    -> Uses Counting Sort as a Subroutine ✅  
                    -> Stable Algorithm ✅  
