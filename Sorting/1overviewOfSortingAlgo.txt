@@ -101,7 +101,7 @@ COUNTING SORT      -> NON-Comparison-based algorithm | Best, Average & Worst Cas
                    -> Performs Best When Range of Numbers is Small Compared to 'n' ✅  
                    -> NOT Suitable for Large Range of Numbers due to High Space Usage ❌  
                    -> Stable Algorithm ✅  
-                   -> NOT an In-Place Algorithm - REQUIRES Extra Space ❌  
+                   -> NOT an In-Place Algorithm - therefore, REQUIRES Extra Space ❌  
 
 
 RADIX SORT         -> NON-Comparison-based algorithm | Best, Average & Worst Case - O(nk), where ‘k’ is the number of digits in the max number  
