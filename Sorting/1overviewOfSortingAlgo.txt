@@ -113,7 +113,8 @@ RADIX SORT         -> NON-Comparison-based algorithm | Best, Average & Worst Cas
 
 
 BUCKET SORT        -> NON-Comparison-based algorithm | Best Case - O(n + k) | Worst Case - O(n²)  
-                   -> Distributes Elements into Buckets & Sorts Individually (Often using Insertion Sort) ✅  
+                   -> Distributes Elements into Buckets & Sorts Individually (Often using Insertion Sort) ✅ 
+                   -> pos = k * arr[i] / mx;  "way to partition the elements accordingly", k -> number of buckets, mx -> maxElement in whole array + 1;  
                    -> Performs Best When Data is Uniformly Distributed ✅  
                    -> Stable Algorithm (Depends on Subroutine Sorting Algorithm) ✅  
                    -> NOT an In-Place Algorithm - REQUIRES Extra Space for BUCKETS ❌  
