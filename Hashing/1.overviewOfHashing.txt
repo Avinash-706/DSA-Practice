@@ -1,5 +1,3 @@
-HASHING
-
  Hashing is a technique primarily used to implement dictionaries (key-value pairs) and sets (unique keys)
  It offers O(1) average time complexity for search, insert, and delete operations, making it highly efficient
  compared to arrays and self-balancing binary search trees
@@ -7,16 +5,16 @@ HASHING
 
 OPERATIONS:
 
- Search – Quickly find a value using a key (e.g., finding details using a phone number).
- Insert – Add a key-value pair; if the key exists, the value is updated.
- Delete – Remove a key and its corresponding value.
+ Search ->  Quickly find a value using a key (e.g., finding details using a phone number)
+ Insert ->  Add a key-value pair; if the key exists, the value is updated
+ Delete ->  Remove a key and its corresponding value
 
 
 COMPARISON WITH OTHER DATA STRUCTURES:
 
-                     Arrays:                           Sorted arrays provide O(log n) search but slow O(n) insert/delete. 
-                                                       Unsorted arrays allow O(1) insert/delete but slow O(n) search.
-    Binary Search Trees (BSTs, AVL, Red-Black Trees):  Provide O(log n) search, insert, and delete, making them slower than hashing for these operations.
+                     Arrays                          ->  Sorted arrays provide O(log n) search but slow O(n) insert/delete
+                                                         Unsorted arrays allow O(1) insert/delete but slow O(n) search
+    Binary Search Trees (BSTs, AVL, Red-Black Trees) ->  Provide O(log n) search, insert, and delete, making them slower than hashing for these operations
 
 
 LIMITATIONS OF HASHING:
@@ -29,14 +27,14 @@ LIMITATIONS OF HASHING:
 
 APPLICATIONS OF HASHING
 
-1. Dictionary                                    Implementation Used for storing and searching words efficiently in constant time.
-2. Database Indexing                             Hashing is used for primary and secondary indexing to speed up record retrieval.
-3. Cryptography                                  Passwords are stored as hashed values for security. Authentication is done by comparing stored hashes.
-4. Caching                                       Used in browser caches, where URLs are keys, and stored data is values.
-5. Symbol Tables in Compilers                    Helps in quick lookup of variables and addresses in programming languages.
-6. Networking (Routers & IP Mapping)             Routers use hashing to store MAC addresses and IP mappings for fast retrieval.
-7. Associative Arrays & Database Operations      Many programming languages use associative arrays (hash tables) for database queries and data storage.
-8. Other Use Cases                               Hashing is widely used across all fields of computer science for efficient data handling and retrieval.
+1. Dictionary                                 ->   Implementation Used for storing and searching words efficiently in constant time
+2. Database Indexing                          ->   Hashing is used for primary and secondary indexing to speed up record retrieval
+3. Cryptography                               ->   Passwords are stored as hashed values for security. Authentication is done by comparing stored hashes
+4. Caching                                    ->   Used in browser caches, where URLs are keys, and stored data is values
+5. Symbol Tables in Compilers                 ->   Helps in quick lookup of variables and addresses in programming languages
+6. Networking (Routers & IP Mapping)          ->   Routers use hashing to store MAC addresses and IP mappings for fast retrieval
+7. Associative Arrays & Database Operations   ->   Many programming languages use associative arrays (hash tables) for database queries and data storage
+8. Other Use Cases                            ->   Hashing is widely used across all fields of computer science for efficient data handling and retrieval
 
 
 DIRECT ADDRESS TABLE (DAT)
