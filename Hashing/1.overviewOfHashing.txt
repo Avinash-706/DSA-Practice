@@ -37,3 +37,58 @@ APPLICATIONS OF HASHING
 6. Networking (Routers & IP Mapping)             Routers use hashing to store MAC addresses and IP mappings for fast retrieval.
 7. Associative Arrays & Database Operations      Many programming languages use associative arrays (hash tables) for database queries and data storage.
 8. Other Use Cases                               Hashing is widely used across all fields of computer science for efficient data handling and retrieval.
+
+
+DIRECT ADDRESS TABLE (DAT)
+
+ Direct Address Table is a simple yet efficient technique used in hashing to 
+ store and retrieve data in O(1) time complexity for fundamental operations
+ 
+ FEATURES:
+  Time Complexity: O(1) for Search, Insert, and Delete operations ✅
+ ✅ Uses a Boolean array to mark the presence or absence of elements ✅
+ ✅ Works well when keys are small and within a limited range (e.g., 0 to 999) ✅
+ ✅ Random Access in O(1) time since we directly use the key as an index
+ 
+ LIMITATIONS:
+ Cannot handle large key values (e.g., phone numbers with 10 digits) ❌
+ Does not support floating-point numbers or strings as keys ❌
+ Wastes memory when keys are sparse, as a large array must be allocated even if only a few keys are used ❌
+ 
+
+Hash Map (Hash Table)
+ To overcome DAT's limitations, hashing is introduced, which enables efficient storage
+and retrieval of data even for large keys.
+
+📌 How Hashing Works?
+🔹 Instead of creating a massive array, we use a hash function to map large keys into a fixed-size array.
+🔹 A hash function (h) takes an input key and returns an array index:
+
+ℎ
+(
+𝑘
+𝑒
+𝑦
+)
+=
+𝑖
+𝑛
+𝑑
+𝑒
+𝑥
+h(key)=index
+🔹 This allows storage and retrieval in O(1) average time complexity while significantly reducing memory usage.
+
+✅ Advantages of Hash Map over DAT:
+✔️ Can handle large keys, floating-point numbers, and strings efficiently.
+✔️ Requires less memory compared to DAT.
+✔️ Works well for dynamic datasets where keys are not sequential.
+✔️ Supports collision handling techniques like chaining and open addressing for better performance.
+
+⚠️ Challenges with Hashing:
+Collisions: Two different keys may produce the same index, requiring additional handling.
+Performance depends on hash function quality: A poor hash function may cause clustering, reducing efficiency.
+🔹 Conclusion
+Direct Address Table (DAT) is an efficient solution for small key ranges but is not scalable for large datasets.
+Hash Map (Hash Table) is an improvement that allows efficient storage and retrieval of large and complex keys, making it a fundamental part of modern data structures.
+🚀 Hashing is widely used in databases, caching, password storage, and many real-world applications!
