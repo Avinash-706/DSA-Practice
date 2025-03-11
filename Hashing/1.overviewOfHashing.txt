@@ -1,0 +1,28 @@
+HASHING
+
+ Hashing is a technique primarily used to implement dictionaries (key-value pairs) and sets (unique keys)
+ It offers O(1) average time complexity for search, insert, and delete operations, making it highly efficient
+ compared to arrays and self-balancing binary search trees
+
+
+OPERATIONS:
+
+ Search – Quickly find a value using a key (e.g., finding details using a phone number).
+ Insert – Add a key-value pair; if the key exists, the value is updated.
+ Delete – Remove a key and its corresponding value.
+
+
+COMPARISON WITH OTHER DATA STRUCTURES:
+
+                     Arrays:                           Sorted arrays provide O(log n) search but slow O(n) insert/delete. 
+                                                       Unsorted arrays allow O(1) insert/delete but slow O(n) search.
+    Binary Search Trees (BSTs, AVL, Red-Black Trees):  Provide O(log n) search, insert, and delete, making them slower than hashing for these operations.
+
+
+LIMITATIONS OF HASHING:
+
+ Cannot find closest smaller/larger key efficiently (O(n) time)
+ Does not maintain sorted order of keys
+ Inefficient for range queries and prefix searching (Trie is better for prefix searches)
+ Thus, hashing is an optimal choice when only search, insert, and delete operations are needed without concerns for ordering
+
