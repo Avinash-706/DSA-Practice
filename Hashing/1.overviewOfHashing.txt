@@ -26,3 +26,14 @@ LIMITATIONS OF HASHING:
  Inefficient for range queries and prefix searching (Trie is better for prefix searches)
  Thus, hashing is an optimal choice when only search, insert, and delete operations are needed without concerns for ordering
 
+
+APPLICATIONS OF HASHING
+
+1. Dictionary                                    Implementation Used for storing and searching words efficiently in constant time.
+2. Database Indexing                             Hashing is used for primary and secondary indexing to speed up record retrieval.
+3. Cryptography                                  Passwords are stored as hashed values for security. Authentication is done by comparing stored hashes.
+4. Caching                                       Used in browser caches, where URLs are keys, and stored data is values.
+5. Symbol Tables in Compilers                    Helps in quick lookup of variables and addresses in programming languages.
+6. Networking (Routers & IP Mapping)             Routers use hashing to store MAC addresses and IP mappings for fast retrieval.
+7. Associative Arrays & Database Operations      Many programming languages use associative arrays (hash tables) for database queries and data storage.
+8. Other Use Cases                               Hashing is widely used across all fields of computer science for efficient data handling and retrieval.
