@@ -7,11 +7,12 @@
 #include <limits>
 using namespace std;
 
-// IN  - 30, 40, 10, 80, 5, 12, 70
+// IN  - 30, 40, 10, 80, 5, 12, 70 
 // IN  - 4
 // OUT - 5, 10, 12, 30, 40, 70, 80 
 
 void bucketSort(int n, int arr[], int k){
+    
     int mx = arr[0];
     for(int i = 1; i < n ; i++)    mx = max(mx, arr[i]);   
     mx++; 
