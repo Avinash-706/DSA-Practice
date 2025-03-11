@@ -14,24 +14,23 @@ public:
             table[i] = false; 
     }
     
-    // Insert a key
-    void insert(int key) {
+    void insert(int key) {  //insert key
         if (key >= 0 && key < MAX)
             table[key] = true;
         else
             cout << "Key out of range!\n";
     }
     
-    // Delete a key
-    void remove(int key) {
+    
+    void remove(int key) {  //delete key
         if (key >= 0 && key < MAX)
             table[key] = false;
         else
             cout << "Key out of range!\n";
     }
     
-    // Search for a key
-    bool search(int key) {
+
+    bool search(int key) {    //search key
         if (key >= 0 && key < MAX)
             return table[key];
         else {
@@ -58,3 +57,5 @@ int main() {
     
     return 0;
 }
+
+// TIME COMPLEXITY - O(1)
