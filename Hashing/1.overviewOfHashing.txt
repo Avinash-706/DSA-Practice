@@ -73,3 +73,10 @@ HASH MAP (HASH TABLE)
  CHALLENGES with HASHING:
   -> Collisions:                                     Two different keys may produce the same index, requiring additional handling
   -> Performance depends on hash function quality:   A poor hash function may cause clustering, reducing efficiency
+
+
+KEY CONCEPTS IN HASHING:
+I.   HASH FUNCTION         -> Converts a key (e.g., phone number, string) into an index within a fixed-size array.
+II.  EFFICIENT OPERATIONS  -> Insert, Search, and Delete in O(1) average time complexity.
+III. COLLISION             -> Occurs when two different keys map to the same index in the hash table.
+
