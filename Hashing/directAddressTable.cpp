@@ -1,5 +1,10 @@
-
 #include <iostream>
+#include <bits/stdc++.h>
+#include <iomanip>
+#include <algorithm>
+#include <string>
+#include <string.h>
+#include <limits>
 using namespace std;
 
 #define MAX 1000 
