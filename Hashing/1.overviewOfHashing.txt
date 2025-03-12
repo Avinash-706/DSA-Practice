@@ -81,6 +81,34 @@ II.  EFFICIENT OPERATIONS  -> Insert, Search, and Delete in O(1) average time co
 III. COLLISION             -> Occurs when two different keys map to the same index in the hash table.
 
 
+I.   HASH FUNCTION
+ To overcome DAT’s limitations, a hash function is introduced to convert large keys 
+ into small indices that fit in a hash table.
+
+ Instead of using keys as direct indices, hash functions generate an index from 
+ large values (e.g., phone numbers, names, employee IDs).
+ This allows storage of large key sets in a compact array, optimizing search, insert, and delete operations.
+ 
+ PROPERTIES OF A GOOD HASH FUNCTION
+  Consistent Mapping       –>  The same key should always map to the same index.
+  Valid Index Generation   –>  Output should be between 0 to M-1 (M = hash table size).
+  Fast Computation         –>  Should run in O(1) time for integers and O(length) time for strings.
+  Uniform Distribution     –>  Should distribute keys evenly across the hash table to reduce collisions.
+ 
+ TYPES OF HASH FUNCTIONS
+
+  1. Modulo-Based Hashing → hash(key) = key % M
+   ->      Simple and effective for integers.
+   ->      Works best when M is a prime number.
+  
+  2. Multiplicative Hashing → Uses a constant multiplier to spread keys evenly.
+  3. String Hashing → Converts string characters into an index using ASCII values and a polynomial formula:
+   ->      hash(str) = (char1 * x^0 + char2 * x^1 + char3 * x^2 + ...) % M
+   ->      Choosing a prime x (e.g., 33, 37) helps avoid collisions.
+  
+  4. Universal Hashing → Uses a random hash function from a set to ensure a good distribution.
+
+
 III. THE COLLISION PROBLEM
 
  Even with a well-designed hash function, collisions are unavoidable in most real-world scenarios.
