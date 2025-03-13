@@ -163,7 +163,7 @@ III. THE COLLISION PROBLEM
 
 1. CHAINING
  Hashing with chaining is a method to handle collisions in hash tables by maintaining a 
- linked list at each index where a collision occurs.
+ linked list at each index where a collision occurs
 
  FEATURES:
   -> Uses an array of linked lists to store multiple keys at the same index  
@@ -216,7 +216,7 @@ III. THE COLLISION PROBLEM
   Search    | O(1 + α)
   Insert    | O(1 + α)
   Delete    | O(1 + α)
-  If α is small, operations are close to O(1), making chaining efficient.
+  If α is small, operations are close to O(1), making chaining efficient
 
  DATA STRUCTURES FOR CHAINING:
   STRUCTURE        | PROS ✅ / CONS ❌
@@ -302,7 +302,7 @@ III. THE COLLISION PROBLEM
   
   STEPS FOR DELETION:
    1. Search for the key
-   2. If found, mark it as `DELETED`.
+   2. If found, mark it as `DELETED`
    3. During search, continue past `DELETED` markers until:
      Key is found (Return `True`)
      Empty slot is found (Return `False`)
@@ -317,38 +317,40 @@ III. THE COLLISION PROBLEM
     `56 % 7 = 0` → Slot 0 is occupied → Moves to Index 4
     `15 % 7 = 1` → Slot 1 is occupied → Moves to Index 5
     `19 % 7 = 5` → Slot 5 is occupied → Moves to Index 6
-    PROBLEM: As the table fills up, collisions become frequent, and search times increase.
+    PROBLEM: As the table fills up, collisions become frequent, and search times increase
 
    ---
 
  II. QUADRATIC PROBING
- Instead of moving to the next slot, quadratic probing resolves collisions using a quadratic function:
-  - **Formula:** `Hash(Key) = (H + i²) % Table_Size`
-  - Where `i` starts from `1` and increases (`1², 2², 3², ...`) until an empty slot is found.
+  Instead of moving to the next slot, quadratic probing resolves collisions using a quadratic function:
+  FORMULA: `Hash(Key) = (H + i²) % Table_Size`
+   ,Where `i` starts from `1` and increases (`1², 2², 3², ...`) until an empty slot is found
 
-#### Example of Quadratic Probing:
-  - **Insert `16`** at `16 % 7 = 2` → **Occupied**
-  - Check `2 + 1² = 3` → **Empty** → Insert at **Index 3**.
-  - **Insert `56`** at `56 % 7 = 0` → **Occupied**
-  - Check `0 + 1² = 1` → **Occupied**
-  - Check `0 + 2² = 4` → **Empty** → Insert at **Index 4**.
+  EXAMPLE OF QUADRATIC PROBING:
+   Insert `16` at `16 % 7 = 2` → Occupied
+   Check `2 + 1² = 3` → Empty → Insert at Index 3
+   Insert `56` at `56 % 7 = 0` → Occupied
+   Check `0 + 1² = 1` → Occupied
+   Check `0 + 2² = 4` → Empty → Insert at Index 4
 
----
+   ---
 
-### Problems with Quadratic Probing:
-1. **Secondary Clustering:**  
-   - Quadratic probing reduces **primary clustering**, but **secondary clustering** still occurs.
-   - Keys that hash to the same initial index follow the same probe sequence.
+  PROBLEMS IN QUADRATIC PROBING:
+   1. SECONDARY CLUSTERING:  
+    Quadratic probing reduces PRIMARY CLUSTERING, but SECONDARY CLUSTERING still occurs
+    Keys that hash to the same initial index follow the same probe sequence
 
-2. **Table Size Dependency:**  
-   - For quadratic probing to work efficiently, the table size should be **prime**.
-   - If the table size is not properly chosen, certain indices might never be reached.
+   2. TABLE SIZE DEPENDENCY: 
+    For quadratic probing to work efficiently, the table size should be PRIME
+    If the table size is not properly chosen, certain indices might never be reached
 
-3. **Wasted Space & Unreachable Slots:**  
-   - If the table gets too full, quadratic probing might **fail to find an empty slot**.
-   - Some indexes may never be checked due to the quadratic growth pattern.
+   3. WASTED SPACE & UNREACHABLE SLOTS:  
+    If the table gets too full, quadratic probing might FAIL TO FIND AN EMPTY SLOT
+    Some indexes may never be checked due to the quadratic growth pattern
 
----
+   ---
+
+
 
 
 
@@ -364,6 +366,5 @@ III. THE COLLISION PROBLEM
 
 ---
 
-This structured `.txt` format keeps it clear and easy to read. Let me know if you want any refinements! 🚀
 
 
