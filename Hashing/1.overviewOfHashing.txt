@@ -232,20 +232,20 @@ III. THE COLLISION PROBLEM
   Hybrid Structures| ✅ Hash table with self-balancing BSTs  
 
  CONCLUSION:
-  -> Chaining effectively handles hash table collisions  
+  -> Chaining effectively handles hash table collisions ✅
   -> Performance depends on the load factor (α)  
-  -> Using self-balancing BSTs within chains improves performance for large datasets  
-  -> Choosing an optimal hash function and a prime table size minimizes collisions  
+  -> Using self-balancing BSTs within chains improves performance for large datasets ✅
+  -> Choosing an optimal hash function and a prime table size minimizes collisions ✅
 
 
 2. OPEN ADDRESSING IN HASHING
- -> Open Addressing is a method for handling collisions in hash tables
+ -> Open Addressing is a method for handling collisions in hash tables ✅
  -> Unlike chaining, it uses a "SINGLE ARRAY" and does not involve additional data structures
  -> REQUIREMENT: Hash table size (m) >= number of keys (n)
  
  ADVANTAGES
-  CACHE-FRIENDLY   -> All elements are in a single array, reducing cache misses
-  NO EXTRA MEMORY  -> No need for pointers or linked lists like in chaining
+  CACHE-FRIENDLY   -> All elements are in a single array, reducing cache misses ✅
+  NO EXTRA MEMORY  -> No need for pointers or linked lists like in chaining ✅
 
  METHODS OF OPEN ADDRESSING
   I.   LINEAR PROBING
@@ -311,18 +311,18 @@ III. THE COLLISION PROBLEM
 
   PROBLEMS IN LINEAR PROBING ❌ :
    -> Linear probing resolves collisions by checking the next available slot
-   -> Issue: Leads to 'PRIMARY CLUSTERING', where multiple keys crowd around the same index
+   -> Issue: Leads to 'PRIMARY CLUSTERING', where multiple keys crowd around the same index ❌
    Example: 
     `16 % 7 = 2` → Slot 2 is occupied → Moves to Index 3
     `56 % 7 = 0` → Slot 0 is occupied → Moves to Index 4
     `15 % 7 = 1` → Slot 1 is occupied → Moves to Index 5
     `19 % 7 = 5` → Slot 5 is occupied → Moves to Index 6
-    PROBLEM: As the table fills up, collisions become frequent, and search times increase
+    PROBLEM: As the table fills up, collisions become frequent, and search times increase ❌
 
    ---
 
  II. QUADRATIC PROBING
-  Instead of moving to the next slot, quadratic probing resolves collisions using a quadratic function:
+  Instead of moving to the next slot, quadratic probing resolves collisions using a quadratic function: ✅
   FORMULA: `Hash(Key) = (H + i²) % Table_Size`
    ,Where `i` starts from `1` and increases (`1², 2², 3², ...`) until an empty slot is found
 
@@ -337,20 +337,20 @@ III. THE COLLISION PROBLEM
 
   PROBLEMS IN QUADRATIC PROBING:
    1. SECONDARY CLUSTERING:  
-    Quadratic probing reduces PRIMARY CLUSTERING, but SECONDARY CLUSTERING still occurs
-    Keys that hash to the same initial index follow the same probe sequence
+    Quadratic probing reduces PRIMARY CLUSTERING, but SECONDARY CLUSTERING still occurs ✅
+    Keys that hash to the same initial index follow the same probe sequence ❌
 
    2. TABLE SIZE DEPENDENCY: 
-    For quadratic probing to work efficiently, the table size should be PRIME
-    If the table size is not properly chosen, certain indices might never be reached
+    For quadratic probing to work efficiently, the table size should be PRIME ❌
+    If the table size is not properly chosen, certain indices might never be reached ❌
 
    3. WASTED SPACE & UNREACHABLE SLOTS:  
-    If the table gets too full, quadratic probing might FAIL TO FIND AN EMPTY SLOT
-    Some indexes may never be checked due to the quadratic growth pattern
+    If the table gets too full, quadratic probing might FAIL TO FIND AN EMPTY SLOT ❌
+    Some indexes may never be checked due to the quadratic growth pattern ❌
 
    ---
 
-
+ III. DOUBLE HASHING
 
 
 
