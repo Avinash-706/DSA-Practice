@@ -162,3 +162,77 @@ III. THE COLLISION PROBLEM
 
 
 1. CHAINING
+ Hashing with chaining is a method to handle collisions in hash tables by maintaining a 
+ linked list at each index where a collision occurs.
+
+ FEATURES:
+  -> Uses an array of linked lists to store multiple keys at the same index  
+  -> Each slot in the hash table points to the head of a linked list  
+  -> Efficient for handling collisions in hash tables  
+  -> Hash function determines the index where a key is inserted  
+  
+ 
+ EXAMPLE:
+   GIVEN:
+   Keys: 50, 700, 76, 85, 92, 73, 101  
+   Hash function: key % 7   
+   Hash table size: 7  
+
+   HASH TABLE CONSTRUCTION:
+   ----------------------------------------------------
+   KEY   | COMPUTATION       | INDEX | PLACEMENT
+   ----------------------------------------------------
+   50    | 50 % 7  = 1      | 1     | Index 1
+   700   | 700 % 7 = 0      | 0     | Index 0
+   76    | 76 % 7  = 6      | 6     | Index 6
+   85    | 85 % 7  = 1      | 1     | Collision → Append at Index 1
+   92    | 92 % 7  = 1      | 1     | Append at Index 1
+   73    | 73 % 7  = 3      | 3     | Index 3
+   101   | 101 % 7 = 3      | 3     | Collision → Append at Index 3  
+   ----------------------------------------------------
+   
+   FINAL HASH TABLE REPRESENTATION:
+   ----------------------------------------------------
+   INDEX | VALUES (Linked List)
+   ---------------------------------
+   0     | 700
+   1     | 50 → 85 → 92
+   2     |  
+   3     | 73 → 101
+   4     |  
+   5     |  
+   6     | 76
+
+ PERFORMANCE ANALYSIS:
+  Number of slots in hash table: m  
+  Number of keys to insert: n  
+  Load factor (α) = n/m  
+  Average chain length = n/m
+
+ TIME COMPLEXITY ANALYSIS:
+  ----------------------------------------------------
+  OPERATION | COMPLEXITY
+  ---------------------------
+  Search    | O(1 + α)
+  Insert    | O(1 + α)
+  Delete    | O(1 + α)
+  If α is small, operations are close to O(1), making chaining efficient.
+
+ DATA STRUCTURES FOR CHAINING:
+  STRUCTURE        | PROS ✅ / CONS ❌
+  -----------------|-----------------------------------
+  Linked List      | ✅ Simple, dynamic insertions & deletions  
+                   | ❌ Search time O(n/m) in worst case  
+  Balanced BST     | ✅ O(log(n/m)) search  
+                   | ✅ Better with high collision load  
+                   | ❌ More complex  
+  Dynamic Arrays   | ✅ Faster access for search  
+                   | ❌ Uses contiguous memory  
+                   | ❌ Resizing is costly  
+  Hybrid Structures| ✅ Hash table with self-balancing BSTs  
+
+ CONCLUSION:
+  -> Chaining effectively handles hash table collisions  
+  -> Performance depends on the load factor (α)  
+  -> Using self-balancing BSTs within chains improves performance for large datasets  
+  -> Choosing an optimal hash function and a prime table size minimizes collisions  
