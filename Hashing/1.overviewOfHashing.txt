@@ -76,73 +76,73 @@ HASH MAP (HASH TABLE)
 
 
 KEY CONCEPTS IN HASHING:
-I.   HASH FUNCTION         -> Converts a key (e.g., phone number, string) into an index within a fixed-size array.
-II.  EFFICIENT OPERATIONS  -> Insert, Search, and Delete in O(1) average time complexity.
-III. COLLISION             -> Occurs when two different keys map to the same index in the hash table.
+I.   HASH FUNCTION         -> Converts a key (e.g., phone number, string) into an index within a fixed-size array
+II.  EFFICIENT OPERATIONS  -> Insert, Search, and Delete in O(1) average time complexity
+III. COLLISION             -> Occurs when two different keys map to the same index in the hash table
 
 
 I.   HASH FUNCTION
  To overcome DAT’s limitations, a hash function is introduced to convert large keys 
- into small indices that fit in a hash table.
+ into small indices that fit in a hash table
 
  Instead of using keys as direct indices, hash functions generate an index from 
- large values (e.g., phone numbers, names, employee IDs).
- This allows storage of large key sets in a compact array, optimizing search, insert, and delete operations.
+ large values (e.g., phone numbers, names, employee IDs)
+ This allows storage of large key sets in a compact array, optimizing search, insert, and delete operations
  
  PROPERTIES OF A GOOD HASH FUNCTION
-  Consistent Mapping       –>  The same key should always map to the same index.
-  Valid Index Generation   –>  Output should be between 0 to M-1 (M = hash table size).
-  Fast Computation         –>  Should run in O(1) time for integers and O(length) time for strings.
-  Uniform Distribution     –>  Should distribute keys evenly across the hash table to reduce collisions.
+  Consistent Mapping       –>  The same key should always map to the same index
+  Valid Index Generation   –>  Output should be between 0 to M-1 (M = hash table size)
+  Fast Computation         –>  Should run in O(1) time for integers and O(length) time for strings
+  Uniform Distribution     –>  Should distribute keys evenly across the hash table to reduce collisions
  
  TYPES OF HASH FUNCTIONS
 
   1. Modulo-Based Hashing → hash(key) = key % M
-   ->      Simple and effective for integers.
-   ->      Works best when M is a prime number.
+   ->      Simple and effective for integers
+   ->      Works best when M is a prime number
   
-  2. Multiplicative Hashing → Uses a constant multiplier to spread keys evenly.
+  2. Multiplicative Hashing → Uses a constant multiplier to spread keys evenly
   3. String Hashing → Converts string characters into an index using ASCII values and a polynomial formula:
    ->      hash(str) = (char1 * x^0 + char2 * x^1 + char3 * x^2 + ...) % M
-   ->      Choosing a prime x (e.g., 33, 37) helps avoid collisions.
+   ->      Choosing a prime x (e.g., 33, 37) helps avoid collisions
   
-  4. Universal Hashing → Uses a random hash function from a set to ensure a good distribution.
+  4. Universal Hashing → Uses a random hash function from a set to ensure a good distribution
 
 
 III. THE COLLISION PROBLEM
 
- Even with a well-designed hash function, collisions are unavoidable in most real-world scenarios.
+ Even with a well-designed hash function, collisions are unavoidable in most real-world scenarios
 
  UNDERSTANDING COLLISIONS:
 
   If you have a hash table of size 10 and try storing 10 phone numbers, there’s a high chance
-  that two numbers will share the same index.
+  that two numbers will share the same index
 
   The BIRTHDAY PARADOX    ->   explains why collisions happen frequently:
 
    In a room of 23 people, there is a 50% chance that two share the same birthday
-   With 70 people, this probability increases to 99.9%.
+   With 70 people, this probability increases to 99.9%
    Similarly, in hashing, no matter how large your table is, collisions are inevitable
    when keys are not known in advance
 
   COLLISION HANDLING TECHNIQUES
 
    1. CHAINING (SEPARATE CHAINING)
-    Each index in the hash table stores a linked list (or a dynamic data structure) to hold multiple values.
-    If multiple keys hash to the same index, they are stored in a chain.
+    Each index in the hash table stores a linked list (or a dynamic data structure) to hold multiple values
+    If multiple keys hash to the same index, they are stored in a chain
     Simple to implement ✅
     Handles an unlimited number of keys per index ✅
     Uses extra memory for pointers ❌
     May degrade to O(n) search time if chains are long ❌
 
    2. OPEN ADDRESSING
-    Instead of using a linked list, all elements are stored within the hash table itself.
-    If a collision occurs, the algorithm finds another available slot using a predefined probe sequence.
+    Instead of using a linked list, all elements are stored within the hash table itself
+    If a collision occurs, the algorithm finds another available slot using a predefined probe sequence
 
     TYPES OF OPEN ADDRESSING:
-     1. Linear Probing – Search for the next available slot sequentially.
-     2. Quadratic Probing – Use a quadratic function to find the next slot.
-     3. Double Hashing – Use a secondary hash function to resolve collisions.
+     1. Linear Probing – Search for the next available slot sequentially
+     2. Quadratic Probing – Use a quadratic function to find the next slot
+     3. Double Hashing – Use a secondary hash function to resolve collisions
 
     No extra memory for linked lists ✅
     Performance may degrade if the table is nearly full ❌
@@ -150,8 +150,8 @@ III. THE COLLISION PROBLEM
 
    3. PERFECT HASHING (SPECIAL CASE)
 
-    If all keys are known in advance, a perfect hash function can be designed to ensure no collisions.
-    Used in dictionaries, compilers, and static datasets.
+    If all keys are known in advance, a perfect hash function can be designed to ensure no collisions
+    Used in dictionaries, compilers, and static datasets
 
  -> Collisions are unavoidable in most hashing scenarios
  -> Chaining is flexible but uses extra memory
@@ -159,3 +159,6 @@ III. THE COLLISION PROBLEM
  -> Perfect Hashing can eliminate collisions but requires prior knowledge of all keys
  -> Understanding these techniques helps in designing efficient hash-based data 
     structures like unordered_map (C++), HashMap (Java), and HashSet (Java)
+
+
+1. CHAINING
