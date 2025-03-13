@@ -236,3 +236,134 @@ III. THE COLLISION PROBLEM
   -> Performance depends on the load factor (α)  
   -> Using self-balancing BSTs within chains improves performance for large datasets  
   -> Choosing an optimal hash function and a prime table size minimizes collisions  
+
+
+2. OPEN ADDRESSING IN HASHING
+ -> Open Addressing is a method for handling collisions in hash tables
+ -> Unlike chaining, it uses a "SINGLE ARRAY" and does not involve additional data structures
+ -> REQUIREMENT: Hash table size (m) >= number of keys (n)
+ 
+ ADVANTAGES
+  CACHE-FRIENDLY   -> All elements are in a single array, reducing cache misses
+  NO EXTRA MEMORY  -> No need for pointers or linked lists like in chaining
+
+ METHODS OF OPEN ADDRESSING
+  I.   LINEAR PROBING
+  II.  QUADRATIC PROBING
+  III. DOUBLE HASHING
+  
+ I. LINEAR PROBING
+  If a collision occurs, search linearly for the next available slot
+  Uses a hash function:  
+        hash(key) = key % table_size
+
+  NOTE : If index is occupied, check (index+1) % table_size, and continue
+
+  Example (Table Size = 7)
+  | Key | Hash (Key % 7) |          Inserted At            |
+  |-----|----------------|---------------------------------|
+  | 50  | 50 % 7 = 1     | Index 1                         |
+  | 51  | 51 % 7 = 2     | Index 2                         |
+  | 49  | 49 % 7 = 0     | Index 0                         |
+  | 16  | 16 % 7 = 2     | Collision → Next Slot → Index 3 |
+  | 56  | 56 % 7 = 0     | Collision → Next Slot → Index 4 |
+  | 15  | 15 % 7 = 1     | Collision → Next Slot → Index 5 |
+  | 19  | 19 % 7 = 5     | Collision → Next Slot → Index 6 |
+
+  ==========================================================
+  | Index | Key  |
+  |-------|------|
+  | 0     | 49   |
+  | 1     | 50   |
+  | 2     | 51   |
+  | 3     | 16   |
+  | 4     | 56   |
+  | 5     | 15   |
+  | 6     | 19   |
+  ==========================================================
+
+  SEARCHING IN OPEN ADDRESSING
+   Compute hash index:  
+        hash(key) = key % table_size
+  
+   If key is not found at computed index:
+   1. CONTINUE LINEARLY until key is found or an empty slot is encountered
+   2. IF TABLE IS FULL, traverse in a circular manner
+   3. STOP IF:
+     Key is found → Return `TRUE`
+     Empty slot is found → Return `FALSE`
+     Entire table is traversed → Return `FALSE`
+
+   ---
+  
+  DELETION IN OPEN ADDRESSING
+   Simply removing an element can BREAK SEARCH OPERATIONS
+   SOLUTION  ->  Use a special marker (e.g., 'DELETED' or '-1') instead of making the slot empty
+  
+  STEPS FOR DELETION:
+   1. Search for the key
+   2. If found, mark it as `DELETED`.
+   3. During search, continue past `DELETED` markers until:
+     Key is found (Return `True`)
+     Empty slot is found (Return `False`)
+     
+   ---
+
+  PROBLEMS IN LINEAR PROBING ❌ :
+   -> Linear probing resolves collisions by checking the next available slot
+   -> Issue: Leads to 'PRIMARY CLUSTERING', where multiple keys crowd around the same index
+   Example: 
+    `16 % 7 = 2` → Slot 2 is occupied → Moves to Index 3
+    `56 % 7 = 0` → Slot 0 is occupied → Moves to Index 4
+    `15 % 7 = 1` → Slot 1 is occupied → Moves to Index 5
+    `19 % 7 = 5` → Slot 5 is occupied → Moves to Index 6
+    PROBLEM: As the table fills up, collisions become frequent, and search times increase.
+
+   ---
+
+ II. QUADRATIC PROBING
+ Instead of moving to the next slot, quadratic probing resolves collisions using a quadratic function:
+  - **Formula:** `Hash(Key) = (H + i²) % Table_Size`
+  - Where `i` starts from `1` and increases (`1², 2², 3², ...`) until an empty slot is found.
+
+#### Example of Quadratic Probing:
+  - **Insert `16`** at `16 % 7 = 2` → **Occupied**
+  - Check `2 + 1² = 3` → **Empty** → Insert at **Index 3**.
+  - **Insert `56`** at `56 % 7 = 0` → **Occupied**
+  - Check `0 + 1² = 1` → **Occupied**
+  - Check `0 + 2² = 4` → **Empty** → Insert at **Index 4**.
+
+---
+
+### Problems with Quadratic Probing:
+1. **Secondary Clustering:**  
+   - Quadratic probing reduces **primary clustering**, but **secondary clustering** still occurs.
+   - Keys that hash to the same initial index follow the same probe sequence.
+
+2. **Table Size Dependency:**  
+   - For quadratic probing to work efficiently, the table size should be **prime**.
+   - If the table size is not properly chosen, certain indices might never be reached.
+
+3. **Wasted Space & Unreachable Slots:**  
+   - If the table gets too full, quadratic probing might **fail to find an empty slot**.
+   - Some indexes may never be checked due to the quadratic growth pattern.
+
+---
+
+
+
+## Summary
+| Method | Description | Advantages | Disadvantages |
+|--------|------------|------------|---------------|
+| **Linear Probing** | Search for the next available slot linearly | Simple to implement | Clustering issue (many elements in adjacent slots) |
+| **Quadratic Probing** | Search using quadratic increments | Reduces clustering | May not use all slots efficiently |
+| **Double Hashing** | Uses a second hash function for jumps | Best distribution of keys | Slightly complex to compute |
+
+✔ **Best for small datasets**  
+❌ **Chaining is better for large datasets with many collisions**  
+
+---
+
+This structured `.txt` format keeps it clear and easy to read. Let me know if you want any refinements! 🚀
+
+
