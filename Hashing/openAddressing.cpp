@@ -96,5 +96,8 @@ int main() {
     cout << endl << " -- Searching for 56 (AFTER DELETION) -- " << endl;
     cout << (mh.search(56) ? "Present" : "Not Present") << endl;
     
+    mh.insert(100);
+    mh.print();
+    
     return 0;
 }
