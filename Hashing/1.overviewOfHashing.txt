@@ -460,6 +460,7 @@ III. THE COLLISION PROBLEM
    -> No clustering issue like linear/quadratic probing ✅
    -> Works efficiently if `H2(Key)` and `m` are RELATIVELY PRIME ✅
    -> Searching and deletion follow the same probing sequence ✅
+   -> Performance depends on the load factor (α)  
    =============================================
 
 
