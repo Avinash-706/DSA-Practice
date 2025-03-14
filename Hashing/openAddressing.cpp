@@ -14,6 +14,7 @@ struct MyHash{
     MyHash(int c){
         cap = c;
         size = 0;
+        arr = new int[cap];
         for(int i = 0 ; i < cap ; i++)    arr[i] = -1;
     }
 
@@ -33,19 +34,21 @@ struct MyHash{
         }
     }
 
-    bool erase(int key){
+    bool erase(int key) {
         int h = hash(key);
         int i = h;
-        while(arr[i] != -1){
-            if(arr[i] == key){
-                arr[i] = -2;
+
+        while (arr[i] != -1) {
+            if (arr[i] == key) {
+                arr[i] = -2;  
+                size--;
                 return true;
             }
 
             i = (i + 1) % cap;
-            if(i == h)  return false;
-            return false;
+            if (i == h)    return false;
         }
+        return false;
     }
 
     bool search(int key){
@@ -59,8 +62,21 @@ struct MyHash{
         }
         return false;
     }
-};
 
+    void print() {
+        cout << endl << "Hash Table: " << endl;
+        for (int i = 0 ; i < cap ; i++) {
+            if (arr[i] == -1)   cout << "[ ] ";
+            else if (arr[i] == -2)    cout << "[X] ";
+            else    cout << "[" << arr[i] << "] ";
+        }
+        cout << endl;
+    }
+
+    ~MyHash() {
+        delete[] arr; 
+    }
+};
 
 
 int main() {
@@ -68,17 +84,17 @@ int main() {
     mh.insert(49);
     mh.insert(56);
     mh.insert(72);
+    mh.print();
 
     cout << endl << " -- Searching for 56 -- " << endl;
-    if(mh.search(56) == true)   cout << endl << "Present" << endl;
-    else    cout << endl << "Not Present" << endl;
+    cout << (mh.search(56) ? "Present" : "Not Present") << endl;
 
     cout << endl << " -- Removing 56 -- " << endl;
     mh.erase(56);
+    mh.print();
 
     cout << endl << " -- Searching for 56 (AFTER DELETION) -- " << endl;
-    if(mh.search(56) == true)   cout << endl << "Present" << endl;
-    else    cout << endl << "Not Present" << endl;
+    cout << (mh.search(56) ? "Present" : "Not Present") << endl;
     
     return 0;
 }
