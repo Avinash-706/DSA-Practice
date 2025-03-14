@@ -464,16 +464,43 @@ III. THE COLLISION PROBLEM
    =============================================
 
 
+SUMMARY 
+ |      METHOD        |               DESCRIPTION                   |        ADVANTAGES         |                   DISADVANTAGES                    |
+ |--------------------|---------------------------------------------|---------------------------|----------------------------------------------------|
+ | LINEAR PROBING     | Search for the next available slot linearly | Simple to implement       | Clustering issue (many elements in adjacent slots) |
+ | QUADRATIC PROBING  | Search using quadratic increments           | Reduces clustering        | May not use all slots efficiently                  |
+ | DOUBLE HASHING     | Uses a second hash function for jumps       | Best distribution of keys | Slightly complex to compute                        |
 
-## Summary
-| Method | Description | Advantages | Disadvantages |
-|--------|------------|------------|---------------|
-| **Linear Probing** | Search for the next available slot linearly | Simple to implement | Clustering issue (many elements in adjacent slots) |
-| **Quadratic Probing** | Search using quadratic increments | Reduces clustering | May not use all slots efficiently |
-| **Double Hashing** | Uses a second hash function for jumps | Best distribution of keys | Slightly complex to compute |
+ Best for small datasets ✅
+ Chaining is better for large datasets with many collisions ❌
 
-✔ **Best for small datasets**  
-❌ **Chaining is better for large datasets with many collisions**  
 
+CHAINING VS OPEN ADDRESSING
+------------------------------------------------------------
+| FEATURE             | CHAINING                        | OPEN ADDRESSING                     |
+------------------------------------------------------------
+| TABLE RESIZING      | Not mandatory, but preferred    | Mandatory when table is full        |
+------------------------------------------------------------
+| HASH TABLE FULLNESS | Never fills, only chains grow   | Fills up completely                 |
+------------------------------------------------------------
+| PERFORMANCE        | Can handle more keys dynamically | Performance degrades with high load |
+------------------------------------------------------------
+
+| SENSITIVITY TO HASH|
+
+| FUNCTION           | Less sensitive                   | More sensitive (Clustering issue)   |
+------------------------------------------------------------
+| CLUSTERING        | One cluster doesn’t impact another| Clustering affects entire table     |
+------------------------------------------------------------
+| CACHE FRIENDLINESS| Poor (linked list/balanced BSTs)  | Better (everything in same array)   |
+------------------------------------------------------------
+| EXTRA SPACE       | Needs extra space for links       | No extra space required             |
+------------------------------------------------------------
+| UNSUCCESSFUL SEARCH| O(1 + α)                         | O(1 / (1 - α))                      |
+------------------------------------------------------------
+| TABLE RESIZING    | Avoidable (chains grow)           | Frequent resizing required          |
+------------------------------------------------------------
+| BEST USE CASE     | Dynamic keys, better performance  | Fixed key count, cache friendly     |
+------------------------------------------------------------
 
 
