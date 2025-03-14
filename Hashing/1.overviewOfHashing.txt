@@ -418,6 +418,28 @@ III. THE COLLISION PROBLEM
    If the SEARCH REACHES AN EMPTY SLOT, the key is not present ✅ 
 
    ---------------------------------------------
+   
+   PERFORMANCE ANALYSIS OF SEARCHING
+    SEARCHING PERFORMANCE DEPENDS ON THE LOAD FACTOR (α = n/m)  
+      -> n = NUMBER OF ELEMENTS INSERTED  
+      -> m = TABLE SIZE  
+
+    -> AVERAGE CASE:  
+     SUCCESSFUL SEARCH    → O(1) when load factor is LOW ✅ 
+     UNSUCCESSFUL SEARCH  → O(1) when table is SPARSE ✅ 
+
+    -> WORST CASE (WHEN LOAD FACTOR IS HIGH):  
+     search takes O(n) time in the worst case ✅ 
+     occurs when most slots are filled, requiring MULTIPLE PROBES ✅ 
+
+    -> EXPECTED PROBES (FOR SUCCESSFUL SEARCH):  
+     approximately 1 / (1 - α), when α < 0.5 ✅
+     grows rapidly as α approaches 1 ✅
+
+    -> COMPARISON WITH OTHER PROBING METHODS:  
+     double hashing requires FEWER PROBES than linear or quadratic probing ✅
+     ensures UNIFORM DISTRIBUTION, REDUCING PROBING SEQUENCE LENGTH ✅
+
 
   DELETION IN DOUBLE HASHING
    -> DELETION IN OPEN ADDRESSING is handled using a SPECIAL MARKER  
