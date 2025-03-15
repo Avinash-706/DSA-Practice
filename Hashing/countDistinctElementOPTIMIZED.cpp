@@ -9,10 +9,15 @@ using namespace std;
 
 // OPTIMIZED APPROACH
 int countDistinctElementOPTIMIZED(int n, int arr[]){
-    unordered_set <int> s;
-    for(int i = 0 ; i < n ; i++){
-        s.insert(arr[i]);
-    }
+    // // WAY 1
+    // unordered_set <int> s;
+    // for(int i = 0 ; i < n ; i++){
+    //     s.insert(arr[i]);
+    // }
+
+    // //WAY2
+    unordered_set <int> s(arr, arr+n);
+
     return s.size();
 }
 
