@@ -36,3 +36,6 @@ int main() {
     intersectionOfTwoUnSortedArray(a, b, n1, n2);
     return 0;
 }
+
+// TIME  COMPLEXITY  : O(n1 + n2), where 'n1' and 'n2' are the sizes of the two arrays  
+// SPACE COMPLEXITY  : O(n2), aunordered_set -> used to store elements of 'b'  
