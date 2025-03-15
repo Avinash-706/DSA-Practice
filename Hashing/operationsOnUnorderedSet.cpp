@@ -42,4 +42,4 @@ int main() {
     return 0;
 }
 
-//ALL THE OPERATIONS : O(1)
+//TIME COMPLEXITY : ALL THE OPERATIONS : O(1)
