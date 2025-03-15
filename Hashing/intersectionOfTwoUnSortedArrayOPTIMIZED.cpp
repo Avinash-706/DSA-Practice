@@ -7,10 +7,11 @@
 #include <limits>
 using namespace std;
 
-// UNOPTIMIZED APPROACH
+
 void intersectionOfTwoUnSortedArray(int a[], int b[], int n1, int n2){
+    unordered_set<int> s(b, b+n2);
     cout << "Intersection between Two UnSorted Array : ";
-    for(int i = 0 ; i < n1; i++)    for(int j = 0 ; j < n2 ; j++)   if(a[i] == b[j])    cout << a[i] << " ";
+    for(int i = 0 ; i < n1 ; i++)   if(s.find(a[i]) != s.end())    cout << a[i] << " ";
 }
 
 
@@ -35,6 +36,3 @@ int main() {
     intersectionOfTwoUnSortedArray(a, b, n1, n2);
     return 0;
 }
-
-// TIME  COMPLEXITY : O(n²), where 'n' is the size of the array
-// SPACE COMPLEXITY : O(1)
