@@ -504,3 +504,5 @@ CHAINING VS OPEN ADDRESSING
 ------------------------------------------------------------
 
 
+set is based on RED BLACK Trees, but 
+unordered_set is based on HASHING
