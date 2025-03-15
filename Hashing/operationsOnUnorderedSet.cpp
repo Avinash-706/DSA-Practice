@@ -32,8 +32,12 @@ int main() {
     s.erase(30);
     cout << endl <<"After erasing 30, size: " << s.size() << endl;
 
+    cout << endl << "Checking If Unordered Set is Empty or Not : " << (s.empty() ? "Empty" : "Not Empty") << endl;
+
     s.clear();
     cout << endl <<"After clear(), size: " << s.size() << endl;
+
+    cout << endl << "Checking If Unordered Set is Empty or Not : " << (s.empty() ? "Empty" : "Not Empty") << endl;
 
     return 0;
 }
