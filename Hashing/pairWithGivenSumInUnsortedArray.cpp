@@ -7,20 +7,6 @@
 #include <limits>
 using namespace std;
 
-// LOGIC USED :
-// pre_sum2 = pre_sum1 + sum
-
-// ---------------------------
-// a0   a1   a2  ...  ai  ai+1  ...  aj  ...  an-1  
-// |---------------------|----------------------|  
-//     pre_sum1          |    sum  
-
-// => sum = pre_sum2 - pre_sum1
-// Efficient Approach:
-// -> Use PREFIX SUM to check if (pre_sum2 - sum) exists.
-// -> Utilize UNORDERED_SET for fast lookups.
-// -> Helps find subarray with given sum in O(n) time.
-
 
 bool pairWithGivenSumInUnsortedArray(int n, int sum, int arr[]){
     unordered_set<int> h;
