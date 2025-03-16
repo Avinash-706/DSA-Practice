@@ -15,7 +15,7 @@ bool pairWithGivenSumInUnsortedArray(int n, int sum, int arr[]){
         else    h.insert(arr[i]);
     }
     return false;
-}s
+}
 
 
 int main() {
