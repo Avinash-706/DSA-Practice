@@ -8,6 +8,7 @@
 using namespace std;
 
 
+//UNOPTIMIZED APPROACH
 int longestConsecutiveSubsequence(int n, int arr[]){
     if (n == 0)    return 0;  
     sort(arr, arr + n);
@@ -41,3 +42,6 @@ int main() {
     cout << "The Longest Consecutive Subsequence  : " << longestConsecutiveSubsequence(n, arr);
     return 0;
 }
+
+// TIME COMPLEXITY  - O(n log n), where 'n' is the size of the array
+//SPACE COMPLEXITY  - O(1)
