@@ -11,6 +11,11 @@ int longestConsecutiveSubsequence(int n, int arr[]) {
             int currNum = x;
             int len = 1;
 
+            while (s.find(currNum + 1) != s.end()) {
+                currNum++;
+                len++;
+            }
+            maxLen = max(maxLen, len);
         }
     }
     return maxLen;
@@ -30,3 +35,4 @@ int main() {
     cout << "The Longest Consecutive Subsequence: " << longestConsecutiveSubsequence(n, arr);
     return 0;
 }
+
