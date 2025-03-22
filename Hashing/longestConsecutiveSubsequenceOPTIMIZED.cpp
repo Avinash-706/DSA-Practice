@@ -2,6 +2,7 @@
 #include <unordered_set>
 using namespace std;
 
+// OPTIMIZED APPROACH
 int longestConsecutiveSubsequence(int n, int arr[]) {
     unordered_set<int> s(arr, arr + n); 
     int maxLen = 0;
@@ -36,3 +37,5 @@ int main() {
     return 0;
 }
 
+// TIME COMPLEXITY - O(n), where 'n' is the size of the array
+//SPACE COMPLEXITY - O(n), where 'n' is the size of the array
