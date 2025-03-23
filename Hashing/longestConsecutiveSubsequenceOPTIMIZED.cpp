@@ -1,21 +1,28 @@
 #include <iostream>
-#include <unordered_set>
+#include <unordered_map>
 using namespace std;
 
-// OPTIMIZED APPROACH
 int longestConsecutiveSubsequence(int n, int arr[]) {
-    unordered_set<int> s(arr, arr + n); 
+    unordered_map<int, int> seqMap; // Stores {value, length of consecutive sequence}
     int maxLen = 0;
 
-    for (int x : s) {
-        if (s.find(x - 1) == s.end()) {
-            int currNum = x;
-            int len = 1;
+    for (int i = 0; i < n; i++) {
+        int num = arr[i];
 
-            while (s.find(currNum + 1) != s.end()) {
-                currNum++;
-                len++;
-            }
+        // If the number is not already in the map
+        if (seqMap.find(num) == seqMap.end()) {
+            int left = (seqMap.find(num - 1) != seqMap.end()) ? seqMap[num - 1] : 0;
+            int right = (seqMap.find(num + 1) != seqMap.end()) ? seqMap[num + 1] : 0;
+            
+            // Calculate total length of the sequence
+            int len = left + 1 + right;
+            
+            // Store the sequence length at num and its boundaries
+            seqMap[num] = len;
+            seqMap[num - left] = len; // Update leftmost boundary
+            seqMap[num + right] = len; // Update rightmost boundary
+            
+            // Update max length
             maxLen = max(maxLen, len);
         }
     }
@@ -36,6 +43,3 @@ int main() {
     cout << "The Longest Consecutive Subsequence: " << longestConsecutiveSubsequence(n, arr);
     return 0;
 }
-
-// TIME COMPLEXITY - O(n), where 'n' is the size of the array
-//SPACE COMPLEXITY - O(n), where 'n' is the size of the array
