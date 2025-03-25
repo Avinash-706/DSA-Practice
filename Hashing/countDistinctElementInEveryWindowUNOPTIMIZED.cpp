@@ -7,7 +7,7 @@
 #include <limits>
 using namespace std;
 
-
+//UNOPTIMIZED APPROACH
 void countDistinctElementInEveryWindow(int n, int arr[], int windowSize){
     for(int i = 0; i < (n - windowSize + 1) ; i++){
         unordered_set<int> s;
