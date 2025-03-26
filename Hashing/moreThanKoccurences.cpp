@@ -34,3 +34,6 @@ int main() {
     moreThanKoccurences(n, arr, k);
     return 0;
 }
+
+// TIME  COMPLEXITY  : O(n), where 'n' is the size of the array  
+// SPACE COMPLEXITY : O(n) due to the unordered_map storing frequency counts  
