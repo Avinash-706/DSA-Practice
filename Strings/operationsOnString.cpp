@@ -30,7 +30,33 @@ int main() {
     // 5. SUBSTRING EXTRACTION
     cout << "Substring (0,4) of '" << concatStr << "': " << concatStr.substr(0, 4) << endl;
 
+    // 6. STRING REVERSAL
+    string revStr = str3;
+    reverse(revStr.begin(), revStr.end());
+    cout << "Reversed String: " << revStr << endl;
 
+    // 7. INSERTING INTO A STRING
+    string insStr = "EpicEscapes";
+    insStr.insert(4, " -"); // Insert '-' at position 4
+    cout << "After Insertion: " << insStr << endl;
+
+    // 8. ERASING PART OF A STRING
+    string eraseStr = "Epic - Escapes";
+    eraseStr.erase(4, 2); // Erase 2 characters from index 4
+    cout << "After Erase: " << eraseStr << endl;
+
+    // 9. FINDING A SUBSTRING
+    string findStr = "I love programming!";
+    size_t pos = findStr.find("love");
+    if (pos != string::npos) 
+        cout << "'love' found at position: " << pos << endl;
+    else 
+        cout << "'love' not found" << endl;
+
+    // 10. REPLACING A SUBSTRING
+    string repStr = "Hello World!";
+    repStr.replace(6, 5, "C++"); // Replace "World" with "C++"
+    cout << "After Replace: " << repStr << endl;
 
     return 0;
 }
