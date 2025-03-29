@@ -1,0 +1,72 @@
+OVERVIEW ON STRINGS
+
+A STRING is a sequence of characters and serves as an essential data structure in programming. Unlike
+character arrays, strings come with specialized operations and optimized storage, making them more efficient for text processing
+
+
+CHARACTER SETS AND ENCODING
+
+ ASCII (American Standard Code for Information Interchange)
+  Uses 8-bit encoding (standard: 128 characters, extended: 256 characters)
+  Covers English alphabets, digits, punctuation marks, and control characters
+ 
+ UTF-16 (Unicode Transformation Format - 16 bit)
+  Stores a larger set of characters to support multiple languages
+  First 128 characters are identical to ASCII, ensuring backward compatibility
+  Used in Java as the default encoding for characters
+
+
+STRING REPRESENTATION IN C++ AND JAVA
+
+ C++ Strings
+  Uses 8-bit char type for storage
+  Standard strings are implemented via std::string
+  wchar_t is available for Unicode storage
+
+ Java Strings
+  Uses 16-bit char type with UTF-16 encoding
+  Stored as immutable objects in String class
+  Allows easy conversion between characters and ASCII/Unicode values
+
+
+CHARACTER VALUE MAPPING
+
+ -> ASCII values of characters:
+  'a' -> 97, 'b' -> 98, ..., 'z' -> 122
+  'A' -> 65, 'B' -> 66, ..., 'Z' -> 90
+   Numeric and special symbols also have specific values
+
+ -> Unicode values:
+  First 128 values match ASCII
+  Extended characters provide support for multiple languages
+
+
+STRING OPERATIONS AND ALGORITHMS
+
+ COMMON STRING OPERATIONS
+
+  -> Concatenation
+  -> Substring extraction
+  -> Length determination
+  -> Character access
+  -> Comparison
+
+ IMPORTANT STRING ALGORITHMS
+
+  -> Palindrome Check
+  -> Subsequence Checking
+  -> Anagram Detection
+  -> Pattern Searching (Naive, Rabin-Karp, KMP)
+  -> Finding Leftmost Repeating & Non-Repeating Characters
+  -> Reversing Words in a String
+  -> Lexicographic Rank Calculation
+  -> Finding the Longest Substring with Distinct Characters
+
+
+KEY TAKEAWAYS
+
+ -> Strings are more than just character arrays; they have optimized memory and built-in functionalities
+ -> ASCII and Unicode provide different ways to represent characters, with UTF-16 supporting a wider range of languages
+ -> Java and C++ handle strings differently but maintain fundamental similarities in character value mapping
+ -> Understanding string algorithms is crucial for solving competitive programming and real-world problems efficiently
+
