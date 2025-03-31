@@ -18,11 +18,11 @@ int leftmostNonRepeating(string s1){
 
 
 int main() {
-    string str = "abbcad";
+    // string str = "abbcad";
 
-    // string str;
-    // cout << "Enter a string: ";
-    // cin >> str;
+    string str;
+    cout << "Enter a string: ";
+    cin >> str;
    
     int index = leftmostNonRepeating(str);
 
