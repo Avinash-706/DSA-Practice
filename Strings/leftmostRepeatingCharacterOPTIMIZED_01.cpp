@@ -21,8 +21,10 @@ int leftMost(string str) {
 }
 
 int main() {
-    string str;
+    // string str = "cabbad";
 
+
+    string str;
     cout << "Enter a string: ";
     cin >> str;
 
@@ -33,3 +35,6 @@ int main() {
 
     return 0;
 }
+
+// TIME  COMPLEXITY  : O(n), where 'n' is the length of the string  
+// SPACE COMPLEXITY  : O(1), since the character array has a fixed size (256)  
