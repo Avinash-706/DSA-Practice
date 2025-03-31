@@ -7,13 +7,9 @@
 #include <limits>
 using namespace std;
 
-
+//UNOPTIMIZED APPROACH
 int leftmostRepeatingCharacter(string s1){
-    for(int i = 0; i < s1.length() ; i++){
-        for(int j = i+1 ; j < s1.length(); j++){
-            if(s1[i] == s1[j])    return    i;
-        }
-    }
+    for(int i = 0; i < s1.length() ; i++)   for(int j = i+1 ; j < s1.length(); j++)    if(s1[i] == s1[j])    return    i;
 }
 
 
@@ -29,3 +25,6 @@ int main() {
     cout << "Lest Most Repeating Characters : " << str[index] << " || Index : " << index ;
     return 0;
 }
+
+// TIME  COMPLEXITY  : O(n²), where 'n' is the length of the string  
+// SPACE COMPLEXITY  : O(1)
