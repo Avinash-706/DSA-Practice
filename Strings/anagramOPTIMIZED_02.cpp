@@ -13,7 +13,7 @@ bool anagrams(string s1, string s2){
     unordered_map<char, int> h2;
     int n = s1.length();
     int m = s2.length();
-    a
+    
     if(n != m)    return false;
 
     for(int i = 0 ; i < n ; i++){
