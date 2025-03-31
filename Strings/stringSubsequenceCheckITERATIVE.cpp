@@ -21,3 +21,6 @@ int main() {
     cout << "str2 is a SubSequence of str1: " << (isSubsequence(str1, str2) ? "Yes" : "No") << endl;
     return 0;
 }
+
+// TIME  COMPLEXITY  : O(n + m), where 'n' is the length of string1 (s1) and 'm' is the length of string2 (s2)  
+// SPACE COMPLEXITY  : O(1)  
