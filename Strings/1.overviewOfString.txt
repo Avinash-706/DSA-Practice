@@ -70,3 +70,70 @@ KEY TAKEAWAYS
  -> Java and C++ handle strings differently but maintain fundamental similarities in character value mapping
  -> Understanding string algorithms is crucial for solving competitive programming and real-world problems efficiently
 
+
+PATTERN SEARCHING IN STRINGS
+
+ The PATTERN SEARCHING PROBLEM involves finding all occurrences of a smaller string (pattern)
+ within a larger string (text). If the pattern is not found, the output is "NOT PRESENT"
+
+
+ EXAMPLE:
+  TEXT: geeksforgeeks
+  PATTERN: EKS
+  OCCURRENCES: Index 2 and 10
+
+
+ REAL-WORLD USE CASES:
+ Searching text in files (e.g., MS Word, programming files)
+ Google Search
+ DNA Matching
+ Regular Expression Matching
+
+
+ COMMON PATTERN SEARCHING ALGORITHMS
+ +-------------------------------------------+-------------------+
+ | ALGORITHM                                 | TIME COMPLEXITY   |
+ +-------------------------------------------+-------------------+
+ | Naive Pattern Searching                   | O((N - M + 1) * M) |
+ | Naive (Distinct Characters)               | O(N)              |
+ | Rabin-Karp Algorithm                      | O((N - M + 1) * M) |
+ | KMP Algorithm                             | O(N)              |
+ | Boyer-Moore Algorithm                     | O(N) (Best Case)  |
+ | Z Algorithm                               | O(N)              |
+ | Suffix Tree (Preprocessing Text)          | O(M) (Search Time)|
+ +-------------------------------------------+-------------------+
+
+
+ OVERVIEW OF KEY ALGORITHMS
+  -> NAIVE PATTERN SEARCHING
+   Compares the pattern with every substring window of the text
+   Time Complexity: O((N - M + 1) * M)
+  
+  -> NAIVE (WHEN PATTERN CHARACTERS ARE DISTINCT)
+   If all characters in the pattern are distinct, the naive approach can be optimized to O(N) time
+
+  -> RABIN-KARP ALGORITHM
+   Uses rolling hash to optimize matching
+   If the hash matches, only then it checks individual characters
+   Best Case: Faster than naive, Worst Case: Similar to naive
+
+  -> KMP ALGORITHM (Knuth-Morris-Pratt)
+   Preprocesses the pattern to handle redundancies efficiently
+   Uses an LPS (Longest Proper Prefix which is also Suffix) array to avoid redundant comparisons
+   Time Complexity: O(N)
+
+  -> BOYER-MOORE ALGORITHM
+   Searches the pattern from right to left instead of left to right
+   Skips unnecessary comparisons using bad character and good suffix heuristics
+
+  -> SUFFIX TREE (PREPROCESSING TEXT)
+   Preprocesses the entire text instead of the pattern
+   Ideal for fixed texts where multiple searches are performed
+   Searches take O(M) time, where M is the pattern length
+   Used in Trie-based searching techniques
+
+ KEY TAKEAWAYS
+  -> Pattern Searching is fundamental in text processing and search engines
+  -> KMP, Boyer-Moore, and Z algorithms are preferred for efficient searching
+  -> Rabin-Karp is useful when multiple pattern searches are required
+  -> Suffix Trees are efficient when the text is fixed, allowing quick searches
