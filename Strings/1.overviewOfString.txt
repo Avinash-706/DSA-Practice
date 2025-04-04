@@ -138,7 +138,10 @@ PATTERN SEARCHING IN STRINGS
   -> Rabin-Karp is useful when multiple pattern searches are required
   -> Suffix Trees are efficient when the text is fixed, allowing quick searches
 
+
+
 RABIN-KARP ALGORITHM & IMPROVED HASHING
+
  The Rabin-Karp Algorithm is a string matching algorithm that utilizes hashing to
  efficiently search for a pattern in a text. Instead of checking every substring
  individually, it compares hash values, making it significantly faster in average cases
@@ -176,8 +179,9 @@ RABIN-KARP ALGORITHM & IMPROVED HASHING
       to O(mn) TIME COMPLEXITY (very slow)
    -> SOLUTION? ROLLING HASHING ✅
   
+ ------------------------------------------------
   
-  IMPROVED HASHING: ROLLING HASH TECHNIQUE
+ IMPROVED HASHING: ROLLING HASH TECHNIQUE
    
    WHY IMPROVED HASHING?
     -> Instead of recalculating the hash for each substring from scratch, 
@@ -203,6 +207,8 @@ RABIN-KARP ALGORITHM & IMPROVED HASHING
     Updates hash in O(1) time instead of O(m) ✅
     Suitable for large texts & multiple pattern searches ✅
 
+ ----------------------------------------------
+
  COLLISIONS & FURTHER IMPROVEMENTS
   
   WHAT IF HASHES MATCH BUT STRINGS ARE DIFFERENT?
@@ -227,3 +233,12 @@ RABIN-KARP ALGORITHM & IMPROVED HASHING
    -> If H(P) == H(T[i:i+m]), perform CHARACTER-BY-CHARACTER verification 
    -> Else, compute NEXT ROLLING HASH using O(1) update
   4.Repeat until the entire text is scanned
+
+ ---------------------------------------------------------
+
+ KEY TAKEAWAYS
+  -> RABIN-KARP optimizes naive search using hashing
+  -> ROLLING HASH updates hash in O(1) time
+  -> COLLISION HANDLING is necessary to avoid false matches
+  -> Best suited for MULTIPLE PATTERN SEARCHES in large texts
+  -> For SINGLE PATTERN SEARCHES, KMP and BOYER-MOORE are often preferred
