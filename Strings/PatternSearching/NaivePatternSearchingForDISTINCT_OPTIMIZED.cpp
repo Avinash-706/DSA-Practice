@@ -9,7 +9,7 @@ using namespace std;
 
 
 //NOTE         : Given a pattern with distinct characters.
-//UNOPTIMIZED  : but still more optimized than previous one
+//OPTIMIZED BUT NAIVE APPROACH
 void patSearchinng(string &txt,string &pat){
     int m=pat.length();
     int n=txt.length();
