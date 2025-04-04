@@ -137,3 +137,19 @@ PATTERN SEARCHING IN STRINGS
   -> KMP, Boyer-Moore, and Z algorithms are preferred for efficient searching
   -> Rabin-Karp is useful when multiple pattern searches are required
   -> Suffix Trees are efficient when the text is fixed, allowing quick searches
+
+RABIN-KARP ALGORITHM & IMPROVED HASHING
+ The Rabin-Karp Algorithm is a string matching algorithm that utilizes hashing to
+ efficiently search for a pattern in a text. Instead of checking every substring
+ individually, it compares hash values, making it significantly faster in average cases
+
+ KEY CONCEPT
+ -> Compute the hash of the pattern and the hash of substrings in the text
+ -> If the hash values match, perform a character-by-character verification
+ -> Uses a rolling hash function to efficiently update the hash value for new substrings
+ 
+ USE CASES
+  Text searching in large documents ✅ 
+  Plagiarism detection ✅ 
+  Searching for multiple patterns efficiently ✅ 
+  NA sequencing and bioinformatics applications ✅ 
