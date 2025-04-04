@@ -8,7 +8,7 @@
 using namespace std;
 
 
-
+//UNOPTIMIZED APPROACH
 void PatternSearching(string &text, string &pattern){
    // Your string operations here
    int n = text.length();
@@ -42,3 +42,6 @@ int main() {
     PatternSearching(text, pattern);
     return 0;
 }
+
+// TIME  COMPLEXITY  : O((n-m+1) * m), where 'n' is the length of the text and 'm' is the length of the pattern
+// SPACE COMPLEXITY  : O(1)
