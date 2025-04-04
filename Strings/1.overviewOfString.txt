@@ -155,7 +155,7 @@ RABIN-KARP ALGORITHM & IMPROVED HASHING
   Text searching in large documents ✅ 
   Plagiarism detection ✅ 
   Searching for multiple patterns efficiently ✅ 
-  NA sequencing and bioinformatics applications ✅ 
+  DNA sequencing and bioinformatics applications ✅ 
   
  NORMAL HASHING (BASIC APPROACH) & ITS LIMITATIONS
   HOW NORMAL HASHING WORKS?
@@ -178,9 +178,9 @@ RABIN-KARP ALGORITHM & IMPROVED HASHING
    -> Computing hash from scratch for EACH WINDOW of the text leads 
       to O(mn) TIME COMPLEXITY (very slow)
    -> SOLUTION? ROLLING HASHING ✅
-  
+
  ------------------------------------------------
-  
+
  IMPROVED HASHING: ROLLING HASH TECHNIQUE
    
    WHY IMPROVED HASHING?
@@ -210,29 +210,32 @@ RABIN-KARP ALGORITHM & IMPROVED HASHING
  ----------------------------------------------
 
  COLLISIONS & FURTHER IMPROVEMENTS
-  
+ 
   WHAT IF HASHES MATCH BUT STRINGS ARE DIFFERENT?
    -> HASH COLLISIONS occur when two different substrings have the same hash
-   -> SOLUTION? DOUBLE-CHECK CHARACTERS after a hash match
-   
-  EXAMPLE:
-   Text: "AXBYCZ", Pattern: "AXC"
-   -> Hash of "AXC" might match hash of "AXB" due to collision
-   -> Solution? Manually compare "AXC" and "AXB" character-by-character
+   -> Special keyword: "SPURIOUS HITS" ✅
+   -> A SPURIOUS HIT is when the hash of a pattern matches the hash of a text window, 
+      but the actual strings do not match upon verification
+
+   EXAMPLE:
+   Text: "ABABABACD", Pattern: "ABAC"
+   -> Hash("ABAC") might match hash("ABAB") → "SPURIOUS HIT"
+   -> But after character comparison, the mismatch is detected
+   -> Solution? Perform CHARACTER-BY-CHARACTER CHECKING after a hash match ✅
    
   METHODS TO AVOID COLLISIONS
    ✅ LARGER PRIME NUMBERS (q) → Makes hash values more unique
    ✅ DOUBLE HASHING → Use TWO DIFFERENT HASH FUNCTIONS
    ✅ POLYNOMIAL HASHING → Use polynomials to distribute hash values
 
-  RABIN-KARP ALGORITHM STEPS
+ RABIN-KARP ALGORITHM STEPS
 
   1. Compute the hash of the pattern (P)
   2. Compute the hash of the first m characters of the text (T)
   3. Slide the pattern over text:
    -> If H(P) == H(T[i:i+m]), perform CHARACTER-BY-CHARACTER verification 
    -> Else, compute NEXT ROLLING HASH using O(1) update
-  4.Repeat until the entire text is scanned
+  4. Repeat until the entire text is scanned
 
  ---------------------------------------------------------
 
@@ -240,5 +243,6 @@ RABIN-KARP ALGORITHM & IMPROVED HASHING
   -> RABIN-KARP optimizes naive search using hashing
   -> ROLLING HASH updates hash in O(1) time
   -> COLLISION HANDLING is necessary to avoid false matches
+  -> Special term for false matches: SPURIOUS HITS ✅
   -> Best suited for MULTIPLE PATTERN SEARCHES in large texts
   -> For SINGLE PATTERN SEARCHES, KMP and BOYER-MOORE are often preferred
