@@ -153,3 +153,77 @@ RABIN-KARP ALGORITHM & IMPROVED HASHING
   Plagiarism detection ✅ 
   Searching for multiple patterns efficiently ✅ 
   NA sequencing and bioinformatics applications ✅ 
+  
+ NORMAL HASHING (BASIC APPROACH) & ITS LIMITATIONS
+  HOW NORMAL HASHING WORKS?
+  For a string S = "abcd" of length m, the hash value is computed as:
+  H(S) = (d^(m-1) * S[0] + d^(m-2) * S[1] + ... + S[m-1]) mod q
+   -> d = Base value (typically 256 for ASCII)
+   -> q = Prime number to prevent overflow
+   
+  EXAMPLE:
+  Pattern: "ABC"
+   -> ASCII values: A = 65, B = 66, C = 67
+   -> Hash calculation with d = 10 and q = 13:
+   H("ABC") = (10² × 65 + 10¹ × 66 + 10⁰ × 67) mod 13
+   = (6500 + 660 + 67) mod 13
+   = 7227 mod 13 = 3
+   
+   -> Compute hash for every substring in the text
+  
+  PROBLEM WITH NORMAL HASHING
+   -> Computing hash from scratch for EACH WINDOW of the text leads 
+      to O(mn) TIME COMPLEXITY (very slow)
+   -> SOLUTION? ROLLING HASHING ✅
+  
+  
+  IMPROVED HASHING: ROLLING HASH TECHNIQUE
+   
+   WHY IMPROVED HASHING?
+    -> Instead of recalculating the hash for each substring from scratch, 
+       we derive the NEW HASH from the PREVIOUS HASH in CONSTANT TIME O(1)
+    -> Makes RABIN-KARP significantly faster compared to naive methods
+    
+   ROLLING HASH FORMULA
+    Given text T = "ABCD..." and pattern "ABC", update hash as:
+    H(Tᵢ₊₁) = (d * (H(Tᵢ) − T[i] * d^(m−1)) + T[i+m]) mod q
+    
+    EXPLANATION:
+     -> Remove contribution of LEFTMOST CHARACTER (T[i] * d^(m-1))
+     -> Multiply previous hash by d (shift left)
+     -> Add NEW RIGHTMOST CHARACTER (T[i+m])
+    
+    EXAMPLE:
+     Text: "ABCD", window size m = 3
+     -> Compute H("ABC") first
+     -> Compute H("BCD") using H("ABC") without recomputation
+   
+   ADVANTAGES OF ROLLING HASH
+    Eliminates redundant computations ✅
+    Updates hash in O(1) time instead of O(m) ✅
+    Suitable for large texts & multiple pattern searches ✅
+
+ COLLISIONS & FURTHER IMPROVEMENTS
+  
+  WHAT IF HASHES MATCH BUT STRINGS ARE DIFFERENT?
+   -> HASH COLLISIONS occur when two different substrings have the same hash
+   -> SOLUTION? DOUBLE-CHECK CHARACTERS after a hash match
+   
+  EXAMPLE:
+   Text: "AXBYCZ", Pattern: "AXC"
+   -> Hash of "AXC" might match hash of "AXB" due to collision
+   -> Solution? Manually compare "AXC" and "AXB" character-by-character
+   
+  METHODS TO AVOID COLLISIONS
+   ✅ LARGER PRIME NUMBERS (q) → Makes hash values more unique
+   ✅ DOUBLE HASHING → Use TWO DIFFERENT HASH FUNCTIONS
+   ✅ POLYNOMIAL HASHING → Use polynomials to distribute hash values
+
+  RABIN-KARP ALGORITHM STEPS
+
+  1. Compute the hash of the pattern (P)
+  2. Compute the hash of the first m characters of the text (T)
+  3. Slide the pattern over text:
+   -> If H(P) == H(T[i:i+m]), perform CHARACTER-BY-CHARACTER verification 
+   -> Else, compute NEXT ROLLING HASH using O(1) update
+  4.Repeat until the entire text is scanned
