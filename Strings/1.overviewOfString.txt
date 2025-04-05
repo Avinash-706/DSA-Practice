@@ -246,3 +246,97 @@ RABIN-KARP ALGORITHM & IMPROVED HASHING
   -> Special term for false matches: SPURIOUS HITS ✅
   -> Best suited for MULTIPLE PATTERN SEARCHES in large texts
   -> For SINGLE PATTERN SEARCHES, KMP and BOYER-MOORE are often preferred
+
+
+
+
+
+
+
+LEXICOGRAPHIC RANK OF A STRING:
+
+ The LEXICOGRAPHIC RANK of a string is its position in the list of all permutations
+ of the string sorted in lexicographic (dictionary) order
+
+ PRE-REQUISITES
+  -> Understanding of permutations
+  -> Factorial computations (n!)
+  -> ASCII-based character comparisons for sorting
+  
+ STRING: "STRING"
+ PERMUTATIONS (sorted): "G...N...R...S...T...", etc.
+ RANK: The position at which "STRING" occurs in the sorted permutation list
+
+ EXAMPLE : 
+  Suppose the string is "aabc".
+
+  Permutations (in lexicographical order):
+  aabc
+  aacb
+  abac
+  abca
+  acab
+  acba
+  baac
+  baca
+  bcaa
+  caab
+  caba
+  cbaa
+
+ BASIC IDEA
+  -> Fix the first character and count how many permutations can be formed
+     with smaller characters at that position
+  -> Repeat the process for all characters
+  
+ FORMULA & APPROACH
+  For each character in the string:
+   -> Count all characters to the right that are smaller than the current character
+   -> Multiply the count with factorial of remaining characters
+   -> Add all such values for every character
+  
+  FINAL RANK = SUM + 1
+   (Add 1 because ranks start from 1, not 0)
+
+ EXAMPLE:
+  STRING: "BAC"
+   -> Sorted permutations: "ABC", "ACB", "BAC"
+   -> Rank: 3
+
+ STEP-BY-STEP
+  S = "BAC"
+  1. B → Smaller chars to right = A → 1 × 2! = 2
+  2. A → No smaller char to right → 0 × 1! = 0
+  3. C → No smaller char to right → 0 × 0! = 0
+  Final Rank = 2 + 0 + 0 + 1 = 3 ✅
+
+ TIME & SPACE COMPLEXITY
+ +----------------------------------+------------------+
+ | METHOD                           | TIME COMPLEXITY  |
+ +----------------------------------+------------------+
+ | Without Duplicates               | O(N²)             |
+ | With Duplicates (using freq map) | O(N × log N)      |
+ +----------------------------------+------------------+
+
+ CONSIDERING DUPLICATES
+  -> For repeated characters, we divide by factorial of frequencies
+     to eliminate identical permutations
+  
+ EXAMPLE:
+  STRING: "AABC"
+   -> Total permutations: 4! / (2!) = 12
+   -> Use frequency map to adjust for duplicate 'A'
+
+ FORMULA WITH DUPLICATES
+   RANK += (count of smaller chars) × (fact of remaining chars) / (product of factorial of frequencies)
+
+ KEY FUNCTIONS REQUIRED
+  -> factorial(n) function
+  -> freq[] array for duplicate handling
+  -> char comparison using ASCII values
+
+ KEY TAKEAWAYS
+  -> Lexicographic Rank is useful in combinatorics, encryption, and ordering problems
+  -> Requires factorial and frequency-based computation
+  -> Efficient handling of duplicates is critical
+  -> Optimized solutions use freq[] and BIT/Segment Trees for large input

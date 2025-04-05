@@ -35,7 +35,7 @@ int compute(string str) {
 }
 
 int main() {
-    string str = "abca";
+    string str = "baac";
     cout << "Lexicographic Rank of \"" << str << "\" is: " << compute(str) << endl;
     return 0;
 }
