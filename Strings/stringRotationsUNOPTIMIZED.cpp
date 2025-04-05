@@ -33,17 +33,18 @@ void stringRotations(string &s1, string &s2){
         // callRotate(s2);
 
         if(s1 == s2){
-            cout << "TRUE" << endl; 
+            cout << "TRUE : They are the Rotations of Each Other" << endl; 
             return ;
         }  
     }
+    cout << "FALSE : They are not the Rotations of Each Other" << endl;
 
 }
 
 
 int main() {
-    string s1 = "abcde";
-    string s2 = "bcdea";
+    // string s1 = "abcde";
+    // string s2 = "bcdea";
 
     string s1, s2;
     cout << "Enter the original string: ";
