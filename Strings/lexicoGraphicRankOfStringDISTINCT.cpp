@@ -41,6 +41,6 @@ int main() {
     cout << "Enter a string: ";
     cin >> str;
 
-    cout << lexicoGraphicRankOfStringDISTINCT(str);
+    cout << "Lexicographic Rank of \"" << str << "\" is: " << lexicoGraphicRankOfStringDISTINCT(str) << endl;
     return 0;
 }
