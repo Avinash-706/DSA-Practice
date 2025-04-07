@@ -249,7 +249,85 @@ RABIN-KARP ALGORITHM & IMPROVED HASHING
 
 
 
+LONGEST PROPER PREFIX SUFFIX (LPS) ARRAY
 
+ The LPS array for a given string stores the length of the longest proper prefix
+ of the string that is also a suffix of the same string, at each index. This array
+ is crucial for the KMP (Knuth-Morris-Pratt) algorithm as a pre-processing step
+
+ DEFINITION OF SUFFIX AND PROPER PREFIX
+
+ Consider the string "ABC":
+  -> Proper Prefixes: "", "A", "AB" (Note: "ABC" is a prefix but not a *proper* prefix
+     as its length is equal to the string's length). A proper prefix has a length strictly less than the string
+  -> Suffixes: "", "C", "BC", "ABC".
+
+ EXAMPLE TO UNDERSTAND PROPER PREFIX AND SUFFIX
+ For the string "ABCD":
+  -> Proper Prefixes: "", "A", "AB", "ABC"
+  -> Proper Suffixes: "", "D", "CD", "BCD"
+
+ LPS ARRAY CONSTRUCTION
+ The goal is to find the length of the longest proper prefix that is also a suffix at
+ every position in the given string.
+
+ RULES FOR LPS ARRAY
+  1. The first entry (index 0) of the LPS array is always 0, as a string of length 1
+     cannot have a non-empty proper prefix.
+  2. For the second entry (index 1), if the first two characters of the string are the
+     same, the LPS value is 1; otherwise, it's 0.
+  3. For subsequent entries (index i), we consider the substring from the beginning up
+     to index i and find the length of the longest proper prefix that is also a suffix of this substring.
+
+ EXAMPLES OF LPS ARRAY
+
+  -> String: "AABA" -> LPS: [0, 1, 0, 1] ('A' at index 0 and 3)
+  -> String: "AAAA" -> LPS: [0, 1, 2, 3]
+  -> String: "ABCDE" -> LPS: [0, 0, 0, 0, 0]
+  -> String: "ABABC" -> LPS: [0, 0, 1, 2, 0] ("AB" is both a proper prefix and suffix of "ABAB")
+  -> String: "ABABAB" -> LPS: [0, 0, 1, 2, 3, 4]
+  -> String: "aabaacaadaabaaba" -> LPS: [0, 1, 0, 1, 2, 0, 1, 2, 0, 0, 1, 2, 3, 4, 5]
+  -> String: "abbabbaba" -> LPS: [0, 0, 1, 2, 0, 1, 2, 3, 4]
+
+ NAIVE APPROACH TO CONSTRUCT LPS ARRAY
+
+  The naive approach involves iterating through all possible proper prefixes of
+  each substring and checking if they are also suffixes
+ 
+  Time Complexity: O(n^3), where n is the length of the string. This is because
+  for each of the n prefixes, we might compare up to n characters with up to n suffixes
+ 
+  EFFICIENT (LINEAR TIME) APPROACH FOR LPS ARRAY (Used in KMP) ✅
+  The efficient approach utilizes already computed LPS values to determine the next LPS value ✅
+ 
+ BASIC IDEAS:
+
+  1. If `str[i]` matches `str[length]` (where `length` is the LPS value of the previous index `i-1`),
+     then `LPS[i] = length + 1`, and we increment `length`.
+
+  2. If `str[i]` does not match `str[length]`:
+    a. If `length` is 0, then `LPS[i] = 0`, and we move to the next index.
+    b. If `length` is greater than 0, we update `length` to `LPS[length - 1]` and repeat the comparison. This step utilizes the information about the longest proper prefix suffix of the prefix of length `length`. We continue this until we find a match or `length` becomes 0.
+
+  DRY RUN EXAMPLE: str = "ABABC"
+
+  | i | str[i] | length | str[length] | Condition             | LPS[i] | length (after) |
+  |---|--------|--------|-------------|-----------------------|--------|----------------|
+  | 0 | A      | 0      | -           | (Initialization)      | 0      | 0              |
+  | 1 | B      | 0      | A           | str[i] != str[length] | 0      | 0              |
+  | 2 | A      | 0      | A           | str[i] == str[length] | 1      | 1              |
+  | 3 | B      | 1      | B           | str[i] == str[length] | 2      | 2              |
+  | 4 | C      | 2      | A           | str[i] != str[length] |        |                |
+  |   | C      | 1      | B           | str[i] != str[length] |        |                |
+  |   | C      | 0      | A           | length == 0          | 0      | 0              |
+  
+  Final LPS array: [0, 0, 1, 2, 0]
+  
+  TIME COMPLEXITY OF EFFICIENT APPROACH: O(n) ✅
+  
+  Each character `str[i]` is visited at most twice (once when `i` is incremented, and at most
+  once more within the `while length != 0` loop, as `length` decreases with each iteration of that loop).
+  Therefore, the time complexity is linear with respect to the length of the string.
 
 
 
