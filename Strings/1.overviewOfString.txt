@@ -253,6 +253,7 @@ RABIN-KARP ALGORITHM & IMPROVED HASHING
 
 
 
+
 LEXICOGRAPHIC RANK OF A STRING:
 
  The LEXICOGRAPHIC RANK of a string is its position in the list of all permutations
