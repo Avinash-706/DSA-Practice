@@ -4,6 +4,7 @@ A STRING is a sequence of characters and serves as an essential data structure i
 character arrays, strings come with specialized operations and optimized storage, making them more efficient for text processing
 
 
+
 CHARACTER SETS AND ENCODING
 
  ASCII (American Standard Code for Information Interchange)
@@ -14,6 +15,11 @@ CHARACTER SETS AND ENCODING
   Stores a larger set of characters to support multiple languages
   First 128 characters are identical to ASCII, ensuring backward compatibility
   Used in Java as the default encoding for characters
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------
+
 
 
 STRING REPRESENTATION IN C++ AND JAVA
@@ -29,6 +35,8 @@ STRING REPRESENTATION IN C++ AND JAVA
   Allows easy conversion between characters and ASCII/Unicode values
 
 
+
+
 CHARACTER VALUE MAPPING
 
  -> ASCII values of characters:
@@ -39,6 +47,11 @@ CHARACTER VALUE MAPPING
  -> Unicode values:
   First 128 values match ASCII
   Extended characters provide support for multiple languages
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------
+
 
 
 STRING OPERATIONS AND ALGORITHMS
@@ -69,6 +82,12 @@ KEY TAKEAWAYS
  -> ASCII and Unicode provide different ways to represent characters, with UTF-16 supporting a wider range of languages
  -> Java and C++ handle strings differently but maintain fundamental similarities in character value mapping
  -> Understanding string algorithms is crucial for solving competitive programming and real-world problems efficiently
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+
 
 
 PATTERN SEARCHING IN STRINGS
@@ -137,6 +156,12 @@ PATTERN SEARCHING IN STRINGS
   -> KMP, Boyer-Moore, and Z algorithms are preferred for efficient searching
   -> Rabin-Karp is useful when multiple pattern searches are required
   -> Suffix Trees are efficient when the text is fixed, allowing quick searches
+
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------
+
 
 
 
@@ -249,6 +274,10 @@ RABIN-KARP ALGORITHM & IMPROVED HASHING
 
 
 
+----------------------------------------------------------------------------------------------------------------------------------
+
+
+
 LONGEST PROPER PREFIX SUFFIX (LPS) ARRAY
 
  The LPS array for a given string stores the length of the longest proper prefix
@@ -329,6 +358,112 @@ LONGEST PROPER PREFIX SUFFIX (LPS) ARRAY
   once more within the `while length != 0` loop, as `length` decreases with each iteration of that loop).
   Therefore, the time complexity is linear with respect to the length of the string.
 
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+OVERVIEW ON KMP (KNUTH-MORRIS-PRATT) STRING MATCHING ALGORITHM
+
+ The KMP algorithm is an efficient string searching algorithm that finds occurrences of a "pattern"
+string within a larger "text" string. It optimizes the naive approach by avoiding redundant comparisons
+ 
+ PROBLEM DEFINITION
+ Given a text (T) and a pattern (P), find all indices in T where P occurs
+ 
+ EXAMPLES 
+  -> Text: "ABABDABACDABABCABAB", Pattern: "ABABCABAB" ✅ Output: 1
+  -> Text: "AAAAAB", Pattern: "AAAA" ✅ Output: 0 1
+  -> Text: "ABCDE", Pattern: "BA" ❌ Output: Not found
+
+ COMPARISON WITH OTHER ALGORITHMS
+ 
+  -> Naive Algorithm             :  O(n*m) time complexity (n: text length, m: pattern length).
+  -> Naive (Distinct Characters) :  O(n) time complexity if the pattern has distinct characters.
+  -> Rabin-Karp Algorithm        :  O(n*m) worst-case, but often better in practice, uses rolling hash.
+  -> KMP Algorithm               :  O(n) time complexity, O(m) auxiliary space. ✅
+ 
+ MAIN IDEA OF KMP
+ 
+  1. Pre-processing the Pattern : Compute an LPS (Longest Proper Prefix which is also Suffix) array for
+                                 the pattern. This array helps in determining how much to shift the pattern
+                                 when a mismatch occurs
+  2. Pattern Searching          : Slide the pattern over the text, comparing characters. When a mismatch occurs,
+                                  use the LPS array to efficiently shift the pattern
+ 
+ LPS ARRAY (RECAP)
+  The LPS array `lps[i]` stores the length of the longest proper prefix of `pattern[0...i]` 
+  that is also a suffix of `pattern[0...i]`.
+ 
+
+ KMP ALGORITHM MECHANICS
+
+  -> Two pointers are used: `i` for the text and `j` for the pattern, both starting at 0.
+  -> Compare `text[i]` and `pattern[j]`.
+  -> If they match, increment both `i` and `j`.
+  -> If `j` reaches the length of the pattern (m), a match is found at index `i - j`. After finding a match, use `j = lps[j - 1]` to continue searching for the next occurrence.
+  -> If they don't match:
+     -> If `j` is not 0, set `j = lps[j - 1]`. This utilizes the information from the LPS array to shift the pattern.
+     -> If `j` is 0, it means there is no prefix of the pattern that matches the current suffix of the text, so simply increment `i`.
+
+  DRY RUN EXAMPLE: Text = "ABABDABACDABABCABAB", Pattern = "ABABCABAB"
+ 
+  (Assuming LPS array for "ABABCABAB" is [0, 0, 1, 2, 0, 1, 2, 3, 4])
+ 
+  | i | text[i] | j | pattern[j] | Match? | Action                      | j (next) | Occurrences |
+  |---|---------|---|------------|--------|-----------------------------|----------|-------------|
+  | 0 | A       | 0 | A          | ✅     | i++, j++                     | 1        | []          |
+  | 1 | B       | 1 | B          | ✅     | i++, j++                     | 2        | []          |
+  | 2 | A       | 2 | A          | ✅     | i++, j++                     | 3        | []          |
+  | 3 | B       | 3 | B          | ✅     | i++, j++                     | 4        | []          |
+  | 4 | D       | 4 | C          | ❌     | j = LPS[3] = 2              | 2        | []          |
+  | 4 | D       | 2 | A          | ❌     | j = LPS[1] = 0              | 0        | []          |
+  | 4 | D       | 0 | A          | ❌     | i++                         | 0        | []          |
+  | 5 | A       | 0 | A          | ✅     | i++, j++                     | 1        | []          |
+  | 6 | B       | 1 | B          | ✅     | i++, j++                     | 2        | []          |
+  | 7 | A       | 2 | A          | ✅     | i++, j++                     | 3        | []          |
+  | 8 | C       | 3 | B          | ❌     | j = LPS[2] = 1              | 1        | []          |
+  | 8 | C       | 1 | B          | ❌     | j = LPS[0] = 0              | 0        | []          |
+  | 8 | C       | 0 | A          | ❌     | i++                         | 0        | []          |
+  | 9 | D       | 0 | A          | ❌     | i++                         | 0        | []          |
+  | 10| A       | 0 | A          | ✅     | i++, j++                     | 1        | []          |
+  | 11| B       | 1 | B          | ✅     | i++, j++                     | 2        | []          |
+  | 12| A       | 2 | A          | ✅     | i++, j++                     | 3        | []          |
+  | 13| B       | 3 | B          | ✅     | i++, j++                     | 4        | []          |
+  | 14| C       | 4 | C          | ✅     | i++, j++                     | 5        | []          |
+  | 15| A       | 5 | A          | ✅     | i++, j++                     | 6        | []          |
+  | 16| B       | 6 | B          | ✅     | i++, j++                     | 7        | []          |
+  | 17| A       | 7 | A          | ✅     | i++, j++                     | 8        | []          |
+  | 18| B       | 8 | B          | ✅     | i++, j++                     | 9        | []          |
+  | 19|         | 9 |            |         | j == m (9 == 9) -> match   | 4         | [10]        |
+  | 19|         | 4 | C          | ❌     | j = LPS[3] = 2              | 2        | [10]        |
+  | 19|         | 2 | A          | ❌     | j = LPS[1] = 0              | 0        | [10]        |
+  | 19|         | 0 | A          | ❌     | i++                         | 0        | [10]        |
+  
+  (Continuing the dry run...)
+  
+  TIME COMPLEXITY ANALYSIS OF KMP
+ 
+   -> The outer `while` loop for `i` runs at most `n` times.
+   -> The inner `while` loop (when `pattern[j] != text[i]`) has the effect of decreasing `j`. Since `j` is incremented at most `n` times in the outer loop, it can be decremented at most `n` times in total across all iterations.
+   -> Therefore, the overall time complexity of the KMP algorithm is O(n). ✅
+ 
+  SPACE COMPLEXITY OF KMP
+ 
+   -> The algorithm uses an LPS array of size `m` (length of the pattern).
+   -> Hence, the auxiliary space complexity is O(m). ✅
+ 
+  KEY TAKEAWAYS
+   -> KMP algorithm provides a linear time solution for the string matching problem.
+   -> It utilizes a pre-computed LPS array to efficiently handle mismatches.
+   -> By understanding the redundancies within the pattern, KMP avoids unnecessary comparisons, making it more efficient than the naive approach, especially for patterns with repeated substrings.
+   -> The pre-processing step (LPS array computation) takes O(m) time.
+   -> The pattern searching step takes O(n) time.
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------
 
 
 
