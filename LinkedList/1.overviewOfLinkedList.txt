@@ -1,4 +1,4 @@
-
+=======================
 LINKED LIST 
 
 ARRAY VS LINKED LIST
@@ -18,7 +18,7 @@ ARRAY VS LINKED LIST
   -> Useful in real-time applications due to predictable time complexities
 
  =============================
- 
+
  PROBLEMS WITH ARRAYS
 
   1) FIXED SIZE ALLOCATION
@@ -75,15 +75,56 @@ ARRAY VS LINKED LIST
 
 =============================
 
- SUMMARY
 
-  -> Arrays are simple, fast for random access, but:
-   ❌ Fixed size
-   ❌ Costly insertions/deletions
-   ❌ Complex real-time queue operations
 
-  -> Linked Lists:
-   ✅ Dynamic size
-   ✅ Efficient insertions/deletions
-   ✅ Easier queue/dequeue implementations
-   ✅ Ideal for real-time scheduling scenarios
+
+
+=============================
+LINKED LIST - INTRODUCTION
+
+  -> LINKED LIST is a LINEAR DATA STRUCTURE just like ARRAYS  
+  -> Stores elements SEQUENTIALLY, one after the other  
+  -> MAJOR DIFFERENCE:  
+    -> ARRAYS require CONTIGUOUS MEMORY  
+    -> LINKED LIST elements can be at RANDOM LOCATIONS in memory  
+ 
+ ============================
+ MEMORY STRUCTURE & CONNECTIVITY
+ 
+  -> Each NODE contains:  
+    -> VALUE (data)  
+    -> REFERENCE or POINTER to the NEXT NODE  
+ 
+  -> Nodes are CONNECTED using POINTERS (C/C++) or REFERENCES (Java/Python)  
+  -> LAST NODE points to NULL (no next node)  
+  -> MEMORY is like an ARRAY OF BYTES  
+    -> Each NODE occupies memory anywhere (e.g. 2000, 5000, etc.)  
+    -> UNLIKE arrays, NO NEED for memory to be continuous  
+ 
+
+ ===================
+ ARRAY vs LINKED LIST
+ 
+  | PROPERTY             | ARRAY                        | LINKED LIST                     |
+  |----------------------|-------------------------------|----------------------------------|
+  | Memory Allocation     | Contiguous                    | Random                           |
+  | Preallocation         | Required                      | Not required                     |
+  | Insertion/Deletion    | Costly (shift needed)         | Efficient (just change links)    |
+  | Memory Wastage        | Yes, if size is overestimated | No, memory allocated as needed   |
+ 
+ ====================
+ ADVANTAGES OF LINKED LIST
+ 
+  ✔ Efficient INSERTION and DELETION (beginning or middle)  
+  ✔ NO NEED to move all elements (as in arrays)  
+  ✔ NO PRE-ALLOCATION of memory  
+  ✔ EXACTLY 'n' nodes for 'n' elements  
+  ✔ DYNAMIC MEMORY ALLOCATION — link nodes as needed  
+
+====================
+
+
+
+
+
+===================
