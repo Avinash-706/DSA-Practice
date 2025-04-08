@@ -1,0 +1,89 @@
+
+LINKED LIST 
+
+ARRAY VS LINKED LIST
+
+ ARRAY:
+  -> Sequential & linear data structure
+  -> Stores elements in CONTIGUOUS memory locations
+  -> Used in implementing Stack, Queue, Dequeue, etc.
+  -> C++: fixed size, variable size (stack/heap), dynamic (vector)
+  -> Java: fixed size, dynamic (ArrayList), all heap allocated
+  -> Python: list (dynamic)
+
+ LINKED LIST:
+  -> Also a sequential & linear data structure
+  -> Does NOT require contiguous memory
+  -> Competes with arrays in many scenarios
+  -> Useful in real-time applications due to predictable time complexities
+
+ =============================
+ 
+ PROBLEMS WITH ARRAYS
+
+  1) FIXED SIZE ALLOCATION
+   -> Need to predefine size (e.g., 100, n)
+   -> Cannot grow beyond defined size
+  
+  2) DYNAMIC SIZE ARRAYS (VECTOR / ARRAYLIST / PYTHON LIST)
+   -> Adjust size when full by allocating DOUBLE SPACE
+   -> Copy old elements to new space
+   -> INSERTION becomes:
+       -> O(1) if space available
+       -> O(n) when resizing needed (worst-case)
+   -> Uses AMORTIZED ANALYSIS:
+       -> Average case: O(1)
+       -> Worst case: O(n)
+   -> NOT SUITABLE for real-time systems
+  
+  3) COSTLY INSERTION IN MIDDLE
+   -> Need to shift elements to make space
+   -> Example:
+       Insert 25 between 20 & 30 in [10, 20, 30, 40]
+       Shift 30 & 40 → [10, 20, 25, 30, 40]
+   -> If inserting at beginning with 1000 elements,
+       → Shift 999 elements → High cost
+  
+  4) COSTLY DELETION IN MIDDLE
+   -> Need to shift elements backward
+   -> Example:
+       Delete 20 from [10, 20, 30, 40] → Shift 30 & 40
+       Result: [10, 30, 40]
+   -> If deleting first element with 1000 elements,
+       → Shift 999 elements → High cost
+  
+  5) DIFFICULT IMPLEMENTATION OF QUEUE / DEQUEUE
+   -> Stack (insertion/deletion at same end) can be done using last index
+   -> Queue/Dequeue (insert one end, delete other end):
+       -> Hard to implement efficiently using arrays
+       -> Possible with O(1) operations, but COMPLEX to implement
+       -> LINKED LIST makes it EASY and EFFICIENT
+       -> Especially effective using CIRCULAR LINKED LISTS
+
+ =============================
+ 
+ REAL-WORLD USE CASE
+
+  -> Processor Queue with Round Robin Scheduling
+   Example:
+   -> Processes: P0, P1, P2...
+   -> Quantum: 5 units
+   -> P0 needs 10 units
+   -> Give 5 units, then move P0 to end of queue
+   -> Requires dynamic & efficient rearrangement
+   -> LINKED LIST handles it easily (especially CIRCULAR variant)
+
+=============================
+
+ SUMMARY
+
+  -> Arrays are simple, fast for random access, but:
+   ❌ Fixed size
+   ❌ Costly insertions/deletions
+   ❌ Complex real-time queue operations
+
+  -> Linked Lists:
+   ✅ Dynamic size
+   ✅ Efficient insertions/deletions
+   ✅ Easier queue/dequeue implementations
+   ✅ Ideal for real-time scheduling scenarios
