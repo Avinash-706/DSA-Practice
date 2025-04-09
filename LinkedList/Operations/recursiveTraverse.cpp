@@ -7,14 +7,16 @@
 #include <limits>
 using namespace std;
 
+
 struct Node{
     int data;
     Node *next;
-    Node(int x){
+    Node (int x) {
         data = x;
         next = NULL;
     }
 };
+
 
 void printLinkedList(Node *head){
     Node *curr = head;
@@ -24,11 +26,29 @@ void printLinkedList(Node *head){
     }
 }
 
+
 int main() {
-    Node *head = new Node(10);
-    head -> next = new Node(20); 
-    head -> next -> next = new Node(30); 
+    int n;
+    cout << "Enter the number of elements : ";
+    cin >> n;
+
+    Node *head = NULL, *tail = NULL;
     
+    for(int i = 0 ; i < n ; i++){
+        int input;
+        cin >> input;
+        Node *newNode = new Node(input);
+
+        if(head == NULL){
+            head = newNode;
+            tail = newNode;
+        }
+        else{
+            tail -> next = newNode;
+            tail = newNode;
+        }
+    }
+
     printLinkedList(head);
 
     return 0;
