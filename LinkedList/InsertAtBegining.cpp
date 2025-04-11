@@ -25,11 +25,16 @@ void printLinkedList(Node *head){
 }
 
 Node *insertBegin(Node *head, int x){
-    Node *temp = 
+    Node *temp = new Node(x);
+    temp -> next = head;
+    return temp;
 }
 
 int main() {
-
+    Node *head = NULL;
+    head = insertBegin(head, 30);
+    head = insertBegin(head, 20);
+    head = insertBegin(head, 10);
     printLinkedList(head);
     return 0;
 }
