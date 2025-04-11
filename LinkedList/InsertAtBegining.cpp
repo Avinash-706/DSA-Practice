@@ -7,6 +7,8 @@
 #include <limits>
 using namespace std;
 
+
+//INSERTION AT THE VERY BEGINING OF THE LINKEDLIST
 struct Node{
     int data;
     Node *next;
