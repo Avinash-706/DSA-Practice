@@ -27,10 +27,24 @@ void printLinkedList(Node *head){
 }
 
 void deleteLastNode(Node *head){
-    Node *curr = head;
-    while(curr -> next != NULL){
-        
+    if(head == NULL){
+        cout << "NULL" << endl;
+        return ;
     }
+
+    if(head -> next == NULL){
+        delete head;
+        cout << "NULL" << endl;
+        return;
+    }
+
+    Node *curr = head;
+    while(curr -> next -> next != NULL){
+        curr = curr -> next;
+    }
+    delete curr -> next;
+    curr -> next = NULL;
+    return ;
 }
 
 int main() {
@@ -43,5 +57,11 @@ int main() {
     printLinkedList(head);
 
     deleteLastNode(head);
+
+    printLinkedList(head);
+
     return 0;
 }
+
+// TIME  COMPLEXITY - O(n), where 'n' is the number of nodes of the Linked List
+// SPACE COMPLEXITY - O(1)
