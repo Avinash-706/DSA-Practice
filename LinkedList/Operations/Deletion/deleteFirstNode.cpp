@@ -33,8 +33,10 @@ void deleteFirstNode(Node *head){
         cout << "NULL ";
         return ;
     }
-    
-    head = head -> next;
+
+    Node *temp = head -> next;
+    delete head;    // memory deallocation
+    head = temp;
     printList(head);
 }
 
@@ -50,3 +52,6 @@ int main() {
     deleteFirstNode(head);
     return 0;
 }
+
+// TIME COMPLEXITY - O(1)
+//SPACE COMPLEXITY - O(1)
