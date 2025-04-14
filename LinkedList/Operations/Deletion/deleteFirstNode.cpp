@@ -30,20 +30,21 @@ void printList(Node *head){
 
 void deleteFirstNode(Node *head){
     if(head == NULL){
-        cout << " NULL ";
+        cout << "NULL ";
         return ;
     }
     
-    
-    
+    head = head -> next;
+    printList(head);
 }
 
 int main() {
-    Node *head;
+    Node *head = NULL;
     head = new Node(10);
     head -> next =  new Node(20);
     head -> next -> next =  new Node(30);
-    head -> next -> next -> next =  new Node(40);
+    // head -> next -> next -> next =  new Node(40);
+
     printList(head);
 
     deleteFirstNode(head);
