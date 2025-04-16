@@ -29,11 +29,10 @@ void printLinkedList(Node *head){
 }
 
 Node *insertBegin(Node *head, int num){
-    Node *curr = new Node(num);
-    head -> prev = curr;
-    curr -> next = head;
-    head = curr;
-    return head;
+    Node *temp = new Node(num);
+    temp -> next = head;
+    if(head != NULL)        head -> prev = temp;
+    return temp;
 }
 
 
