@@ -7,8 +7,7 @@
 #include <limits>
 using namespace std;
 
-
-// ITERATIVE APPROACH
+//RECURSIVE APPROACH
 struct Node {
     int data;
     Node *next;
@@ -29,14 +28,10 @@ void printLinkedList(Node *head){
 }
 
 
-int search(Node *head, int num){
-    Node *curr = head;
-    int i = 1;
-    while(curr != NULL){
-        if(curr -> data == num)     return i;
-        i++;
-        curr = curr -> next;
-    }
+int search(Node *head, int num, int i = 1){
+    if(head == NULL)    return -1;
+    if(head -> data == num)    return i;
+    return    search(head -> next, num, i+1);
 }
 
 
@@ -49,9 +44,10 @@ int main() {
     
     printLinkedList(head);
 
-    cout << "The position of 30 : " << search(head, 30);
+    Node *curr = head;
+    cout << "The position of 30 : " << search(head, 30) << endl;
     return 0;
 }
 
-// TIME  COMPLEXITY : O(n), where 'n' is the number of nodes in the linked list
-// SPACE COMPLEXITY : O(1)
+// TIME  COMPLEXITY  : O(n), where 'n' is the number of nodes in the linked list
+// SPACE COMPLEXITY  : O(n), due to recursive call stack
