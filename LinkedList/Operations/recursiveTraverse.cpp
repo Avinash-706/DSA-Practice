@@ -34,7 +34,7 @@ int main() {
 
     Node *head = NULL, *tail = NULL;
     
-    for(int i = 0 ; i < n ; i++){
+    for(int i = 0 ; i < n ; i++){   
         int input;
         cin >> input;
         Node *newNode = new Node(input);
