@@ -7,11 +7,10 @@
 #include <limits>
 using namespace std;
 
-
 struct Node{
     int data;
-    Node *prev;
     Node *next;
+    Node *prev;
     Node(int x){
         data = x;
         prev = NULL;
@@ -29,24 +28,16 @@ void printLinkedList(Node *head){
     cout << endl;
 }
 
-
-Node *reverseLinkedList(Node *head){
-    if(head == NULL || head -> next == NULL)    return head;
-    Node *curr = head;
-    Node *temp = nullptr;
-
-    while(curr != NULL){
-        temp = curr -> prev;
-        curr -> prev = curr -> next;
-        curr -> next = temp;
-
-        // Move to the next node in original order (which is prev now)
-        curr = curr -> prev;
-    }
-
-    return temp -> prev;
+Node *deleteHead(Node *head){
+    if(head == NULL)    return NULL;
+    if(head -> next == NULL)   return NULL;
+    
+    Node *curr = head -> next;
+    curr -> prev = NULL;
+    delete head;
+    head = curr;
+    return head;
 }
-
 
 int main() {
     Node *head = NULL;
@@ -65,9 +56,8 @@ int main() {
     cout << "ORIGINAL LINKED LIST :  ";
     printLinkedList(head);
 
-    
-    cout << "REVERSE  LINKED LIST :  ";
-    head = reverseLinkedList(head);
+    head = deleteHead(head);
+    cout << "AFTER HEAD DELETION  :  ";
     printLinkedList(head);
 
     return 0;

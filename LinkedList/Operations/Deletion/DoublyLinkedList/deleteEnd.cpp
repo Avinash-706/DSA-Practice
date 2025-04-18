@@ -7,11 +7,10 @@
 #include <limits>
 using namespace std;
 
-
 struct Node{
     int data;
-    Node *prev;
     Node *next;
+    Node *prev;
     Node(int x){
         data = x;
         prev = NULL;
@@ -29,24 +28,20 @@ void printLinkedList(Node *head){
     cout << endl;
 }
 
+Node *deleteEnd(Node *head){
+    if(head == NULL)    return NULL;
+    if(head -> next == NULL)   return NULL;
 
-Node *reverseLinkedList(Node *head){
-    if(head == NULL || head -> next == NULL)    return head;
     Node *curr = head;
-    Node *temp = nullptr;
-
-    while(curr != NULL){
-        temp = curr -> prev;
-        curr -> prev = curr -> next;
-        curr -> next = temp;
-
-        // Move to the next node in original order (which is prev now)
-        curr = curr -> prev;
+    while(curr -> next -> next != NULL){
+        curr = curr -> next;
     }
+    Node *last = curr -> next;
+    curr -> next = nullptr;
+    delete last;
 
-    return temp -> prev;
+    return head;
 }
-
 
 int main() {
     Node *head = NULL;
@@ -65,10 +60,12 @@ int main() {
     cout << "ORIGINAL LINKED LIST :  ";
     printLinkedList(head);
 
-    
-    cout << "REVERSE  LINKED LIST :  ";
-    head = reverseLinkedList(head);
+    head = deleteEnd(head);
+    cout << "AFTER  END DELETION  :  ";
     printLinkedList(head);
 
     return 0;
 }
+
+// TIME  COMPLEXITY  : O(n), where 'n' is the number of nodes in the linked list
+// SPACE COMPLEXITY  : O(1)
