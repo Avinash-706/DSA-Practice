@@ -32,22 +32,19 @@ void printLinkedList(Node *head){
 
 
 Node *insertAtBegin(Node *head, int num){
-    if (head == NULL) {
-        head = new Node(num);
-        head->next = head;
-        return head;
-    }
-    
-
     Node *temp = new Node(num);
-    temp -> next = head;
 
-    Node *curr = head;
-    while(curr -> next != head){
-        curr = curr -> next;
+    if (head == NULL) {
+        temp -> next = head;
     }
-    curr -> next = temp;
-    head = temp;
+    else{
+        Node *curr = head;
+        while(curr -> next != head){
+            curr = curr -> next;
+        }
+        curr -> next = temp;
+        temp -> next = head;
+    }
     return temp;
 }
 
