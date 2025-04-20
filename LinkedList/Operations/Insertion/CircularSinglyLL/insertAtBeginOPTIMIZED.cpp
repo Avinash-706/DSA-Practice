@@ -28,6 +28,7 @@ void printLinkedList(Node *head){
     for(Node *p = head -> next ; p != head ; p = p -> next){
         cout << p -> data << "  ";
     } 
+    cout << endl;
 }
 
 
@@ -54,11 +55,15 @@ int main() {
     head -> next -> next = new Node(30); 
     head -> next -> next -> next = head; 
 
+    cout << "Before Insertion : ";
+    printLinkedList(head);
+
     head = insertAtBegin(head, 5);
     
+    cout << "After Insertion  : ";
     printLinkedList(head);
     return 0;
 }
 
-// TIME  COMPLEXITY  : O(n)
+// TIME  COMPLEXITY  : O(1)
 // SPACE COMPLEXITY  : O(1)
