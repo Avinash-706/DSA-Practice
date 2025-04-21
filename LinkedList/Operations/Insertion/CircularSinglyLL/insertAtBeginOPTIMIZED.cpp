@@ -17,7 +17,6 @@ struct Node{
     }
 };
 
-
 void printLinkedList(Node *head){
     if(head == NULL){
         cout << "NULL" << endl;
