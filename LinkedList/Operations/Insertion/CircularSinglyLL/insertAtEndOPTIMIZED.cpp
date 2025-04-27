@@ -18,7 +18,6 @@ struct Node{
     }
 };
 
-
 void printLinkedList(Node *head){
     if(head == NULL){
         cout << "NULL" << endl;
@@ -32,22 +31,24 @@ void printLinkedList(Node *head){
     cout << endl;
 }
 
-
-Node *insertAtBegin(Node *head, int num){
+Node *insertAtEnd(Node *head, int num){
     Node *temp = new Node(num);
-
-    if (head == NULL) {
-        temp -> next = head;
+    if(head == NULL){
+        temp -> next = temp;
+        return NULL;
     }
     else{
-        Node *curr = head;
-        while(curr -> next != head){
-            curr = curr -> next;
-        }
-        curr -> next = temp;
-        temp -> next = head;
+        temp -> next = head -> next;
+        head -> next = temp;
+        
+        //swapping code
+        int t = head -> data;
+        head -> data = temp -> data;
+        temp -> data = t;
+
+        return temp;
     }
-    return temp;
+
 }
 
 
@@ -57,15 +58,15 @@ int main() {
     head -> next -> next = new Node(30); 
     head -> next -> next -> next = head; 
 
-    cout << "Before Insertion : ";
+    cout << " Before Insertion : ";
     printLinkedList(head);
 
-    head = insertAtBegin(head, 5);
-    
-    cout << "After Insertion  : ";
+    head = insertAtEnd(head, 40);
+    cout << " Affter Insertion : ";
     printLinkedList(head);
+
     return 0;
 }
 
-// TIME  COMPLEXITY  : O(n), where 'n' is the number of nodes of the LinkedList
+// TIME  COMPLEXITY  : O(1)
 // SPACE COMPLEXITY  : O(1)

@@ -8,6 +8,7 @@
 using namespace std;
 
 
+//NAIVE APPROACH
 struct Node{
     int data;
     Node *next;
@@ -27,6 +28,7 @@ void printLinkedList(Node *head){
     for(Node *p = head -> next ; p != head ; p = p -> next){
         cout << p -> data << "  ";
     } 
+    cout << endl;
 }
 
 Node *insertAtEnd(Node *head, int num){
@@ -51,12 +53,15 @@ int main() {
     head -> next -> next = new Node(30); 
     head -> next -> next -> next = head; 
 
+    cout << " Before Insertion : ";
+    printLinkedList(head);
+
     head = insertAtEnd(head, 40);
-    
+    cout << " Affter Insertion : ";
     printLinkedList(head);
 
     return 0;
 }
 
-// TIME  COMPLEXITY  : O(n)
+// TIME  COMPLEXITY  : O(n), where 'n' is the number of nodes of the LinkedList
 // SPACE COMPLEXITY  : O(1)

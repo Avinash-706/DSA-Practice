@@ -8,6 +8,7 @@
 using namespace std;
 
 
+//OPTIMIZED APPROACH
 struct Node{
     int data;
     Node *next;
