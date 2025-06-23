@@ -9,12 +9,12 @@ struct Node{
     Node(int x){
         data = x;
         next = NULL;
-    }
+    } 
 };
 
 
 void printLinkedList(Node *head){
-    Node *curr = head;
+    Node *curr = head; 
     while(curr != NULL){
         cout << curr->data << "  ";
         curr = curr->next;
