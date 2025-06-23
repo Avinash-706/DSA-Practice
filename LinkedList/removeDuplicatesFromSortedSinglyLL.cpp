@@ -2,36 +2,42 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-
-struct Node{
+struct Node {
     int data;
     Node *next;
-    Node(int x){
+    Node(int x) {
         data = x;
         next = NULL;
     } 
 };
 
-
-void printLinkedList(Node *head){
+void printLinkedList(Node *head) {
     Node *curr = head; 
-    while(curr != NULL){
+    while(curr != NULL) {
         cout << curr->data << "  ";
         curr = curr->next;
     }
     cout << endl;
 }
 
-
-Node *removeDuplicates(Node *head){
+Node *removeDuplicates(Node *head) {
     Node *curr = head;
-    if(curr == NULL || curr -> next == NULL){
+    if(curr == NULL || curr->next == NULL) {
         return head;
     }
-    
 
+    while(curr != NULL && curr->next != NULL) {
+        if(curr->data == curr->next->data) {
+            Node *temp = curr->next;
+            curr->next = curr->next->next;
+            delete temp;
+        } else {
+            curr = curr->next;
+        }
+    }
+
+    return head;
 }
-
 
 int main() {
     Node *head = new Node(10);
@@ -44,11 +50,11 @@ int main() {
     printLinkedList(head);
 
     head = removeDuplicates(head);
-    cout << "Reversed Linked List :  ";
+    cout << "After Removing Duplicates :  ";
     printLinkedList(head);
 
     return 0;
 }
 
 // TIME  COMPLEXITY  : O(n), where 'n' is the number of nodes in the LinkedList
-// SPACE COMPLEXITY  : O(1)
+// SPACE COMPLEXITY : O(1)
