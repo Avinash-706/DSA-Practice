@@ -23,7 +23,7 @@ void printLinkedList(Node *head){
 }
 
 
-Node *reverse(Node *head, int k){
+Node *reverseInGroup(Node *head, int k){
     Node *curr = head, *prevFirst = NULL;
     bool isFirstReverse = true;
     while(curr != NULL){
@@ -66,7 +66,7 @@ int main() {
     int k;
     cout << "Enter the Group Size :  "; 
     cin  >> k;
-    head = reverse(head, k);
+    head = reverseInGroup(head, k);
 
     cout << "Reversed Linked List :  ";
     printLinkedList(head);
