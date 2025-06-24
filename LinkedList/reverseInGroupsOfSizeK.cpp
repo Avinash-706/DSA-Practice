@@ -24,27 +24,32 @@ void printLinkedList(Node *head){
 
 
 Node *reverse(Node *head, int k){
-    Node *prev = NULL;
-    Node *curr = head;
-    int count = 0;
-    Node *first = NULL;
+    Node *curr = head, *prevFirst = NULL;
+    bool isFirstReverse = true;
     while(curr != NULL){
-        if(count != k){
-            if(count == 0)  first = curr;
+
+        Node *first = curr, *prev = NULL;
+        int count = 0;
+
+        while (curr != NULL && count < k){
             Node *next = curr -> next;
             curr -> next = prev;
             prev = curr;
             curr = next;
             count++;
         }
-        else{
-            
-            cout << curr -> data << endl;
-            break;
-        }
-    }
-    return prev;
 
+        if(isFirstReverse){
+            head = prev;
+            isFirstReverse = false;
+        }
+        else{
+            prevFirst -> next = prev;
+        }
+
+        prevFirst = first;
+    }
+    return head;
 }
 
 
