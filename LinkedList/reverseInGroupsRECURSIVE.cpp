@@ -3,7 +3,7 @@
 using namespace std;
 
 
-//ITTERATIVE APPROACH
+//RECURSIVE APPROACH
 struct Node{
     int data;
     Node *next;
@@ -25,32 +25,22 @@ void printLinkedList(Node *head){
 
 
 Node *reverseInGroup(Node *head, int k){
-    Node *curr = head, *prevFirst = NULL;
-    bool isFirstReverse = true;
-    while(curr != NULL){
-
-        Node *first = curr, *prev = NULL;
-        int count = 0;
-
-        while (curr != NULL && count < k){
-            Node *next = curr -> next;
-            curr -> next = prev;
-            prev = curr;
-            curr = next;
-            count++;
-        }
-
-        if(isFirstReverse){
-            head = prev;
-            isFirstReverse = false;
-        }
-        else{
-            prevFirst -> next = prev;
-        }
-
-        prevFirst = first;
+    Node *curr = head, *next = NULL, *prev = NULL;
+    int count = 0;
+    while(curr != NULL && count < k){
+        next = curr -> next;
+        curr -> next = prev;
+        prev = curr;
+        curr = next;
+        count++;
     }
-    return head;
+
+    if(next != NULL){
+        Node *rest_head = reverseInGroup(next, k);
+        head -> next = rest_head;
+    }
+
+    return prev;
 }
 
 
@@ -76,4 +66,4 @@ int main() {
 }
 
 // TIME  COMPLEXITY  : O(n), where 'n' is the number of nodes in the LinkedList
-// SPACE COMPLEXITY  : O(1)
+// SPACE COMPLEXITY  : O(n/k), due to recursive call stack
