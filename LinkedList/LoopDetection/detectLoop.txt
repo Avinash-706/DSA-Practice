@@ -1,0 +1,74 @@
+DETECTING LOOP IN A LINKED LIST
+===============================
+
+METHOD 1: NAIVE APPROACH (O(n^2))
+ -------------------------------------
+ -> For each node `curr`, scan from `head` to `curr` and check if `curr->next` points to any previously visited node.
+ -> If yes, a loop is detected.
+ 
+ CODE LOGIC:
+   for each node curr:
+       for each node check from head to curr:
+           if curr->next == check:
+               return true
+   return false
+ 
+ ✅ TIME COMPLEXITY  : O(n^2)
+ ✅ SPACE COMPLEXITY : O(1)
+ ❌ NOT EFFICIENT for large lists
+
+
+METHOD 2: VISITED FLAG APPROACH (MODIFY NODE STRUCTURE)
+ ------------------------------------------------------------
+ -> Add a `bool visited` field in the Node structure.
+ -> Traverse the list and mark each node as visited.
+ -> Before visiting the next node, check if it is already visited.
+ 
+ STRUCT MODIFICATION:
+   struct Node {
+       int data;
+       Node* next;
+       bool visited;
+   };
+ 
+ CODE LOGIC:
+   while(curr != NULL):
+       mark curr as visited
+       if curr->next is visited:
+           return true
+       move to next node
+ 
+ ✅ TIME COMPLEXITY  : O(n)
+ ✅ AUXILIARY SPACE  : O(1)
+ ❗ SPACE COMPLEXITY : O(n) (due to extra field in each node)
+ ⚠️ STRUCTURE MODIFICATION REQUIRED
+
+
+METHOD 3: TEMP POINTER MARKING (WITHOUT STRUCT MODIFICATION)
+ ----------------------------------------------------------------
+ -> Create a new temporary node.
+ -> While traversing, set `curr->next` to this temp node.
+ -> If any node's next already points to the temp, loop exists.
+ 
+ CODE LOGIC:
+   temp = new Node(dummy_val)
+   while(curr != NULL):
+       if curr->next == NULL:
+           return false
+       if curr->next == temp:
+           return true
+       store curr->next in next_ptr
+       set curr->next = temp
+       move curr = next_ptr
+ 
+ ✅ TIME COMPLEXITY  : O(n)
+ ✅ AUXILIARY SPACE  : O(1)
+
+
+📝 COMPARISON TABLE
+--------------------
+| METHOD    | TIME    | AUX SPACE | MODIFIES STRUCTURE | SAFE?  |
+|-----------|---------|-----------|---------------------|--------|
+| Naive     | O(n^2)  | O(1)      | ❌ No               | ✅ Yes |
+| Visited   | O(n)    | O(1)      | ✅ Yes              | ✅ Yes |
+| Temp Mark | O(n)    | O(1)      | ✅ Yes              | ❌ No  |
