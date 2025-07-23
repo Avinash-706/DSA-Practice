@@ -3,6 +3,7 @@
 #include <unordered_set>
 using namespace std;
 
+//UNOPTIMIZED APPROACH - METHOD USING UNORDERED_SET
 struct Node{
     int data;
     Node *next;
