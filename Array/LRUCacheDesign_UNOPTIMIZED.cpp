@@ -7,6 +7,8 @@
 #include <limits>
 using namespace std;
 
+//UNOPTIMIZED - VERSION USING ARRAY & VECTOR
+//Link to OPTIMIZED Implementation : file:///D:\DSA-Practice\LinkedList\LRUCacheDesign_OPTIMIZED.cpp
 
 void hit(vector<int> &cache, int value, int pos){
     for(int i = pos ; i > 0 ; i--){
