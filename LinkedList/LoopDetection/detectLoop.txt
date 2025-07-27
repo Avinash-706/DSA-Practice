@@ -3,8 +3,8 @@ DETECTING LOOP IN A LINKED LIST
 
 METHOD 1: NAIVE APPROACH (O(n^2))
  -------------------------------------
- -> For each node `curr`, scan from `head` to `curr` and check if `curr->next` points to any previously visited node.
- -> If yes, a loop is detected.
+ -> For each node `curr`, scan from `head` to `curr` and check if `curr->next` points to any previously visited node
+ -> If yes, a loop is detected
  
  CODE LOGIC:
    for each node curr:
@@ -20,9 +20,9 @@ METHOD 1: NAIVE APPROACH (O(n^2))
 
 METHOD 2: VISITED FLAG APPROACH (MODIFY NODE STRUCTURE)
  ------------------------------------------------------------
- -> Add a `bool visited` field in the Node structure.
- -> Traverse the list and mark each node as visited.
- -> Before visiting the next node, check if it is already visited.
+ -> Add a `bool visited` field in the Node structure
+ -> Traverse the list and mark each node as visited
+ -> Before visiting the next node, check if it is already visited
  
  STRUCT MODIFICATION:
    struct Node {
@@ -40,15 +40,15 @@ METHOD 2: VISITED FLAG APPROACH (MODIFY NODE STRUCTURE)
  
  ✅ TIME COMPLEXITY  : O(n)
  ✅ AUXILIARY SPACE  : O(1)
- ❗ SPACE COMPLEXITY : O(n) (due to extra field in each node)
- ⚠️ STRUCTURE MODIFICATION REQUIRED
+ ❌ SPACE COMPLEXITY : O(n) (due to extra field in each node)
+ ❌ STRUCTURE MODIFICATION REQUIRED
 
 
-METHOD 3: TEMP POINTER MARKING (WITHOUT STRUCT MODIFICATION)
+METHOD 3: TEMP POINTER MARKING (DUMMY / REFERENCE POINTER)
  ----------------------------------------------------------------
- -> Create a new temporary node.
- -> While traversing, set `curr->next` to this temp node.
- -> If any node's next already points to the temp, loop exists.
+ -> Create a new temporary node
+ -> While traversing, set `curr->next` to this temp node
+ -> If any node's next already points to the temp, loop exists
  
  CODE LOGIC:
    temp = new Node(dummy_val)
@@ -65,10 +65,140 @@ METHOD 3: TEMP POINTER MARKING (WITHOUT STRUCT MODIFICATION)
  ✅ AUXILIARY SPACE  : O(1)
 
 
+METHOD 4: HASH SET / UNORDERED_SET
+ --------------------------------------
+ -> Use an unordered_set (hash set) to store the addresses of visited nodes
+ -> Traverse the list and check if the current node is already in the set
+ -> If yes, loop exists
+ 
+ CODE LOGIC:
+   create unordered_set visitedNodes
+   for each node curr in list:
+       if curr in visitedNodes:
+           return true
+       insert curr into visitedNodes
+   return false
+
+ ✅ TIME COMPLEXITY  : O(n)
+ ✅ SPACE COMPLEXITY : O(n)
+ ✅ EASY TO IMPLEMENT
+ ❌ EXTRA SPACE REQUIRED FOR HASH SET
+
+
+METHOD 5: FLOYD’S CYCLE DETECTION (TORTOISE AND HARE)
+ ---------------------------------------------------------
+ -> Use two pointers, slow and fast
+ -> Move slow one step and fast two steps at a time
+ -> If a loop exists, slow and fast will eventually meet
+ 
+ CODE LOGIC:
+   slow = head
+   fast = head
+   while fast != NULL and fast->next != NULL:
+       slow = slow->next
+       fast = fast->next->next
+       if slow == fast:
+           return true
+   return false
+
+ ✅ TIME COMPLEXITY  : O(n)
+ ✅ SPACE COMPLEXITY : O(1)
+ ✅ MOST OPTIMAL METHOD
+ ✅ DOES NOT MODIFY STRUCTURE
+
+
 📝 COMPARISON TABLE
 --------------------
-| METHOD    | TIME    | AUX SPACE | MODIFIES STRUCTURE | SAFE?  |
-|-----------|---------|-----------|---------------------|--------|
-| Naive     | O(n^2)  | O(1)      | ❌ No               | ✅ Yes |
-| Visited   | O(n)    | O(1)      | ✅ Yes              | ✅ Yes |
-| Temp Mark | O(n)    | O(1)      | ✅ Yes              | ❌ No  |
+| METHOD      | TIME    | AUX SPACE | MODIFIES STRUCTURE   | SAFE?  |
+|-------------|---------|-----------|----------------------|--------|
+| Naive       | O(n^2)  | O(1)      | ❌ No               | ✅ Yes |
+| Visited     | O(n)    | O(1)      | ✅ Yes              | ✅ Yes |
+| Temp Mark   | O(n)    | O(1)      | ✅ Yes              | ❌ No  |
+| Hash Set    | O(n)    | O(n)      | ❌ No               | ✅ Yes |
+| Floyd’s     | O(n)    | O(1)      | ❌ No               | ✅ Yes |
+
+
+
+
+===============================================================================
+                        REMOVING LOOP IN A LINKED LIST
+===============================================================================
+
+METHOD 1: HASH SET (UNOPTIMIZED)
+ -----------------------------------
+ -> Use an unordered_set to store visited nodes.
+ -> Traverse the list and check if curr->next is already visited.
+ -> If found, a loop exists at curr->next, and we set curr->next = NULL to break it.
+ 
+ CODE LOGIC:
+   create unordered_set visitedNodes
+   curr = head
+   while curr->next != NULL:
+       if curr->next in visitedNodes:
+           curr->next = NULL
+           return true
+       insert curr->next in visitedNodes
+       curr = curr->next
+   return false
+
+ ✅ TIME COMPLEXITY  : O(n)
+ ✅ SPACE COMPLEXITY : O(n)
+ ✅ DETECTS + REMOVES LOOP
+ ❌ EXTRA SPACE REQUIRED FOR HASH SET
+
+
+METHOD 2: FLOYD’S CYCLE DETECTION || TORTAISE & HARE (OPTIMIZED)
+ -----------------------------------------------
+ -> Apply Floyd’s Cycle Detection Algorithm to check if a loop exists.
+ -> If a loop is found, apply the following logic to **remove the loop**.
+
+ LOOP REMOVAL LOGIC:
+   set slow = head
+   while slow->next != fast->next:
+       slow = slow->next
+       fast = fast->next
+   fast->next = NULL  // Break the loop
+
+ ✅ TIME COMPLEXITY  : O(n)
+ ✅ SPACE COMPLEXITY : O(1)
+ ✅ OPTIMAL IN TERMS OF SPACE
+ ✅ DETECTS + REMOVES LOOP
+
+
+📐 MATHEMATICAL PROOF BEHIND FLOYD’S CYCLE DETECTION
+ -----------------------------------------------------
+
+  Let:
+   -> x = distance from head to loop start
+   -> y = distance from loop start to meeting point
+   -> c = length of the loop
+
+  Suppose:
+   -> Distance traveled by slow = x + y
+   -> Distance traveled by fast = x + y + nc  (where n is the number of complete cycles fast made in loop)
+
+  Since fast moves twice as fast:
+   2(x + y) = x + y + nc  
+   => x + y = nc  
+   => x = nc - y   ← (1)
+
+  Now set one pointer to head and keep the other at the meeting point.
+  Move both one step at a time.
+
+   -> When they meet again:
+    The distance both pointers move = x = nc - y
+    Meaning both pointers reach the **start of the loop** at the same time.
+
+
+ 📌 LOOP REMOVAL MATHEMATICAL FORMULA
+  --------------------------------------
+  Once the meeting point is found,
+   -> Set one pointer to head.
+   -> Move both pointers step by step until:
+      slow->next == fast->next
+   -> At this point, fast->next points to the start of the loop.
+   -> Set fast->next = NULL to break the cycle.
+
+  This works because:
+   -> From the meeting point, both pointers are equidistant from the loop's start node (at distance `c - y`).
+   -> Moving them together ensures they meet right **before** the loop entry node.
