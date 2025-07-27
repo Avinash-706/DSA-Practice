@@ -1,0 +1,69 @@
+==============================================
+STACK DATA STRUCTURE NOTES
+
+
+ DEFINITION  
+  -> A STACK is a LINEAR DATA STRUCTURE which follows the LIFO (LAST IN FIRST OUT) principle  
+  -> The element inserted LAST is the one to be REMOVED FIRST  
+
+ STACK LOOK  
+  -> Think of a stack like a PILE OF PLATES  
+  -> INSERTION (push) and REMOVAL (pop) happen only at the TOP  
+
+           +-------+      <- TOP  
+           |  30   |  
+           +-------+  
+           |  20   |  
+           +-------+  
+           |  10   |  
+           +-------+      <- BOTTOM  
+
+ BACKSTORY  
+  -> The concept of STACK was introduced by FRIEDRICH L. BAUER in 1955  
+  -> It was designed to manage FUNCTION CALLS and RETURNS in early compilers  
+  -> Now stacks are CORE COMPONENTS of ALGORITHMS, OPERATING SYSTEMS, and INTERPRETERS  
+
+ ADVANTAGES ✅  
+  -> EASY TO IMPLEMENT (using ARRAY or LINKED LIST)  
+  -> MANAGES FUNCTION CALL STACK in programming languages  
+  -> USED IN UNDO MECHANISMS in editors  
+  -> EXPRESSION PARSING and EVALUATION  
+  -> MEMORY MANAGEMENT in recursive calls  
+  -> BALANCED PARENTHESES and BRACKET MATCHING  
+
+ DISADVANTAGES ❌  
+  -> limited access (only from TOP)  
+  -> not suitable for random access  
+  -> fixed size limitation if array is used  
+  -> stack overflow and underflow errors possible  
+
+
+ ==============================================
+
+ STACK OPERATIONS  
+
+  isEmpty()  
+   -> RETURNS TRUE if stack is EMPTY  
+   -> RETURNS FALSE otherwise  
+ 
+  push(x)  
+   -> INSERTS ELEMENT 'x' to the TOP of the STACK  
+ 
+  pop()  
+   -> REMOVES the TOP ELEMENT from the STACK  
+   -> STACK MUST NOT BE EMPTY before calling pop()  
+ 
+  peek()  
+   -> RETURNS the TOP ELEMENT WITHOUT REMOVING it  
+ 
+  size()  
+   -> RETURNS the NUMBER OF ELEMENTS in the STACK  
+
+  -----------------------
+  STACK ERROR CONDITIONS  
+   
+   UNDERFLOW  
+    -> OCCURS when pop() or peek() is CALLED on an EMPTY STACK  
+
+   OVERFLOW  
+    -> OCCURS when push(x) is CALLED on a FULL STACK (only in FIXED SIZE implementation using ARRAY)  
