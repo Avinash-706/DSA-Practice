@@ -1,6 +1,6 @@
 ==============================================
 STACK DATA STRUCTURE NOTES
-
+ ==============================================
 
  DEFINITION  
   -> A STACK is a LINEAR DATA STRUCTURE which follows the LIFO (LAST IN FIRST OUT) principle  
@@ -23,6 +23,97 @@ STACK DATA STRUCTURE NOTES
   -> It was designed to manage FUNCTION CALLS and RETURNS in early compilers  
   -> Now stacks are CORE COMPONENTS of ALGORITHMS, OPERATING SYSTEMS, and INTERPRETERS  
 
+
+ APPLICATIONS OF STACK DATA STRUCTURE
+
+   Stack in LIFO use-cases  
+   ------------------------
+    -> Stack is used when the last inserted item must be processed first  
+    -> Ensures last-in-first-out (LIFO) behavior  
+   
+   
+   FUNCTION CALL STACK (Programming)
+   ---------------------------------
+    -> Manages function calls in most programming languages  
+    -> When a function calls another, local data and return address are pushed onto the stack  
+    -> Example:
+         - fun1 calls fun2  
+         - fun2 calls fun3  
+         - fun3 completes first (LIFO order)  
+         - Then fun2 resumes  
+         - Then fun1 resumes  
+    -> Each function’s local context is stored in a stack frame  
+    -> Main function is at the bottom of the call stack  
+   
+   
+              Balanced Parentheses Check
+    -> Compilers use stack to verify balanced brackets  
+    -> Last opened bracket must close first  
+    -> Example:
+         - Expression: ( [ { } ] )  
+         - '{' opens last and must close first  
+    -> Stack helps track nested and matching brackets effectively  
+   
+    Reversing Items
+     -> To reverse a sequence, push items onto the stack, then pop them  
+     -> Example:
+         - Push: 'A' → 'B' → 'C'  
+         - Pop:  'C' → 'B' → 'A'  
+     -> Useful for printing or storing elements in reverse order  
+   
+   
+   Infix, Prefix, and Postfix Conversion
+   ----------------------------------------
+    -> Infix: operator is between operands → A + B  
+    -> Prefix: operator before operands → + A B  
+    -> Postfix: operator after operands → A B +  
+    -> Compilers convert infix to postfix/prefix for simpler evaluation  
+    -> Stack is needed for this conversion  
+    -> Postfix avoids precedence and associativity issues  
+    -> No brackets required in prefix or postfix  
+   
+   Postfix / Prefix Evaluation
+   ---------------------------
+    -> Once an expression is in postfix or prefix form  
+    -> Stack is used to evaluate it  
+    -> Operands are pushed; operators apply operations using top values  
+   
+   
+   Stock Span & Next Greater Element
+   ----------------------------------
+    -> Problems like stock span, previous/next greater,  
+       and largest rectangle in histogram use stacks  
+    -> Stack helps maintain a monotonic order for efficient solutions  
+   
+   
+   Undo / Redo Functionality
+   -------------------------
+    -> Used in text editors to manage undo and redo  
+    -> Example:
+         - Type: 'A' → 'B' → 'C'  
+         - Undo removes 'C', then 'B'  
+         - Redo adds back 'B', then 'C'  
+    -> Two stacks are often used to implement this feature  
+   
+   
+   Forward / Backward in Web Browsers
+   ----------------------------------
+    -> Visited pages are pushed onto a stack  
+    -> Back button pops the current page  
+    -> Forward button uses another stack to redo navigation  
+    -> Maintains browsing history in LIFO manner  
+   
+   
+   General Use-Cases
+   -----------------
+    -> Expression parsing  
+    -> Backtracking (e.g., maze solving)  
+    -> Undo/redo in applications  
+    -> Memory management in compilers  
+    -> Browser history handling  
+    -> Matching tags in HTML/XML  
+
+
  ADVANTAGES ✅  
   -> EASY TO IMPLEMENT (using ARRAY or LINKED LIST)  
   -> MANAGES FUNCTION CALL STACK in programming languages  
@@ -39,8 +130,8 @@ STACK DATA STRUCTURE NOTES
 
 
  ==============================================
-
  STACK OPERATIONS  
+  ===============================================
 
   isEmpty()  
    -> RETURNS TRUE if stack is EMPTY  
@@ -59,11 +150,11 @@ STACK DATA STRUCTURE NOTES
   size()  
    -> RETURNS the NUMBER OF ELEMENTS in the STACK  
 
-  -----------------------
+  
   STACK ERROR CONDITIONS  
-   
+  -----------------------
    UNDERFLOW  
     -> OCCURS when pop() or peek() is CALLED on an EMPTY STACK  
-
    OVERFLOW  
     -> OCCURS when push(x) is CALLED on a FULL STACK (only in FIXED SIZE implementation using ARRAY)  
+
