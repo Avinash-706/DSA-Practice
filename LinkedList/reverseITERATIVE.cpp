@@ -33,7 +33,6 @@ Node *reverse(Node *head){
         curr = next;
     }
     return prev;
-
 }
 
 
