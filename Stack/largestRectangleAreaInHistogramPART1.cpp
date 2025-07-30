@@ -2,7 +2,7 @@
 using namespace std;
 
 
-//OPTIMIZED VERSION --using NextSmallest and PreviousSmallest Approach
+//OPTIMIZED VERSION --using NextSmallest and PreviousSmallest Approach BUT NOT SINGLE TRAVESAL
 struct Stack{
     int *arr;
     int cap, top;
@@ -101,12 +101,12 @@ int main(){
         printf("  %2d   |   %2d   | %2d  | %2d  |  %2d   | %3d\n", i, input[i], ps[i], ns[i], width, area);
     }
 
-    cout << "-------------------------------------------------------------------------------\n";
+    cout << "------------------------------------------------------------------------------\n";
     cout << "Largest Rectangular Area in Histogram : " << maxValue << "\n";
-    cout << "===============================================================================\n\n";
+    cout << "==============================================================================\n\n";
 
 }
 
 
-// TIME  COMPLEXITY  : O(n), where 'n' is the size of the histogram
+// TIME  COMPLEXITY  : O(n), where 'n' is the size of the histogram BUT NOT SINGLE TRAVERSAL
 // SPACE COMPLEXITY  : O(n), for stacks and auxiliary arrays
