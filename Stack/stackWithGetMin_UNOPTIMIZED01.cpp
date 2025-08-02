@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+//UNOPTIMIZED -- as the auxilary space is O(n)
 struct MyStack{
     stack<int> ms; // main stack
     stack<int> as; // auxilary stack
@@ -43,5 +44,6 @@ int main(){
 
     return 0;
 }
+
 //TIME  COMPLEXITY : O(1)
 //SPACE COMPLEXITY : O(n), where n is the size of the stack in worst case
