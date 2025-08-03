@@ -5,6 +5,7 @@
 #include <cctype>
 using namespace std;
 
+
 // POSTFIX EVALUATION
 struct Stack {
     int cap, top;
