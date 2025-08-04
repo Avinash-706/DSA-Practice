@@ -110,12 +110,16 @@ int main()
 {
     string exp1 = "a+b*(c^d-e)^(f+g*h)-i";
     string exp2 = "a^b^c";
+    string exp3 = "x+y*z";
 
     Stack obj1(exp1.length());
     cout << "INFIX   : " << exp1 << "\nPOSTFIX : " << obj1.infixToPostfix(exp1) << endl << endl;
     
     Stack obj2(exp2.length());
     cout << "INFIX   : " << exp2 << "\nPOSTFIX : " << obj2.infixToPostfix(exp2) << endl << endl;
+
+    Stack obj3(exp3.length());
+    cout << "INFIX   : " << exp3 << "\nPOSTFIX : " << obj3.infixToPostfix(exp3) << endl << endl;
 
     return 0;
 }
