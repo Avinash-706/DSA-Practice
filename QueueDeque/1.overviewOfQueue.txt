@@ -137,7 +137,7 @@ QUEUE AND DEQUEUE - CONCEPTUAL NOTES
 
 
  ==================================================
- DEQUEUE - IMPLEMENTATION LOGIC
+ DEQUE - IMPLEMENTATION LOGIC
   ==================================================
 
   1. Similar to doubly-ended linked list or circular array
