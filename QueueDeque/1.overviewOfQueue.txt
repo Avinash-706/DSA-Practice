@@ -1,0 +1,155 @@
+==================================================
+QUEUE AND DEQUEUE - CONCEPTUAL NOTES
+ ==================================================
+
+ DEFINITION
+  -> QUEUE is a linear data structure based on FIFO (First-In-First-Out)
+  -> The element inserted FIRST is removed FIRST
+  -> Items are inserted from the REAR end and removed from the FRONT end
+
+  EXAMPLE:
+   -> Initial Queue: 10, 15, 20, 30, 40
+   -> Enqueue(50): Queue becomes 10, 15, 20, 30, 40, 50
+   -> Dequeue(): 10 is removed → Queue becomes 15, 20, 30, 40, 50
+
+  TERMS:
+   -> FRONT  : End where removal (Dequeue) happens
+   -> REAR   : End where insertion (Enqueue) happens
+
+
+ ==================================================
+ QUEUE OPERATIONS
+  ==================================================
+
+  -> ENQUEUE(X)     : Insert element X at the rear
+  -> DEQUEUE()      : Remove element from the front
+  -> GETFRONT()     : Return front element
+  -> GETREAR()      : Return rear element
+  -> SIZE()         : Return total number of elements
+  -> IS_EMPTY()     : Returns true if queue is empty
+
+  EXAMPLE SEQUENCE:
+   -> Enqueue(10) → front = rear = 10
+   -> Enqueue(20) → rear = 20, front still = 10
+   -> Enqueue(30)
+   -> Dequeue()   → removes 10, front = 20
+   -> Dequeue()   → removes 20, front = 30
+   -> GetFront()  → 30
+   -> GetRear()   → 40
+
+
+ ==================================================
+ APPLICATIONS OF QUEUE
+  ==================================================
+
+  ✅ SINGLE RESOURCE MULTIPLE CONSUMERS
+   -> Ticket Counter System
+   -> Print Queue in Printers
+   -> CPU Scheduling (FCFS - First Come First Serve)
+ 
+  ✅ SYNCHRONIZATION BETWEEN FAST & SLOW DEVICES
+   -> Keyboard (slow) → Buffer (queue) → CPU (fast)
+   -> Routers in networks (high-speed sender + slow receiver)
+ 
+  ✅ OPERATING SYSTEMS USAGE
+   -> Semaphores: sleeping processes wait in queue for resource
+   -> Process Scheduling: handled in FCFS order
+   -> Spooling: Queued print jobs
+ 
+  ✅ NETWORK & SYSTEM QUEUES
+   -> Mail queues, message queues, job queues
+   -> Server handling multiple client requests in queued order
+
+
+ ==================================================
+ VARIATIONS OF QUEUE
+  ==================================================
+
+  1. DEQUEUE (DOUBLY ENDED QUEUE)
+   -> Insert/Delete possible from BOTH ENDS
+   -> Used to implement STACK and QUEUE both
+   -> Can perform:
+    -> insertFront(), insertRear()
+    -> deleteFront(), deleteRear()
+
+  2. PRIORITY QUEUE
+   -> Each item has a PRIORITY
+   -> Items with HIGHER PRIORITY are dequeued first
+   -> Implemented using HEAP
+   -> Example: Hospital queue with emergency/VIP patients
+
+  3. DOUBLY ENDED PRIORITY QUEUE
+   -> Access both HIGHEST and LOWEST priority items
+   -> Useful in cases where you also want to remove lowest-priority users
+
+
+ ==================================================
+ QUEUE IMPLEMENTATION USING ARRAY
+  ==================================================
+
+  STRUCTURE:
+   -> Fixed-size array is used to hold elements
+   -> Variables used: front, rear, size, capacity
+   -> rear = (rear + 1) % capacity → to maintain circular structure
+   -> front = (front + 1) % capacity → after dequeue
+   -> Enqueue → insert at rear
+   -> Dequeue → remove from front
+
+  FLOW:
+   -> Initially: front = 0, rear = capacity - 1, size = 0
+   -> Enqueue → check if full → update rear → insert → size++
+   -> Dequeue → check if empty → return front element → update front → size--
+
+  ADVANTAGE:
+   -> Simple and fast access
+
+  DISADVANTAGE:
+   -> Fixed size, resizing is not easy
+
+
+ ==================================================
+ QUEUE IMPLEMENTATION USING LINKED LIST
+  ==================================================
+
+  STRUCTURE:
+   -> Each node has 'data' and 'next' pointer
+   -> Two pointers maintained: front and rear (QNode*)
+   -> Dynamically allocate new node during enqueue
+   -> Delete node during dequeue
+
+  FLOW:
+   1. Enqueue(x):
+    -> Create new node
+    -> If queue is empty → front = rear = new node
+    -> Else → rear->next = new node → rear = new node
+
+   2. Dequeue():
+    -> If empty → return
+    -> Else → store front → front = front->next → delete old front
+    -> If front becomes NULL → rear = NULL too
+
+  ADVANTAGE:
+   -> No size limit (dynamic memory)
+   -> Efficient when size is unpredictable
+
+  DISADVANTAGE:
+   -> Extra memory for pointers
+
+
+ ==================================================
+ DEQUE - IMPLEMENTATION LOGIC
+  ==================================================
+
+  1. Similar to doubly-ended linked list or circular array
+  2. Allow insertion & deletion from both ends:
+   -> insertFront(), insertRear()
+   -> deleteFront(), deleteRear()
+  3. Can be implemented using:
+   -> Doubly linked list
+   -> Circular array with modular arithmetic
+
+  USES:
+   1. Can implement both stack and queue behavior
+   2. Useful in scenarios like:
+    -> Browser history
+    -> Sliding window problems
