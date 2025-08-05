@@ -1,0 +1,181 @@
+==================================================
+INFIX, POSTFIX, AND PREFIX NOTATIONS
+ ==================================================
+ 
+ DEFINITIONS
+  -> Mathematical and programming expressions can be written in three different notations.
+ 
+ --------------------------------------------------
+ INFIX NOTATION
+  --------------------------------------------------
+  -> The standard way humans write expressions
+  -> The OPERATOR is placed BETWEEN the two operands
+  -> Example:       A + B
+  -> Example Eval:  If A = 2, B = 3 → 2 + 3 = 5
+ 
+ --------------------------------------------------
+ POSTFIX NOTATION (REVERSE POLISH NOTATION)
+  --------------------------------------------------
+  -> The OPERATOR is placed AFTER the two operands
+  -> Example:       A B +
+  -> Example Eval:  If A = 2, B = 3 → 2 3 + = 5
+ 
+ --------------------------------------------------
+ PREFIX NOTATION (POLISH NOTATION)
+  --------------------------------------------------
+  -> The OPERATOR is placed BEFORE the two operands
+  -> Example:       + A B
+  -> Example Eval:  If A = 2, B = 3 → + 2 3 = 5
+ 
+
+
+ ==================================================
+ ADVANTAGES OF PREFIX & POSTFIX ✅
+  ==================================================
+  -> NO PARENTHESES (BRACKETS) NEEDED
+  -> NO PRECEDENCE RULES needed for evaluation
+  -> NO ASSOCIATIVITY RULES needed for evaluation
+  -> Can be evaluated by a computer in a SINGLE PASS
+ 
+
+
+ ==================================================
+ INFIX CHALLENGES: PRECEDENCE & ASSOCIATIVITY
+  ==================================================
+ 
+  PRECEDENCE RULES
+   -> Dictates which operators are evaluated first
+   -> Operators with HIGHER PRECEDENCE are evaluated first
+   -> Example:       10 + 20 * 2
+   -> Step-by-step:  20 * 2 = 40 → 10 + 40 = 50
+ 
+  ASSOCIATIVITY RULES
+   -> Used when operators have the SAME PRECEDENCE
+   -> Determines the order of evaluation: LEFT or RIGHT
+ 
+   -> LEFT-TO-RIGHT Example:
+    Expression : 10 + 2 - 3
+    Evaluation : (10 + 2) - 3 = 9
+ 
+   -> RIGHT-TO-LEFT Example:
+    Expression : 2 ^ 3 ^ 2
+    Evaluation : 2 ^ (3 ^ 2) = 2 ^ 9 = 512
+ 
+ ==================================================
+ SAMPLE PRECEDENCE & ASSOCIATIVITY TABLE
+   ==================================================
+   +----------------+--------------------+
+   |   OPERATOR     |   ASSOCIATIVITY    |
+   +----------------+--------------------+
+   | ^ (Power)      | Right-to-Left      |  <- Highest Precedence
+   +----------------+--------------------+
+   | * (Multiply)   | Left-to-Right      |
+   | / (Divide)     | Left-to-Right      |
+   +----------------+--------------------+
+   | + (Add)        | Left-to-Right      |
+   | - (Subtract)   | Left-to-Right      |  <- Lowest Precedence
+   +----------------+--------------------+
+ 
+
+
+ ==================================================
+ CONVERSION & EVALUATION ALGORITHMS
+  ==================================================
+ 
+  --------------------------------------------------
+  INFIX TO POSTFIX CONVERSION
+   --------------------------------------------------
+   -> Uses a STACK to hold OPERATORS
+   -> Traverses the infix expression from LEFT to RIGHT
+ 
+   ALGORITHM STEPS:
+    1. If character is an OPERAND:
+     -> Append it directly to the postfix string
+    2. If character is an OPENING BRACKET '(':
+     -> Push it onto the stack
+    3. If character is a CLOSING BRACKET ')':
+     -> Pop from the stack to postfix until '(' is found
+     -> Discard both brackets
+    4. If character is an OPERATOR:
+     -> While stack not empty AND precedence(top) >= precedence(current):
+     -> Pop from stack to postfix
+     -> Push current operator onto stack
+    5. After full scan:
+     -> Pop all remaining operators from stack to postfix
+ 
+   EXAMPLE:
+    -> INFIX   : A + B * C
+    -> POSTFIX : A B C * +
+ 
+
+  --------------------------------------------------
+  INFIX TO PREFIX CONVERSION
+   --------------------------------------------------
+   -> Uses a STACK to hold OPERATORS
+   -> Common approach: Reverse + Convert + Reverse
+ 
+   ALGORITHM STEPS:
+    1. REVERSE the infix expression
+    2. Convert reversed infix to POSTFIX
+     -> Use same precedence logic (but reverse brackets)
+    3. REVERSE the postfix expression → Final Prefix
+ 
+    OR
+ 
+    DIRECT METHOD:
+     -> Scan expression RIGHT to LEFT
+ 
+     1. If character is OPERAND:
+      -> Append to result
+     2. If character is ')':
+      -> Push to stack
+     3. If character is '(':
+      -> Pop to result until ')' found
+     4. If character is OPERATOR:
+      -> Pop from stack if precedence is higher
+      -> Push current operator
+     5. Pop all remaining operators
+     6. REVERSE result string → Final Prefix
+ 
+   EXAMPLE:
+    -> INFIX  : A + B * C
+    -> PREFIX : + A * B C
+ 
+
+  --------------------------------------------------
+  POSTFIX EVALUATION
+   --------------------------------------------------
+   -> Uses a STACK to hold OPERANDS
+   -> Traverse LEFT to RIGHT
+ 
+    ALGORITHM STEPS:
+    1. If token is OPERAND:
+     -> Push onto stack
+    2. If token is OPERATOR:
+     -> Pop two operands: op2 = pop(), op1 = pop()
+     -> result = op1 operator op2
+     -> Push result back
+    3. Final stack value is the result
+ 
+   EXAMPLE:
+    -> POSTFIX  : 2 3 4 * +
+    -> EVALUATE : 3 * 4 = 12 → 2 + 12 = 14
+ 
+  --------------------------------------------------
+  PREFIX EVALUATION
+   --------------------------------------------------
+   -> Uses a STACK to hold OPERANDS
+   -> Traverse RIGHT to LEFT
+ 
+   ALGORITHM STEPS:
+    1. If token is OPERAND:
+     -> Push onto stack
+    2. If token is OPERATOR:
+     -> Pop two operands: op1 = pop(), op2 = pop()
+     -> result = op1 operator op2
+     -> Push result back
+    3. Final stack value is the result
+ 
+   EXAMPLE:
+    -> PREFIX   : + 2 * 3 4
+   -> EVALUATE : * 3 4 = 12 → + 2 12 = 14
