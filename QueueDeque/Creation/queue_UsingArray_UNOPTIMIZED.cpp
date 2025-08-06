@@ -69,3 +69,7 @@ int main() {
 
     return 0;
 }
+
+// TIME  COMPLEXITY : O(n),      due to just ONE dequeue() call
+// TIME  COMPLEXITY : O((n × k), where k is number of dequeues
+// SPACE COMPLEXITY : O(n),      for dynamic array allocation of size `cap`s
