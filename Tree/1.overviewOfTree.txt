@@ -1,0 +1,116 @@
+=============================
+TREE
+ =============================
+
+ INTRODUCTION TO TREE DATA STRUCTURE  
+  A tree is a widely used NON-LINEAR data structure that represents data in a HIERARCHICAL fashion  
+  Unlike linear data structures (arrays, linked lists, stacks, queues) which store data sequentially,  
+  a tree is comprised of NODES connected by EDGES, illustrating PARENT-CHILD relationships  
+  This structure is RECURSIVE in nature, as each child of a node can be the root of its own subtree  
+  Trees are used to model scenarios involving hierarchy, such as:  
+  -> Organization structures  
+  -> File systems  
+ 
+
+ -----------------------------
+ TERMINOLOGIES
+  -----------------------------
+  NODE            -> An individual element in a tree that stores data and may have links to other nodes  
+  ROOT NODE       -> The topmost node in a tree hierarchy (no parent)  
+  PARENT NODE     -> The immediate predecessor of a node  
+  CHILD NODE      -> The immediate successor of a node  
+  LEAF NODE       -> A node with no children (degree 0)  
+  INTERNAL NODE   -> A node having at least one child (non-leaf)  
+  SUBTREE         -> A portion of the tree that forms a complete tree itself with a child node as root  
+  DESCENDANTS     -> All the nodes in the subtree of a node  
+  ANCESTORS       -> The node's parent, grandparent, and so on up to the root  
+  DEGREE OF NODE  -> Number of children of the node (leaf node has degree 0)  
+  
+  -----------------------------
+  EXAMPLE TREE FOR TERMINOLOGIES
+  -----------------------------
+            A (Root)
+           / \
+          B   C
+         / \   \
+        D   E   F
+           /
+          G
+  
+   EXPLANATION:
+   -> ROOT NODE      : A  
+   -> PARENT NODE    : A (parent of B, C), B (parent of D, E), C (parent of F), E (parent of G)  
+   -> CHILD NODE     : B, C (children of A), D, E (children of B), F (child of C), G (child of E)  
+   -> LEAF NODE      : D, G, F  
+   -> INTERNAL NODE  : A, B, C, E  
+   -> SUBTREE        : Tree starting at node B (includes D, E, G)  
+   -> DESCENDANTS    : Descendants of B → D, E, G  
+   -> ANCESTORS      : Ancestors of G → E, B, A  
+   -> DEGREE         : Degree of A = 2, Degree of E = 1, Degree of D = 0  
+  
+
+
+ -----------------------------
+ APPLICATIONS OF TREE DATA STRUCTURE
+  -----------------------------
+  -> Representing HIERARCHICAL DATA (e.g., organization structure)  
+  -> Folder structure in operating systems  
+  -> Parsing XML/HTML content (DOM structure)  
+  -> Binary Search Tree (efficient searching, insertion, deletion)  
+  -> Binary Heap (priority queue implementation)  
+  -> B & B+ Trees (database indexing)  
+  -> Network routing (spanning tree, shortest path tree)  
+  -> Compilers (parse trees / abstract syntax trees)  
+  -> Trie (dictionary & prefix search)  
+  -> Suffix Tree (pattern matching)  
+  -> Binary Indexed Tree & Segment Tree (range queries)  
+ 
+
+
+ =============================
+ BINARY TREE
+  =============================
+  DEFINITION:
+   A binary tree is a specific type of tree where EVERY NODE has AT MOST 2 children (0 to max 2 children)  
+   
+  -----------------------------
+  EXAMPLE OF BINARY TREE
+   -----------------------------
+          1
+         / \
+        2   3
+       / \   \
+      4   5   6
+  
+   In this example:
+   -> Node 1 has two children (2, 3)  
+   -> Node 2 has two children (4, 5)  
+   -> Node 3 has one child (6)  
+   -> Nodes 4, 5, 6 have no children (leaf nodes)  
+  
+  -----------------------------
+  REPRESENTATION
+   -----------------------------
+   1) LINKED REPRESENTATION  
+      -> Each node contains:
+         - Data field (key)  
+         - Pointer to left child  
+         - Pointer to right child  
+      -> If a child does not exist, its pointer is NULL  
+      -> Leaf nodes have both pointers NULL  
+  
+   2) ARRAY REPRESENTATION  
+      -> Suitable for complete binary trees  
+      -> Root stored at index 0  
+      -> For node at index i:
+         - Left child index  = 2*i + 1  
+         - Right child index = 2*i + 2  
+  
+  -----------------------------
+  IMPLEMENTATION LOGIC
+   -----------------------------
+   -> Create a Node structure/class with data, left pointer, right pointer  
+   -> Initialize left & right pointers as NULL  
+   -> Start with creating the root node  
+   -> Dynamically link new nodes as left or right children of appropriate parents  
+ 
