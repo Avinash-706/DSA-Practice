@@ -114,3 +114,190 @@ TREE
    -> Start with creating the root node  
    -> Dynamically link new nodes as left or right children of appropriate parents  
  
+
+
+ =============================
+ TREE TRAVERSAL
+  =============================
+ 
+  -----------------------------
+  INTRODUCTION TO TREE TRAVERSAL
+   -----------------------------
+   -> Tree Traversal is the process of visiting (checking, updating, or printing) each node in a tree data structure, EXACTLY ONCE.
+   -> This systematic way of visiting nodes is fundamental for many tree-based operations.
+   
+   WHY IS TRAVERSAL NEEDED?
+    -> SEARCHING: To find if an element exists in a tree.
+    -> COUNTING: To find the total number of nodes (the size of the tree).
+    -> INSERTING / DELETING: Locating the correct position for insertion or deletion.
+    -> MANY OTHER ALGORITHMS that build upon visiting all nodes.
+   
+ 
+  -----------------------------
+  TYPES OF TRAVERSAL: DFS vs BFS
+   -----------------------------
+   -> Traversal algorithms can be broadly classified into two main categories:
+      ✅ BREADTH-FIRST SEARCH (BFS)
+      ✅ DEPTH-FIRST SEARCH (DFS)
+   
+   COMPARISON TABLE:
+    ================================================================================================
+    |      FEATURE      |        BREADTH-FIRST SEARCH (BFS)        |         DEPTH-FIRST SEARCH (DFS)        |
+    |-------------------|------------------------------------------|-----------------------------------------|
+    | APPROACH          | Explores LEVEL by LEVEL (like reading a  | Explores as far as possible down one    |
+    |                   | book, line by line, from top to bottom)  | branch before backtracking              |
+    |-------------------|------------------------------------------|-----------------------------------------|
+    | DATA STRUCTURE    | Uses a QUEUE to keep track of nodes to   | Uses a STACK (often implicitly via      |
+    |                   | visit next                               | RECURSION)                              |
+    |-------------------|------------------------------------------|-----------------------------------------|
+    | TRAVERSAL NAMES   | Level Order Traversal                    | Preorder, Inorder, Postorder            |
+    |-------------------|------------------------------------------|-----------------------------------------|
+    | MEMORY USAGE      | Can be high if the tree is very WIDE     | Can be high if the tree is very DEEP    |
+    |-------------------|------------------------------------------|-----------------------------------------|
+    | PATH FINDING      | ✅ Finds the SHORTEST PATH in terms of   | ❌ Not guaranteed to find the shortest |
+    |                   | edges from the root in an unweighted tree| path                                    |
+    ==========================================================================================================
+   
+   
+  -----------------------------
+  DEPTH FIRST SEARCH (DFS) TRAVERSALS
+   -----------------------------
+   -> DFS explores one side of the tree completely before moving to the other side.
+   -> It is most easily and intuitively implemented using RECURSION.
+   
+   CORE RECURSIVE TASKS:
+    For any given node (considered as a root of its own subtree), we have three tasks:
+    1. Process the ROOT node (e.g., print its value)
+    2. Traverse the LEFT subtree (a recursive call)
+    3. Traverse the RIGHT subtree (a recursive call)
+   
+   -> The order in which these three tasks are performed gives us different DFS traversals.
+   -> While there are 3! (or 6) possible permutations, the 3 most popular ones always traverse the LEFT subtree before the RIGHT subtree.
+   
+    1. INORDER   (Left, Root, Right)
+    2. PREORDER  (Root, Left, Right)
+    3. POSTORDER (Left, Right, Root)
+   
+ 
+ 
+  -----------------------------
+  EXAMPLE TREE FOR TRAVERSALS
+   -----------------------------
+   -> The following tree will be used to explain Inorder, Preorder, and Postorder traversals.
+   
+             10
+            /  \
+           20   30
+          /  \    \
+         40  50    60
+            /  \
+           70  80
+ 
+  -----------------------------
+  1. INORDER TRAVERSAL (LEFT - ROOT - RIGHT)
+   -----------------------------
+   EXPLANATION:
+    -> For any node, we first completely traverse its LEFT child's subtree, then visit the ROOT node itself, and finally, completely traverse its RIGHT child's subtree.
+ 
+   RECURSION CALL STACK TRACE:
+    inorder(10)
+    -> inorder(20)
+       -> inorder(40) -> prints 40
+       -> print(20)
+       -> inorder(50)
+          -> inorder(70) -> prints 70
+          -> print(50)
+          -> inorder(80) -> prints 80
+    -> print(10)
+    -> inorder(30)
+       -> inorder(NULL)
+       -> print(30)
+       -> inorder(60) -> prints 60
+ 
+    FINAL OUTPUT: 40 20 70 50 80 10 30 60
+   
+   PSEUDOCODE:
+    function inorder(node):
+      if node is NULL: return
+      inorder(node.left)
+      print(node.data)
+      inorder(node.right)
+   
+   TIME COMPLEXITY:
+    -> Θ(n), where 'n' is the number of nodes.
+   
+   AUXILIARY SPACE COMPLEXITY:
+    -> Θ(h), where 'h' is the height of the tree.
+   
+ 
+  -----------------------------
+  2. PREORDER TRAVERSAL (ROOT - LEFT - RIGHT)
+   -----------------------------
+   EXPLANATION:
+    -> For any node, we first visit the ROOT node itself, then completely traverse its LEFT subtree, and finally, completely traverse its RIGHT subtree.
+ 
+   RECURSION CALL STACK TRACE:
+    preorder(10)
+    -> print(10)
+    -> preorder(20)
+       -> print(20)
+       -> preorder(40) -> prints 40
+       -> preorder(50)
+          -> print(50)
+          -> preorder(70) -> prints 70
+          -> preorder(80) -> prints 80
+    -> preorder(30)
+       -> print(30)
+       -> preorder(NULL)
+       -> preorder(60) -> prints 60
+ 
+    FINAL OUTPUT: 10 20 40 50 70 80 30 60
+   
+   PSEUDOCODE:
+    function preorder(node):
+      if node is NULL: return
+      print(node.data)
+      preorder(node.left)
+      preorder(node.right)
+   
+   TIME COMPLEXITY:
+    -> Θ(n)
+   
+   AUXILIARY SPACE COMPLEXITY:
+    -> Θ(h)
+   
+ 
+  -----------------------------
+  3. POSTORDER TRAVERSAL (LEFT - RIGHT - ROOT)
+   -----------------------------
+   EXPLANATION:
+    -> For any node, we first completely traverse its LEFT subtree, then completely traverse its RIGHT subtree, and finally, visit the ROOT node itself.
+ 
+   RECURSION CALL STACK TRACE:
+    postorder(10)
+    -> postorder(20)
+       -> postorder(40) -> prints 40
+       -> postorder(50)
+          -> postorder(70) -> prints 70
+          -> postorder(80) -> prints 80
+          -> print(50)
+       -> print(20)
+    -> postorder(30)
+       -> postorder(60) -> prints 60
+       -> print(30)
+    -> print(10)
+ 
+    FINAL OUTPUT: 40 70 80 50 20 60 30 10
+   
+   PSEUDOCODE:
+    function postorder(node):
+      if node is NULL: return
+      postorder(node.left)
+      postorder(node.right)
+      print(node.data)
+   
+   TIME COMPLEXITY:
+    -> Θ(n)
+   
+   AUXILIARY SPACE COMPLEXITY:
+    -> Θ(h)
