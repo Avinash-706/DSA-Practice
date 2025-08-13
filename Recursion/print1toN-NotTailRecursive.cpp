@@ -2,7 +2,7 @@
 using namespace std;
 
 
-// NOT TAIL RECURSIVE
+// NOT TAIL RECURSIVE   --hence NOT Much Faster
 void print1toN(int n){
     if(n == 0)  return  ;
     print1toN(n-1);
