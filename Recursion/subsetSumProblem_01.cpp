@@ -2,6 +2,7 @@
 using namespace std;
 
 
+// APPROACH 1 : ADD EACH ELEMENT to the  ''curr_sum'' And MATCH with  ACTUAL ''sum'' 
 int subsets(int n, int arr[], int sum, int curr_sum=0, int i = 0){
     if(sum == curr_sum ){
         return 1; 
