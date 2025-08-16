@@ -1,0 +1,124 @@
+=============================
+JOSEPHUS PROBLEM
+ =============================
+
+ -----------------------------
+ INTRODUCTION
+  -----------------------------
+  -> The Josephus Problem describes a scenario where people are arranged in a circle. [1]
+  -> Starting from a designated person, a fixed number of people (k) are counted.
+  -> The k-th person is eliminated from the circle.
+  -> This process repeats with the remaining people until only one person, the survivor, is left. [1]
+  -> The goal is to determine the position of the survivor in the original circle.
+  -> For this explanation, we use a 0-indexed system (persons numbered 0 to n-1).
+  
+
+ -----------------------------
+ EXAMPLE WALKTHROUGH: n=5, k=3
+  -----------------------------
+  -> Let's trace the problem with n=5 people (0, 1, 2, 3, 4) and a count of k=3.
+  
+  INITIAL CIRCLE:
+            0
+         /     \
+        4       1
+        |       |
+        3-------2
+  
+  ROUND 1:
+   -> Start counting from person 0.
+   -> Count 3 people: 0 -> 1 -> 2.
+   -> Person 2 is eliminated.
+   -> Remaining people: 0, 1, 3, 4.
+  
+  ROUND 2:
+   -> Start counting from person 3 (the person after the one eliminated).
+   -> Count 3 people: 3 -> 4 -> 0.
+   -> Person 0 is eliminated.
+   -> Remaining people: 1, 3, 4.
+  
+  ROUND 3:
+   -> Start counting from person 1.
+   -> Count 3 people: 1 -> 3 -> 4.
+   -> Person 4 is eliminated.
+   -> Remaining people: 1, 3.
+  
+  ROUND 4:
+   -> Start counting from person 1.
+   -> Count 3 people: 1 -> 3 -> 1.
+   -> Person 1 is eliminated.
+  
+  SURVIVOR: Person 3.
+  -> For josephus(5, 3), the answer is 3.
+  
+
+ -----------------------------
+ RECURSIVE LOGIC
+  -----------------------------
+  -> The core idea is that the solution for n people can be found if we know the solution for n-1 people. [2]
+  
+  STEP 1: THE FIRST ELIMINATION
+   -> In a circle of n people, the first person eliminated is at index (k-1) % n.
+   -> For n=5, k=3, this is (3-1)%5 = person 2.
+  
+  STEP 2: THE SUBPROBLEM
+   -> After person 2 is removed, we have a smaller circle of n-1 = 4 people: {3, 4, 0, 1}.
+   -> The counting for the next round starts at person 3.
+  
+  STEP 3: MAPPING AND RE-INDEXING
+   -> To treat this as a new Josephus problem, we must remap the remaining people to a new 0-indexed circle.
+   -> The person where counting begins (original person 3) becomes the new 0.
+   
+   VISUAL MAPPING:
+
+      ORIGINAL CIRCLE (n=5)               RE-INDEXED SUBPROBLEM (n=4)
+      (After person 2 is removed)
+ 
+                0                                     2
+             /     \                               /     \
+            4       1          --------->         1       3
+             \     /            (re-indexed)       \     /
+               (3)                                    0
+     (New count starts here)
+   
+   MAPPING LOGIC:
+    Original Person 3  ->  New Person 0
+    Original Person 4  ->  New Person 1
+    Original Person 0  ->  New Person 2
+    Original Person 1  ->  New Person 3
+   
+   -> We now solve josephus(4, 3) on this new circle. The survivor here is at new index 0.
+  
+
+ -----------------------------
+ THE RECURSIVE FORMULA: (josephus(n-1, k) + k) % n
+  -----------------------------
+  -> This formula maps the survivor's index from the smaller subproblem back to the original problem.
+  
+  BREAKDOWN OF THE FORMULA:
+   -> josephus(n - 1, k)
+      - This gives the survivor's index in the RE-INDEXED (n-1) person circle.
+      - For our subproblem josephus(4, 3), this returns 0.
+   
+   -> + k (The Shift)
+      - This reverses the mapping. We shifted the circle when creating the subproblem.
+      - To find the original position, we must add k back to the subproblem's result.
+      - Survivor's subproblem index + k  =>  0 + 3 = 3.
+   
+   -> % n (The Wrap-Around)
+      - If the result of (subproblem_index + k) is larger than n-1, this ensures it wraps around the original circle.
+      - It guarantees the final result is a valid index in the original n-person circle.
+  
+
+ -----------------------------
+ FINAL CALCULATION: josephus(5, 3)
+  -----------------------------
+  -> return (josephus(4, 3) + 3) % 5
+  
+  -> We know josephus(4, 3) solves to 0.
+  
+  -> return (0 + 3) % 5
+  
+  -> return 3 % 5
+  
+  -> Final Answer is 3.
