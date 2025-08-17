@@ -301,3 +301,107 @@ TREE
    
    AUXILIARY SPACE COMPLEXITY:
     -> Θ(h)
+
+
+
+ =============================
+ HEIGHT OF BINARY TREE
+  =============================
+ 
+  -----------------------------
+  INTRODUCTION
+   -----------------------------
+   -> The height of a binary tree is the number of nodes on the longest path from the root node down to the furthest leaf node.
+   
+   DEFINITIONS:
+    -> The height of a tree with a single node is 1.
+    -> The height of an empty tree (or a NULL node) is 0.
+   
+ 
+  -----------------------------
+  EXAMPLE TREE
+   -----------------------------
+   -> The following tree will be used for the explanation, which has a height of 4.
+   
+             10
+            /  \
+           20   30
+          /  \    \
+         40  50    60
+            /  \
+           70  80
+ 
+  -----------------------------
+  RECURSIVE LOGIC    --    DFS LOGIC : POST-ORDER TRAVERSAL TECHNIQUE
+   -----------------------------
+   -> The height of a tree can be found by recursively calculating the height of its subtrees.
+   -> This approach follows a post-order traversal pattern: first process the left and right children, then process the parent.
+   
+   CORE IDEA:
+    For any given node, its height is:
+    ✅ 1 + max(height of its left subtree, height of its right subtree)
+    
+   BASE CASE:
+    -> If a node is NULL, its height is 0. This stops the recursion.
+   
+ 
+  -----------------------------
+  RECURSIVE CALL STACK TRACE
+   -----------------------------
+   -> This trace shows how the height is calculated from the bottom up.
+   
+   height(10)
+   |
+   |-- L: height(20)
+   |   |
+   |   |-- L: height(40)
+   |   |   |-- L: height(NULL) -> returns 0
+   |   |   |-- R: height(NULL) -> returns 0
+   |   |   `-- returns max(0, 0) + 1 = 1
+   |   |
+   |   |-- R: height(50)
+   |   |   |-- L: height(70)
+   |   |   |   |-- L: height(NULL) -> returns 0
+   |   |   |   |-- R: height(NULL) -> returns 0
+   |   |   |   `-- returns max(0, 0) + 1 = 1
+   |   |   |
+   |   |   |-- R: height(80)
+   |   |   |   |-- L: height(NULL) -> returns 0
+   |   |   |   |-- R: height(NULL) -> returns 0
+   |   |   |   `-- returns max(0, 0) + 1 = 1
+   |   |   |
+   |   |   `-- returns max(1, 1) + 1 = 2
+   |   |
+   |   `-- returns max(height(40), height(50)) + 1 => max(1, 2) + 1 = 3
+   |
+   |-- R: height(30)
+   |   |
+   |   |-- L: height(NULL) -> returns 0
+   |   |
+   |   |-- R: height(60)
+   |   |   |-- L: height(NULL) -> returns 0
+   |   |   |-- R: height(NULL) -> returns 0
+   |   |   `-- returns max(0, 0) + 1 = 1
+   |   |
+   |   `-- returns max(height(NULL), height(60)) + 1 => max(0, 1) + 1 = 2
+   |
+   `-- returns max(height(20), height(30)) + 1 => max(3, 2) + 1 = 4
+   
+ 
+  -----------------------------
+  PSEUDOCODE      --    DFS LOGIC : POST-ORDER TRAVERSAL TECHNIQUE
+   -----------------------------
+   function getHeight(node):
+     if node is NULL: return 0
+     leftHeight = getHeight(node.left)
+     rightHeight = getHeight(node.right)
+     return max(leftHeight, rightHeight) + 1
+   
+  -----------------------------
+  COMPLEXITY
+   -----------------------------
+   TIME COMPLEXITY:
+    -> Θ(n), as every node in the tree must be visited exactly once.
+   
+   AUXILIARY SPACE COMPLEXITY:
+    -> Θ(h), where 'h' is the height of the tree. This space is used by the recursion call stack.
