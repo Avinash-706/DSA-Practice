@@ -332,7 +332,7 @@ TREE
            70  80
  
   -----------------------------
-  RECURSIVE LOGIC
+  RECURSIVE LOGIC    --    DFS LOGIC : POST-ORDER TRAVERSAL TECHNIQUE
    -----------------------------
    -> The height of a tree can be found by recursively calculating the height of its subtrees.
    -> This approach follows a post-order traversal pattern: first process the left and right children, then process the parent.
@@ -389,7 +389,7 @@ TREE
    
  
   -----------------------------
-  PSEUDOCODE
+  PSEUDOCODE      --    DFS LOGIC : POST-ORDER TRAVERSAL TECHNIQUE
    -----------------------------
    function getHeight(node):
      if node is NULL: return 0
