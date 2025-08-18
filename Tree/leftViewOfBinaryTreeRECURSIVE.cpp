@@ -35,6 +35,7 @@ int main(){
     root -> left -> right -> left = new Node(70);
     root -> left -> right -> right = new Node(80);
 
+    cout << "Left View of the Binary Tree (DFS APPROACH) : ";
     leftView(root, 1);
     return 0;
 }
