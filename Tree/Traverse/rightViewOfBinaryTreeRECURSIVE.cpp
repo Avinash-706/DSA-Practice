@@ -12,16 +12,16 @@ struct Node{
 };
 
 
-// DFS(recursive) Approach : PostOrder traversal
+// DFS Approach (Modified Preorder: Root → Right → Left)
 int maxLevel = 0;
-void leftView(Node *root, int level){
+void rightView(Node *root, int level){
     if(root == NULL)    return ;
     if(maxLevel < level){
         cout << root -> key << " ";
         maxLevel = level;
     }
-    leftView(root -> right, level + 1);
-    leftView(root -> left , level + 1);
+    rightView(root -> right, level + 1);
+    rightView(root -> left , level + 1);
 }
 
 
@@ -35,7 +35,8 @@ int main(){
     root -> left -> right -> left = new Node(70);
     root -> left -> right -> right = new Node(80);
 
-    leftView(root, 1);
+    cout << "Right View of the Binary Tree : ";
+    rightView(root, 1);
     return 0;
 }
 
