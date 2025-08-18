@@ -2,7 +2,6 @@
 #include <queue>
 using namespace  std;
 
-
 struct Node{
     int key;
     Node *left, *right;
@@ -13,24 +12,7 @@ struct Node{
 };
 
 
-void levelOrderTraversal(Node *root){
-    queue<Node *> q;
-    q.push(root);
-    while(!q.empty()){
-        int count = q.size();
-
-        for(int i  = 0 ; i < count ; i++){
-            Node *curr = q.front();
-            q.pop();
-            
-            if(i == 0)  cout << curr->key << " ";
-        
-            if(curr -> left  != NULL)    q.push(curr -> left);
-            if(curr -> right != NULL)    q.push(curr -> right);
-        }
-    }
-}
-
+// Standard BFS TRAVERSAL : Level Order Traversal
 void levelOrderTraversal(Node *root){
     queue<Node *> q;
     q.push(root);
@@ -60,6 +42,7 @@ int main(){
     root -> left -> right -> left = new Node(70);
     root -> left -> right -> right = new Node(80);
 
+    cout << "Left View of the Binary Tree (BFS APPROACH) : ";
     levelOrderTraversal(root);
     return 0;
 }
