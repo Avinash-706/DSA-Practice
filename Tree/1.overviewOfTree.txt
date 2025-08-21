@@ -405,3 +405,87 @@ TREE
    
    AUXILIARY SPACE COMPLEXITY:
     -> Θ(h), where 'h' is the height of the tree. This space is used by the recursion call stack.
+
+
+
+ ============================================================
+ HOW INORDER + PREORDER HELPS TO CREATE BINARY TREE
+  ============================================================
+ 
+  PREORDER TRAVERSAL  : Root → Left → Right
+  INORDER TRAVERSAL   : Left → Root → Right
+  
+  ------------------------------------------------------------
+  MAIN WORKING IDEA
+   ------------------------------------------------------------
+   -> Preorder always gives the ROOT as the first element.
+   -> Inorder tells us the boundary between LEFT and RIGHT subtrees.
+   -> By repeatedly picking elements from Preorder and locating them
+      in Inorder, we can recursively split the tree.
+  
+  ------------------------------------------------------------
+  STEP-BY-STEP WORKING
+   ------------------------------------------------------------
+   1. Start with Preorder[0] → this is the ROOT.
+   2. Find this root element in the Inorder array.
+   3. Elements LEFT of root in Inorder → Left Subtree.
+   4. Elements RIGHT of root in Inorder → Right Subtree.
+   5. Recur for LEFT and RIGHT subtrees using the same process.
+  
+  ------------------------------------------------------------
+  EXAMPLE
+   ------------------------------------------------------------
+   Preorder = [1, 2, 4, 5, 3, 6]
+   Inorder  = [4, 2, 5, 1, 6, 3]
+   
+   Step 1: Pre[0] = 1 → ROOT = 1
+           Inorder position of 1 splits array:
+           Left Subtree Inorder  = [4, 2, 5]
+           Right Subtree Inorder = [6, 3]
+   
+   Step 2: Next Pre element = 2 → ROOT of LEFT subtree
+           Inorder position of 2 splits left part:
+           Left Subtree Inorder  = [4]
+           Right Subtree Inorder = [5]
+   
+   Step 3: Next Pre element = 4 → ROOT of LEFT-LEFT
+           No children (single element)
+   
+   Step 4: Next Pre element = 5 → ROOT of LEFT-RIGHT
+           No children
+   
+   Step 5: Next Pre element = 3 → ROOT of RIGHT subtree
+           Inorder position splits into:
+           Left = [6], Right = []
+   
+   Step 6: Next Pre element = 6 → ROOT of RIGHT-LEFT
+   
+   Final Tree Constructed:
+               1
+             /   \
+            2     3
+           / \   /
+          4   5 6
+  
+  ------------------------------------------------------------
+  WHY THIS WORKS
+   ------------------------------------------------------------
+   -> Preorder guarantees the ROOT order.
+   -> Inorder guarantees correct LEFT and RIGHT separation.
+   -> Combining both ensures the tree can be built uniquely.
+
+
+  ============================================================
+  TRAVERSAL COMBINATION         CAN BUILD UNIQUE TREE?
+   ============================================================
+   Preorder + Inorder            YES
+   Postorder + Inorder           YES
+   Inorder + Preorder            YES (same as above)
+   Inorder + Postorder           YES (same as above)
+   
+   Preorder + Postorder          NO (multiple trees possible)
+                                 → Exception: YES if tree is FULL
+  
+   Preorder only                 NO
+   Postorder only                NO
+   Inorder only                  NO
