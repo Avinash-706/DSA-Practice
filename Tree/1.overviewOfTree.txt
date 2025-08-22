@@ -478,14 +478,14 @@ TREE
   ============================================================
   TRAVERSAL COMBINATION         CAN BUILD UNIQUE TREE?
    ============================================================
-   Preorder + Inorder            YES
-   Postorder + Inorder           YES
-   Inorder + Preorder            YES (same as above)
-   Inorder + Postorder           YES (same as above)
+   Preorder  + Inorder            YES
+   Postorder + Inorder            YES
+   Inorder +  Preorder            YES (same as above)
+   Inorder + Postorder            YES (same as above)
    
-   Preorder + Postorder          NO (multiple trees possible)
-                                 → Exception: YES if tree is FULL
-  
-   Preorder only                 NO
-   Postorder only                NO
-   Inorder only                  NO
+   Preorder + Postorder           NO (multiple trees possible)
+                                  → Exception: YES if tree is FULL
+   
+   Preorder only                  NO
+   Postorder only                 NO
+   Inorder only                   NO
