@@ -3,7 +3,7 @@
 using namespace std;
 
 
-// 2 STACK IMPLEMENTATION
+// UNOPTIMIZED SOLUTION 
 struct Node {
     int key;
     Node *left, *right;
@@ -41,6 +41,10 @@ int main() {
     root->right->right = new Node(7);
     root->right->left->left = new Node(10);
 
-    cout << spiralTraversal(root);
+    cout << "Diameter of a Binary Tree : " << spiralTraversal(root);
     return 0;
 }
+
+// TIME  COMPLEXITY  : O(n²), where 'n' is the number of nodes
+// SPACE COMPLEXITY  : O(h), where 'h' is the height of the tree 
+//                    (O(n) in worst case, O(log n) in best case)
