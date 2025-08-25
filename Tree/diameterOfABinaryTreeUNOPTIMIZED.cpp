@@ -28,7 +28,6 @@ int spiralTraversal(Node *root){
     return  max(d1,max(d2, d3));
 }
 
-
 int main() {
     Node *root = new Node(1);
     root->left = new Node(2);
