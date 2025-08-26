@@ -2,6 +2,7 @@
 using namespace std;
 
 
+// OPTIMIZED APPROACH
 struct Node {
     int key;
     Node *left, *right;
