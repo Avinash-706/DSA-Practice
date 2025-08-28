@@ -489,3 +489,80 @@ TREE
    Preorder only                  NO
    Postorder only                 NO
    Inorder only                   NO
+
+
+ =============================
+ DIAMETER OF A BINARY TREE
+  =============================
+ 
+  -----------------------------
+  INTRODUCTION
+   -----------------------------
+   -> The diameter (or width) of a binary tree is the length of the LONGEST PATH between any two nodes in the tree.
+   -> The length of a path is measured by the number of edges between the nodes.
+   
+   IMPORTANT NOTE:
+    -> This longest path may or may not pass through the root of the tree.
+   
+ 
+  -----------------------------
+  EXAMPLE TREE
+   -----------------------------
+   -> The tree below has a diameter of 6.
+   -> The longest path is between node 70 and node 60.
+   -> PATH: 70 <-> 50 <-> 20 <-> 10 <-> 30 <-> 60
+   
+             10
+            /  \
+           20   30
+          /       \
+         50        60
+        /
+       70
+ 
+  -----------------------------
+  RECURSIVE LOGIC
+   -----------------------------
+   -> To find the diameter, we must consider every node as a potential "root" or "turning point" of the longest path.
+   
+   For any given node, the longest path could be one of three possibilities:
+    1. The diameter lies entirely within the node's LEFT subtree.
+    2. The diameter lies entirely within the node's RIGHT subtree.
+    3. The diameter PASSES THROUGH the current node.
+       - The length of this path would be: (height of left subtree) + (height of right subtree).
+   
+   -> The overall diameter of the tree is the MAXIMUM value found among these three possibilities, calculated for every node.
+   
+ 
+  -----------------------------
+  OPTIMIZED RECURSIVE APPROACH (O(n))
+   -----------------------------
+   -> A naive approach would be to calculate the height at every node, leading to an O(n^2) complexity.
+   -> A much better way is to calculate both the height and the diameter in a single post-order traversal.
+   
+   THE STRATEGY:
+    -> We create a recursive function that returns the HEIGHT of the subtree it's given.
+    -> As this function calculates the height from the bottom up, it also calculates the potential diameter that passes through the current node (`left_height + right_height`).
+    -> It compares this `current_diameter` with a global `max_diameter` and updates it if the current one is larger.
+    -> This way, by the time the traversal is complete, we have both calculated the tree's height and found the maximum diameter.
+   
+ 
+  -----------------------------
+  PSEUDOCODE (OPTIMIZED APPROACH)
+   -----------------------------
+    // `diameter` is a global or reference variable
+    function heightAndUpdateDiameter(node):
+      if node is NULL: return 0
+      lh = heightAndUpdateDiameter(node.left)
+      rh = heightAndUpdateDiameter(node.right)
+      diameter = max(diameter, lh + rh)
+      return 1 + max(lh, rh)
+   
+  -----------------------------
+  COMPLEXITY
+   -----------------------------
+   TIME COMPLEXITY:
+    -> Θ(n), as every node is visited exactly once in the post-order traversal.
+   
+   AUXILIARY SPACE COMPLEXITY:
+    -> Θ(h), where 'h' is the height of the tree, for the recursion call stack.
