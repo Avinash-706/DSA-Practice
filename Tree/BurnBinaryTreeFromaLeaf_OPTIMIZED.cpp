@@ -3,6 +3,7 @@
 using namespace std;
 
 
+// OPTIMIZED -- RECURSION
 struct Node {
     int key;
     Node *left, *right;
