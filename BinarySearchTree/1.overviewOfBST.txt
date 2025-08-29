@@ -1,0 +1,56 @@
+=============================
+BINARY SEARCH TREE (BST)
+ =============================
+
+ -----------------------------
+ INTRODUCTION
+  -----------------------------
+  -> A Binary Search Tree (BST) is a node-based binary tree data structure with a special organizing property
+  -> It is designed to make search operations (and other operations like insertions and deletions) highly efficient
+  
+  THE CORE PROPERTY (BST INVARIANT):
+   For any given node `N` in the tree:
+   ✅ All values in the LEFT subtree of `N` are LESS THAN the value of `N`
+   ✅ All values in the RIGHT subtree of `N` are GREATER THAN the value of `N`
+   ✅ Both the left and right subtrees must also be binary search trees
+
+
+ -----------------------------
+ BACKGROUND & MOTIVATION
+  -----------------------------
+  -> To understand why BSTs are useful, it helps to compare the performance of common data structures for various operations
+  
+  TIME COMPLEXITY COMPARISON TABLE:
+   ==============================================================================
+   |   OPERATION    | UNSORT ARR | SORT ARR | L. LIST  | BAL. BST | HASH TBL |
+   |----------------|------------|----------|----------|----------|----------|
+   | Search         |    O(n)    | O(log n) |   O(n)   | O(log n) |   O(1)   |
+   | Insert         |    O(1)    |   O(n)   | O(1)/O(n)*| O(log n) |   O(1)   |
+   | Delete         |    O(n)    |   O(n)   |   O(n)   | O(log n) |   O(1)   |
+   | Find Closest   |    O(n)    | O(log n) |   O(n)   | O(log n) |   O(n)   |
+   | Sorted Trav.   | O(n log n) |   O(n)   |O(n log n)|   O(n)   |O(n log n)|
+   ==============================================================================
+   [*] O(1) if unsorted; O(n) to find position if sorted
+  
+  KEY TAKEAWAYS FROM THE TABLE:
+   -> ❌ Unsorted Array: Fast insertion, but very slow search and delete
+   -> ❌ Sorted Array: Fast search, but very slow insertion and deletion due to element shifting
+   -> ❌ Linked List : Generally slow for searching, requiring traversal of the list
+   -> ✅ Hash Table  : Extremely fast for search, insert, and delete on average, but does not maintain any sorted order
+                        Finding the closest element or doing a sorted traversal is inefficient
+   -> ✅ Balanced BST: Provides the best overall performance
+                        It maintains a sorted order while keeping search, insert, and delete operations very fast at O(log n)
+  
+
+ -----------------------------
+ EXAMPLE OF A VALID BST
+  -----------------------------
+  -> The following tree adheres to the BST property at every node
+  
+            8
+           / \
+          3   10
+         / \    \
+        1   6    14
+           / \   /
+          4   7 13
