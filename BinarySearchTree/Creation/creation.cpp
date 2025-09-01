@@ -33,13 +33,13 @@ Node* bst(Node *root, vector<int> &arr){
 }
 
 
+
 void inorderTraversal(Node *root){
     if(root == NULL)    return;
     inorderTraversal(root -> left );
     cout << root -> key << " ";
     inorderTraversal(root -> right);
 }
-
 
 int main() {
     vector<int> arr = {20, 15 , 30, 40, 50, 12, 18, 35, 80, 7};
