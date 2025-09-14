@@ -46,8 +46,11 @@ int main() {
     cout << "INORDER Traversal : ";
     inorderTraversal(root);
 
-    Node *temp1 = floorInBST(root, 14);
-    cout << endl << "Floor of the BST  : " << temp1 -> key << endl;
+    int num;
+    cout << endl << "Enter the Number  : ";
+    cin >>  num;
+    Node *temp1 = floorInBST(root, num);
+    cout << "Floor in the BST of " << num << " :: " << temp1 -> key << endl;
 
 }
 
