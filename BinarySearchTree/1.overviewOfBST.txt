@@ -54,3 +54,98 @@ BINARY SEARCH TREE (BST)
         1   6       14
            / \     /
           4   7   13
+
+
+ -----------------------------
+ SEARCHING IN A BST
+  -----------------------------
+  EXPLANATION:
+   -> Searching leverages the BST property to eliminate half of the remaining tree at each step.
+   1. Start at the root.
+   2. Compare the target value with the current node's value.
+   3. If they match, the value is found.
+   4. If the target is LESS, move to the LEFT child.
+   5. If the target is GREATER, move to the RIGHT child.
+   6. Repeat until the value is found or you reach a NULL node (value not in tree).
+  
+  PSEUDOCODE:
+   function search(node, target):
+     if node is NULL or node.data == target:
+       return node
+     if target < node.data:
+       return search(node.left, target)
+     else:
+       return search(node.right, target)
+  
+
+ -----------------------------
+ INSERTION IN A BST
+  -----------------------------
+  EXPLANATION:
+   -> Insertion follows the same logic as searching to find the correct position for the new node.
+   1. Search for the value you want to insert.
+   2. The search will end at a NULL position.
+   3. Insert the new node at this NULL position, connecting it to its parent.
+  
+  PSEUDOCODE:
+   function insert(node, value):
+     if node is NULL:
+       return createNewNode(value)
+     if value < node.data:
+       node.left = insert(node.left, value)
+     else if value > node.data:
+       node.right = insert(node.right, value)
+     return node
+  
+
+ -----------------------------
+ DELETION IN A BST
+  -----------------------------
+  EXPLANATION:
+   -> Deletion is the most complex operation. After finding the node to delete, there are three cases.
+  
+   CASE 1: NODE TO DELETE IS A LEAF (0 CHILDREN)
+    -> This is the simplest case. Simply remove the node and set its parent's corresponding child pointer to NULL.
+  
+   CASE 2: NODE TO DELETE HAS ONE CHILD
+    -> "Bypass" the node by linking its parent directly to its child.
+  
+   CASE 3: NODE TO DELETE HAS TWO CHILDREN
+    -> This is the tricky case. The node cannot be simply removed without breaking the tree structure.
+    1. Find the node's IN-ORDER SUCCESSOR (the smallest value in its right subtree).
+    2. Copy the value of the in-order successor to the node you want to delete.
+    3. Recursively delete the in-order successor from the right subtree (this will be an easier Case 1 or Case 2 deletion).
+  
+
+ -----------------------------
+ IN-ORDER TRAVERSAL & SORTED OUTPUT
+  -----------------------------
+  -> A key feature of a BST is that performing an IN-ORDER traversal (Left -> Root -> Right) on it will visit the nodes in ascending sorted order.
+  -> This is a natural consequence of the BST property.
+  -> For the example tree above, an in-order traversal yields: 1, 3, 4, 6, 7, 8, 10, 13, 14.
+  
+  
+ -----------------------------
+ TIME COMPLEXITY & THE IMPORTANCE OF BALANCE
+  -----------------------------
+  -> The efficiency of BST operations depends entirely on the HEIGHT (h) of the tree.
+  
+  BALANCED TREE (BEST CASE):
+   -> In a balanced tree, the nodes are distributed evenly.
+   -> The height `h` is approximately `log n`.
+   -> Complexity for Search, Insert, Delete: O(log n)
+  
+  UNBALANCED TREE (WORST CASE):
+   -> If elements are inserted in sorted order, the BST degenerates into a skewed tree (like a linked list).
+   -> The height `h` becomes `n`.
+   -> Complexity for Search, Insert, Delete: O(n)
+   -> EXAMPLE (inserting 1, 2, 3, 4):
+          1
+           \
+            2
+             \
+              3
+               \
+                4
+  
+  -> This is why self-balancing BSTs (like AVL Trees and Red-Black Trees) are used in practice to guarantee O(log n) performance.
