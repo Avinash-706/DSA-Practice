@@ -409,3 +409,120 @@ BINARY SEARCH TREE (BST)
    HEIGHT:
     -> The maximum height of an AVL tree with `n` nodes is approximately 1.44 * log2(n).
     -> This proves that the tree remains very well-balanced, ensuring logarithmic performance.
+
+
+
+ =============================
+ RED-BLACK TREE
+  =============================
+
+  -----------------------------
+  INTRODUCTION & COMPARISON WITH AVL
+   -----------------------------
+   -> Like an AVL tree, a Red-Black Tree is a self-balancing binary search tree.
+   -> Search is the same as a standard BST, but `insert` and `delete` operations are complex and may require restructuring to maintain balance.
+   
+   KEY DIFFERENCE: STRICT vs. LOOSE BALANCING
+    -> ✅ AVL TREE (Strict): The height difference between left and right subtrees cannot be more than 1.
+    -> ✅ RED-BLACK TREE (Loose): Allows for a less strict balance. The longest path from a node to a leaf can be up to twice as long as the shortest path.
+   
+   TRADE-OFFS:
+    -> ADVANTAGE OF BEING LOOSE (Red-Black Tree):
+       - Fewer rotations are needed on average during insertions and deletions because the balance rules are not as strict. This makes `insert` and `delete` operations generally faster.
+    
+    -> DISADVANTAGE OF BEING LOOSE (Red-Black Tree):
+       - The tree's height can be slightly greater than in an AVL tree, which can make search operations marginally slower.
+   
+   WHEN TO USE WHICH?
+    -> MANY SEARCHES, FEW MODIFICATIONS: Prefer an AVL tree for its guaranteed lower height and faster lookups.
+    -> MIX OF SEARCHES, INSERTIONS, DELETIONS: Prefer a Red-Black Tree, as its faster modification speed is generally a better trade-off.
+   
+
+  -----------------------------
+  PROPERTIES OF A RED-BLACK TREE
+   -----------------------------
+   -> A binary search tree is a Red-Black Tree if it satisfies the following five properties:
+   
+   1. COLOR PROPERTY: Every node is either RED or BLACK.
+   2. ROOT PROPERTY: The root of the tree is always BLACK.
+   3. RED PROPERTY: There cannot be two consecutive RED nodes (a red node cannot have a red parent or a red child).
+   4. BLACK-HEIGHT PROPERTY: Every path from a given node to any of its descendant NIL leaves must contain the same number of BLACK nodes.
+   5. LEAF PROPERTY: Every leaf (NIL or null pointer) is considered BLACK.
+   
+
+  -----------------------------
+  EXAMPLE & PROPERTY VERIFICATION
+   -----------------------------
+   -> Let's verify the properties using the following example tree. (B = Black, R = Red)
+   
+             20(B)
+            /    \
+          10(B)   40(R)
+                 /    \
+               30(B)   80(B)
+              /  \    /   \
+            25(R) 35(R) 70(R) 100(R)
+ 
+   VERIFICATION:
+    1. COLOR       : ✅ All nodes are either Red or Black.
+    2. ROOT        : ✅ The root (20) is Black.
+    3. RED         : ✅ Check all red nodes (40, 25, 35, 70, 100). None of them have a red parent or red child.
+    4. BLACK-HEIGHT: ✅ Every path from the root to a NIL leaf contains 2 black nodes.
+       - Path to left of 10: 20(B) -> 10(B) -> NIL(B). (Count = 2)
+       - Path to left of 25: 20(B) -> 40(R) -> 30(B) -> 25(R) -> NIL(B). (Count = 2)
+       - Path to left of 70: 20(B) -> 40(R) -> 80(B) -> 70(R) -> NIL(B). (Count = 2)
+    5. LEAF        : ✅ All NIL leaves are considered Black (used in the Black-Height calculation).
+ 
+
+  -----------------------------
+  BALANCE GUARANTEE & MAXIMUM UNBALANCE
+   -----------------------------
+   -> The combination of the "Red Property" and "Black-Height Property" is what guarantees the tree remains balanced.
+   -> It ensures that the longest possible path from a node to a leaf can be at most TWICE as long as the shortest possible path.
+   
+   EXAMPLE OF A MAXIMALLY UNBALANCED TREE:
+    -> The structure below is the most unbalanced a Red-Black tree can be while still following all the rules. The longest path is exactly twice the shortest path.
+    
+             10(B)
+            /   \
+           5(B)  30(B)
+                /   \
+              25(B)  35(B)
+              /
+            22(R)
+ 
+    -> SHORTEST PATH (Root to Leaf of 5): 10(B) -> 5(B) -> NIL(B). (Black Height = 2, Total Nodes = 2)
+    -> LONGEST PATH (Root to Leaf of 22): 10(B) -> 30(B) -> 25(B) -> 22(R) -> NIL(B). (Black Height = 3 - wait, this example doesn't work, let me use the one from the video).
+ 
+   CORRECTED EXAMPLE OF A MAXIMALLY UNBALANCED TREE:
+    -> A long path of alternating Black and Red nodes vs. a short path of only Black nodes.
+ 
+              B
+             / \
+            B   B
+               / \
+              B   R
+                 /
+                B
+    
+    -> SHORTEST PATH: Has a length of 2 nodes (B -> B).
+    -> LONGEST PATH: Has a length of 4 nodes (B -> B -> R -> B).
+    -> The longest path (4) is exactly twice the length of the shortest path (2), demonstrating the 2x balance guarantee.
+ 
+  -----------------------------
+  INSERTION & DELETION OVERVIEW
+   -----------------------------
+   -> The primary strategy during insertion and deletion is to fix any violations of the Red-Black properties.
+   
+   FIX-UP STRATEGY:
+    1. RECOLORING: The first attempt to fix a violation is by changing the colors of nodes. This is a very fast operation.
+    2. ROTATIONS: If recoloring is not sufficient to resolve the issue, then one or more tree rotations (similar to those in AVL trees) are performed.
+   
+  -----------------------------
+  PRACTICAL APPLICATIONS
+   -----------------------------
+   -> Due to its excellent performance for mixed operations, the Red-Black Tree is one of the most widely used self-balancing trees in practice.
+   
+   COMMON IMPLEMENTATIONS:
+    -> C++ STL: `std::map`, `std::set`, `std::multimap`, `std::multiset`
+    -> Java Collections: `java.util.TreeMap`, `java.util.TreeSet`
