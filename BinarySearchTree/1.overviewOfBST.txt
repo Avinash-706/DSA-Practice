@@ -526,3 +526,80 @@ BINARY SEARCH TREE (BST)
    COMMON IMPLEMENTATIONS:
     -> C++ STL: `std::map`, `std::set`, `std::multimap`, `std::multiset`
     -> Java Collections: `java.util.TreeMap`, `java.util.TreeSet`
+
+
+
+ =============================
+ APPLICATIONS OF SELF-BALANCING BSTs
+  =============================
+ 
+  -----------------------------
+  WHY SELF-BALANCING BSTs?
+   -----------------------------
+   -> Self-Balancing BSTs (like AVL and Red-Black Trees) are preferred over simple BSTs for most applications.
+   -> They guarantee that crucial operations—such as search, insert, delete, floor, and ceiling—will always run in efficient O(log n) time.
+   
+ 
+  -----------------------------
+  1. MAINTAINING A DYNAMIC SORTED SET
+   -----------------------------
+   -> Ideal for managing a collection of data that is constantly changing and must remain sorted.
+    -> ✅ New items are added or removed in O(log n) time.
+    -> ✅ The entire set can be retrieved in sorted order at any moment with an O(n) in-order traversal.
+   
+ 
+  -----------------------------
+  2. DOUBLE-ENDED PRIORITY QUEUE
+   -----------------------------
+   -> Implements a queue where finding both the minimum and maximum elements is required.
+    -> ✅ O(1) access to min/max elements (by storing pointers).
+    -> ✅ O(log n) time for insertions and deletions.
+    -> USE CASE: Managing tasks where both the highest and lowest priorities are relevant.
+   
+ 
+  -----------------------------
+  3. ADVANCED DATASET QUERIES
+   -----------------------------
+   -> Perfect for complex queries on ordered datasets beyond simple lookups.
+    -> Supports O(log n) operations like:
+       - Finding the floor or ceiling of a value.
+       - Counting elements within a specific range.
+       - Finding the k-th smallest/largest element.
+    -> USE CASE: Finding all products within a certain price range on an e-commerce website.
+   
+ 
+  -----------------------------
+  4. REAL-WORLD EXAMPLES & ADVANCED APPLICATIONS
+   -----------------------------
+   -> Self-balancing trees (and their variants) are the backbone of many high-performance systems.
+   
+   DATABASE INDEXING:
+    -> This is the most common real-world application. Database systems use B-Trees and B+ Trees (which are variants of BSTs) to index table rows.
+    -> When you run a query like `SELECT * FROM users WHERE user_id = 123;`, the database doesn't scan the whole table (O(n)). Instead, it uses the B-Tree index to find the user in O(log n) time.
+   
+   SCHEDULERS (OPERATING SYSTEMS & NETWORKING):
+    -> The Linux kernel's "Completely Fair Scheduler" (CFS) uses a Red-Black Tree to manage tasks.
+    -> It stores running processes in the tree, ordered by their "virtual runtime." The process with the smallest runtime (the leftmost node) is chosen to run next, ensuring fairness.
+   
+   SPATIAL DATA & NEAREST NEIGHBOR SEARCH (AI/ML, GIS):
+    -> K-D Trees, a multi-dimensional generalization of BSTs, are used to partition spatial data.
+    -> This is crucial in AI/ML for algorithms like K-Nearest Neighbors (KNN).
+    -> USE CASE: Finding the closest points to a given point on a map (e.g., "find the 5 nearest Ubers"), or finding similar images in a large dataset based on feature vectors.
+   
+   GUI & GAME DEVELOPMENT (BROWSER RENDERING):
+    -> In graphics and game engines, BST-like structures (e.g., Quadtrees, Octrees) are used for spatial partitioning.
+    -> This allows for efficient collision detection and view frustum culling. Instead of checking every object against every other object (O(n^2)), you can quickly query the tree to find objects in a specific area (O(log n)).
+   
+ 
+  -----------------------------
+  BST vs. HASH TABLE: WHEN TO CHOOSE WHICH
+   -----------------------------
+   -> A common question is when to use a self-balancing BST versus a Hash Table, as both offer efficient operations.
+   
+   CHOOSE A HASH TABLE WHEN:
+    -> You ONLY need fast average-case search, insert, and delete (O(1)).
+    -> You DO NOT care about the order of the elements.
+    
+   CHOOSE A SELF-BALANCING BST WHEN:
+    -> You need fast O(log n) search, insert, and delete.
+    -> AND you have an additional requirement related to order (e.g., sorted traversal, range queries, finding the closest element).
