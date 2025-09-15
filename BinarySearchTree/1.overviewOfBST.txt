@@ -149,3 +149,263 @@ BINARY SEARCH TREE (BST)
                 4
   
   -> This is why self-balancing BSTs (like AVL Trees and Red-Black Trees) are used in practice to guarantee O(log n) performance.
+
+
+
+ =============================
+ SELF-BALANCING BSTs
+  =============================
+ 
+  -----------------------------
+  THE GOAL OF SELF-BALANCING
+   -----------------------------
+   -> The main idea of self-balancing BSTs is to KEEP THE HEIGHT IN CHECK.
+   -> The goal is to ensure the height of the tree never goes beyond Θ(log n).
+   -> This guarantees that all major operations (search, insert, delete) remain logarithmic in time complexity.
+   
+   THE PROBLEM: INSERTION ORDER
+    -> The height of a standard BST is determined by the order in which keys are inserted.
+    
+    -> EXAMPLE 1 (Worst Case - Skewed Tree): Inserting keys in sorted order {7, 10, 11, 15...}
+           7
+            \
+             10
+              \
+               11
+                \
+                 15 ... (Height becomes n)
+    
+    -> EXAMPLE 2 (Best Case - Balanced Tree): Inserting the same keys in a different order {15, 10, 35...}
+               15
+              /  \
+             10  35
+            / \  / \
+           7 11 30 40 (Height is log n)
+ 
+
+  -----------------------------
+  CORE IDEA: RESTRUCTURE ON THE FLY
+   -----------------------------
+   -> Since we cannot control the user's insertion order, the tree must fix itself.
+   -> The strategy is to do EXTRA WORK during `insert` and `delete` operations.
+   -> When an insertion or deletion makes the tree unbalanced, the tree performs a RESTRUCTURING to regain its balance.
+   
+
+  -----------------------------
+  RESTRUCTURING WITH ROTATIONS
+   -----------------------------
+   -> The primary mechanism for restructuring is called a ROTATION.
+   -> A rotation is a local O(1) operation that changes the structure of the tree while PRESERVING THE BST PROPERTY.
+   -> It involves changing a few pointers to "rotate" nodes up or down.
+   
+   TYPES OF ROTATIONS:
+    
+    1. LEFT ROTATION (Counter-Clockwise)
+       -> Used when a tree becomes "right-heavy".
+       -> EXAMPLE: Inserting 100, 200, 300
+          100                           200
+           \                           /   \
+           200       -- L-Rotate-->  100   300
+            \
+             300
+    
+    2. RIGHT ROTATION (Clockwise)
+       -> Used when a tree becomes "left-heavy".
+       -> EXAMPLE: Inserting 300, 200, 100
+             300                       200
+            /                         /   \
+           200      -- R-Rotate-->  100   300
+          /
+         100
+   
+
+  -----------------------------
+  TYPES OF SELF-BALANCING TREES
+   -----------------------------
+   -> Different self-balancing trees use rotations but have different rules for when to apply them.
+   
+   1. AVL TREE
+      -> Follows a very STRICT balance condition.
+      -> The heights of the left and right subtrees of any node can differ by at most 1.
+      -> This strictness can lead to more frequent rotations.
+   
+   2. RED-BLACK TREE
+      -> Follows a slightly LOOSER set of balance rules (based on node colors 'red' and 'black').
+      -> The height is still guaranteed to be logarithmic (at most 2 * log(n+1)).
+      -> Because it is less strict, it often requires fewer rotations on average than an AVL tree.
+      -> ✅ This is the most commonly used self-balancing BST in practice (e.g., C++ `std::map`, Java `TreeMap`).
+
+
+
+ =============================
+  AVL TREE
+  =============================
+ 
+  -----------------------------
+  INTRODUCTION & BALANCE FACTOR
+   -----------------------------
+   -> An AVL tree is a self-balancing binary search tree.
+   -> It maintains balance using a strict height condition.
+   
+   THE AVL RULE:
+    -> The BALANCE FACTOR of every node must be less than or equal to 1.
+    -> Balance Factor = | height(left subtree) - height(right subtree) |
+   
+   EXAMPLE:
+      VALID AVL TREE              INVALID AVL TREE
+           30 (BF=1)                     30 (BF=2) <- VIOLATION
+          /                             /
+         20 (BF=0)                     20 (BF=1)
+        /  \                          /
+       10  25                        10 (BF=0)
+   
+
+  -----------------------------
+  INSERTION ALGORITHM
+   -----------------------------
+   -> Search operation is the same as a standard BST.
+   -> Insertion involves an extra step to maintain balance.
+   
+   STEPS FOR INSERTION:
+    1. Perform a normal BST insert.
+    2. After inserting, travel up from the new node to its ancestors.
+    3. For each ancestor, check if its Balance Factor has become 2.
+    4. If an unbalanced ancestor is found, perform the appropriate rotation(s) to fix it.
+   
+   IMPORTANT PROPERTY FOR INSERTION:
+    -> Only ONE fix (a single or double rotation) at the first unbalanced ancestor is needed to rebalance the entire tree.
+
+
+  -----------------------------
+  ROTATIONS & IMBALANCE CASES
+   -----------------------------
+   -> When an imbalance occurs at a node `z`, we look at its child `y` and grandchild `x` on the path to the newly inserted node to determine the case.
+   
+   1. LEFT-LEFT (LL) CASE
+      -> The imbalance is caused by an insertion into the left subtree of the left child.
+      -> SOLUTION: Perform one RIGHT ROTATION on the unbalanced node `z`.
+   
+   2. RIGHT-RIGHT (RR) CASE
+      -> The imbalance is caused by an insertion into the right subtree of the right child.
+      -> SOLUTION: Perform one LEFT ROTATION on the unbalanced node `z`.
+   
+   3. LEFT-RIGHT (LR) CASE
+      -> The imbalance is caused by an insertion into the right subtree of the left child.
+      -> SOLUTION: A double rotation is needed.
+         a) First, perform a LEFT ROTATION on the child node `y`.
+         b) Then, perform a RIGHT ROTATION on the main unbalanced node `z`.
+   
+   4. RIGHT-LEFT (RL) CASE
+      -> The imbalance is caused by an insertion into the left subtree of the right child.
+      -> SOLUTION: A double rotation is needed.
+         a) First, perform a RIGHT ROTATION on the child node `y`.
+         b) Then, perform a LEFT ROTATION on the main unbalanced node `z`.
+   
+
+  -----------------------------
+  EXAMPLE INSERTION WALKTHROUGH
+    -----------------------------
+   -> Let's trace the insertion of the sequence: { 20, 15, 5, 40, 50, 18 }
+   
+   1. INSERT 20, 15
+      -> Inserting 20 and then 15 results in a balanced tree.
+         20
+        /
+       15
+   
+   2. INSERT 5  ->  LEFT-LEFT CASE
+      -> Inserting 5 causes an imbalance at node 20 (Balance Factor = 2).
+      -> The path from the unbalanced node is Left-Left (20 -> 15 -> 5).
+      
+      UNBALANCED TREE:              SOLUTION: Right Rotate(20)
+           20 (BF=2)
+          /
+         15
+        /
+       5
+      
+      BALANCED TREE AFTER ROTATION:
+           15
+          /  \
+         5    20
+   
+   3. INSERT 40
+      -> Inserting 40 does not cause any imbalance.
+           15
+          /  \
+         5    20
+               \
+                40
+   
+   4. INSERT 50  ->  RIGHT-RIGHT CASE
+      -> Inserting 50 causes an imbalance at node 20 (Balance Factor = 2).
+      -> The path from the unbalanced node is Right-Right (20 -> 40 -> 50).
+      
+      UNBALANCED SUBTREE:           SOLUTION: Left Rotate(20)
+           20 (BF=2)
+             \
+              40
+               \
+                50
+      
+      BALANCED TREE AFTER ROTATION:
+           15
+          /  \
+         5    40
+             /  \
+            20   50
+   
+   5. INSERT 18  ->  RIGHT-LEFT CASE
+      -> Inserting 18 causes an imbalance at the root node 15 (Balance Factor = 2).
+      -> The path from the unbalanced node is Right-Left (15 -> 40 -> 20).
+      -> This requires a double rotation to fix.
+      
+      INITIAL UNBALANCED TREE:
+           15 (BF=2)
+          /  \
+         5    40
+             /  \
+            20   50
+           /
+          18
+      
+      STEP A: Right Rotation on Child (40)
+       -> REASON: The first step is to transform the "kink" of the RL case into a simpler, straight RR case. We do this by performing a right rotation on the right child (40).
+      
+       TREE AFTER FIRST ROTATION:
+            15 (BF=2)
+           /  \
+          5    20
+              /  \
+             18   40
+                   \
+                    50
+      
+      STEP B: Left Rotation on Unbalanced Node (15)
+       -> REASON: Now that the tree is in a standard RR case (15 -> 20 -> 40), we perform the final left rotation on the original unbalanced node (15) to restore the tree's balance.
+      
+       FINAL BALANCED TREE:
+               20
+              /  \
+             15   40
+            / \     \
+           5  18     50
+           
+
+  -----------------------------
+  DELETION ALGORITHM (OVERVIEW)
+   -----------------------------
+   -> Deletion also requires checking for imbalances after the node is removed.
+   -> KEY DIFFERENCE FROM INSERTION: After fixing an unbalanced node during deletion, you might have to CONTINUE traveling up to fix other ancestors. Deletion can require multiple fixes up the tree.
+   
+
+  -----------------------------
+  COMPLEXITY & HEIGHT
+   -----------------------------
+   TIME COMPLEXITY:
+    -> Since the height is strictly guaranteed to be Θ(log n), all operations (Search, Insert, Delete) are also Θ(log n).
+    -> The rotations themselves are O(1) operations.
+   
+   HEIGHT:
+    -> The maximum height of an AVL tree with `n` nodes is approximately 1.44 * log2(n).
+    -> This proves that the tree remains very well-balanced, ensuring logarithmic performance.
